@@ -13,8 +13,6 @@ aside.ig-metacard
 
 		.ig-metacard__charts
 			each svg, gridSize in pollCharts
-				div(class='ig-metacard__chart ig-metacard__chart--' + gridSize)
+				a(target='_top', href='https://ig.ft.com/sites/brexit-polling/', class='ig-metacard__chart ig-metacard__chart--' + gridSize)
 					!= svg
-
-			p
-				a.ig-metacard__polling-link(href='https://ig.ft.com/sites/brexit-polling/') More polling
+					span More polling

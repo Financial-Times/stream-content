@@ -1,6 +1,8 @@
 @import 'o-grid/main';
 
 .ig-metacard {
+	margin: 30px 0;
+	padding: 0 20px;
 	background: white;
 	border: 1px solid #DCD3C9;
 	border-bottom-width: 3px;
@@ -8,14 +10,11 @@
 	border-bottom-left-radius: 5px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	margin-top: 30px;
-	margin-bottom: 40px;
-	padding-bottom: 20px;
 
 	&__heading {
-		font: normal 30px FinancierDisplayWeb, serif;
+		font: normal 26px FinancierDisplayWeb, serif;
 		text-align: center;
-		margin-bottom: 25px;
+		margin-bottom: 15px;
 	}
 
 	&__date {
@@ -30,44 +29,72 @@
 	}
 
 	&__main {
-		@include oGridRow;
+		margin: 20px auto 10px;
 
-		margin-top: 20px;
+		&:after {
+			content: " ";
+			display: table;
+			clear: both;
+		}
+	}
+
+	&__summary > p {
+		font: normal 18px/1.375 FinancierDisplayWeb, serif;
+		margin: 0 0 1em;
+	}
+
+	&__charts {
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	&__summary,
 	&__charts {
-		@include oGridColspan(12);
-	}
-
-	&__summary > p {
-		margin-left: 20px;
-		font: normal 18px/1.375 FinancierDisplayWeb, serif;
+		margin-top: 10px;
 	}
 
 	&__chart {
 		display: none;
-	}
+		border-bottom: 0;
+		position: relative;
+		padding: 7px;
 
-	@include oGridRespondTo($until: M) {
-		&__chart > svg {
-			display: block;
-			margin: 0 auto;
+		> svg {
+			width: 100%;
+			max-width: 100%;
+			shape-rendering: crispEdges;
+
+			.chart-source {
+				color: #666;
+			}
 		}
-	}
 
-	@include oGridRespondTo(M) {
-		&__summary,
-		&__charts {
-			@include oGridColspan(6);
+		// the little "more polling" faux link
+		> span {
+			font-size: 13px;
+			position: absolute;
+			bottom: 10px;
+			right: 7px;
+			color: #27757b;
+			border-bottom: 1px dotted #27757b;
 		}
-	};
 
-	// unhide individual charts at breakpoints
+		&:hover {
+			background: #fafafa;
+
+			> span {
+				color: black;
+				border-bottom: 1px solid transparent;
+			}
+		}
+		&:active { background: #f8f8f8; }
+	}
 	@include oGridRespondTo($until: S) {
+		&__charts { width: 300px; }
 		&__chart--default { display: block; }
 	}
 	@include oGridRespondTo(S, $until: M) {
+		&__charts { width: 400px; }
 		&__chart--S { display: block; }
 	}
 	@include oGridRespondTo(M, $until: L) {
@@ -77,15 +104,45 @@
 		&__chart--L { display: block; }
 	}
 	@include oGridRespondTo(XL) {
+		padding-left: 40px;
+		padding-right: 40px;
 		&__chart--XL { display: block; }
+	}
 
-		&__summary {
-			@include oGridOffset(1);
+	@include oGridRespondTo($until: M) {
+		&__main {
+			max-width: 500px;
 		}
+	}
 
+	@include oGridRespondTo(M) {
 		&__summary,
 		&__charts {
-			@include oGridColspan(5);
+			width: 50%;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+		&__summary {
+			float: left;
+		}
+		&__charts {
+			float: right;
+		}
+		&__chart {
+			width: auto;
+		}
+
+		&__heading {
+			font-size: 35px;
+		}
+		&__date {
+			font-size: 14px;
+		}
+	};
+
+	@include oGridRespondTo(L) {
+		&__summary > p {
+			font-size: 20px;
 		}
 	}
 }

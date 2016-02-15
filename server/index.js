@@ -23,9 +23,9 @@ async function getLocals() {
 	const pollCharts = await Promise.props({
 		default: fetchChart(300),
 		S: fetchChart(400),
-		M: fetchChart(300),
-		L: fetchChart(400),
-		XL: fetchChart(479),
+		M: fetchChart(289),
+		L: fetchChart(409),
+		XL: fetchChart(529),
 	});
 
 	// TODO: load card text from Bertha
