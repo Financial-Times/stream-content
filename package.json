@@ -24,13 +24,13 @@
     "isomorphic-fetch": "^2.2.1",
     "jade": "^1.11.0",
     "koa": "^2.0.0-alpha.3",
-    "koa-router": "^7.0.0"
+    "koa-router": "^7.0.0",
+    "node-sass": "^3.4.2"
   },
   "devDependencies": {
     "eslint": "^2.0.0",
     "eslint-config-trip": "^1.0.1",
     "eslint-plugin-babel": "^3.1.0",
-    "node-sass": "^3.4.2",
     "nodemon": "^1.8.1"
   },
   "engines": {
