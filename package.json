@@ -23,13 +23,13 @@
     "isomorphic-fetch": "^2.2.1",
     "jade": "^1.11.0",
     "koa": "^2.0.0-alpha.3",
-    "koa-router": "^7.0.0",
-    "node-sass": "^3.4.2"
+    "koa-router": "^7.0.0"
   },
   "devDependencies": {
     "eslint": "^2.0.0",
     "eslint-config-trip": "^1.0.1",
     "eslint-plugin-babel": "^3.1.0",
+    "node-sass": "^3.4.2",
     "nodemon": "^1.8.1"
   },
   "engines": {
@@ -40,7 +40,6 @@
   },
   "private": "true",
   "scripts": {
-    "postinstall": "npm run styles",
     "styles": "node-sass --output-style compressed --include-path bower_components --output public ./sass",
     "styles:dev": "node-sass --output-style compressed --include-path bower_components --watch --output public ./sass",
     "start:dev": "nodemon --ext js,jade,css",
