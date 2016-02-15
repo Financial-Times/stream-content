@@ -1,0 +1,24 @@
+aside.ig-card
+	style
+		include ../styles/card.css
+
+	h1.ig-card-heading What you need to know
+	.ig-updated
+		span.ig-updated-flag UPDATED:
+		|  FEBRUARY 10, 2016
+	.o-grid-row
+		.first-column.top-section.ig-body-copy(data-o-grid-colspan='10 M5 push1')
+			p
+				| The
+				a(href='') outline of a deal to keep Britain in the EU has been released
+				| . David Cameron in now launching a political campaign to sell the plan, the most controversial aspect of which is
+				a(href='') the restriction of welfare payments to migrants
+				| .
+		.second-column.top-section(data-o-grid-colspan='10 M5 push1')
+			.ig-chart
+				object.ig-poll-chart.default(data='https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/406-x-75.svg', type='image/svg+xml')
+				object.ig-poll-chart.S(data='https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/620-x-75.svg', type='image/svg+xml')
+				object.ig-poll-chart.M(data='https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/299-x-75.svg', type='image/svg+xml')
+				object.ig-poll-chart.L(data='https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/419-x-75.svg', type='image/svg+xml')
+				object.ig-poll-chart.XL(data='https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/539-x-75.svg', type='image/svg+xml')
+				a.polling-link(href='https://ft-ig-brexit-polling.herokuapp.com/') More polling

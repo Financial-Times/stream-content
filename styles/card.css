@@ -1,0 +1,260 @@
+.ig-card {
+	background: white;
+	border: 1px solid #DCD3C9;
+	border-bottom-width: 3px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-top: 30px;
+  /* temp */
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+}
+
+.ig-card-heading {
+	font-family: FinancierDisplayWeb, serif;
+	font-weight: normal;
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 25px;
+}
+
+.ig-secondary-heading {
+	font-family: FinancierDisplayWeb, serif;
+	font-weight: lighter;
+	font-size: 23px;
+	margin-top: 0;
+	margin-bottom: 12px;
+}
+
+.ig-tertiary-heading {
+	font-weight: 600;
+	margin-top: 0;
+	margin-bottom: 14px;
+}
+
+.ig-updated {
+	text-align: center;
+	font-size: 12px;
+	color: #8b572a;
+}
+
+.ig-updated-flag {
+	font-weight: 500;
+	color: #d13c41;
+}
+
+.ig-body-copy {
+	font-family: FinancierDisplayWeb, serif;
+	line-height: 1.5rem;
+	vertical-align: top;
+}
+
+.polling-link {
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.top-section {
+	margin-top: 20px;
+}
+
+.ig-nav-list {
+	font-family: MetricWeb, sans-serif;
+	padding: 0;
+	list-style-type: none;
+	border-top: solid 1px #e9decf;
+/*margin-right: 20px;*/;
+}
+
+.ig-nav-list li {
+	border-bottom: solid 1px #e9decf;
+	padding-bottom: 6px;
+	padding-top: 6px;
+}
+
+.ig-nav-list a {
+	border-bottom: none;
+	font-weight: 600;
+}
+
+.ig-nav-list a:before {
+	content: " ";
+	background: url('https://image.webservices.ft.com/v1/images/raw/fticon:arrow-right?height=15&tint=27757b,27757b&source=ig_wrr') no-repeat center center;
+	background-size: 15px 15px;
+	float: right;
+/*position: absolute;
+bottom: -34px;
+// right: 0;*/
+	width: 15px;
+	height: 15px;
+	margin: 4px 7px 8px 0;
+}
+
+.ig-chart {
+	background-repeat: no-repeat;
+	background-size: 100%;
+	min-height: 75px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.ig-poll-chart.default {
+	display: block;
+}
+
+.ig-card .o-expander__toggle {
+	width: 100%;
+	height: 40px;
+	border-top: 1px solid #F5EEE7;
+	margin-top: 20px;
+}
+
+.ig-card .o-expander__toggle:hover {
+	background: #fafafa;
+}
+
+.ig-poll-chart {
+	display: none;
+}
+
+object {
+	width: 100%;
+}
+
+.first-column p, .ig-secondary-heading, div.ig-video {
+	margin-right: 20px;
+}
+
+.ig-video {
+	width: 100%;
+	background-color: #fff1e0;
+	height: 290px;
+}
+
+.ig-chart {
+/*margin-right: 20px;*/
+/*margin-left: 20px;*/;
+}
+
+.first-column {
+	vertical-align: top;
+}
+
+.second-column.bottom-section {
+	border-left: 1px solid #e9decf;
+}
+
+.first-column.bottom-section {
+	padding-right: 20px;
+}
+
+.ig-secondary-content {
+	border-top: 1px solid #000;
+}
+
+.ig-rule {
+	border: none;
+	border-bottom: 1px solid #e9decf;
+/*margin-left:20px;*/
+/*margin-right:20px;*/
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+@media (min-width: 240px) {
+	.first-column.bottom-section {
+		padding-right: 0;
+	}
+
+	.second-column.bottom-section {
+/*margin-left: 20px;*/
+		border: 0;
+		margin-top: 20px;
+/*margin-right: 20px;*/;
+	}
+
+	.ig-card-heading {
+		margin-bottom: 12px;
+	}
+
+	.ig-card-heading {
+		font-size: 23px;
+	}
+
+	.first-column.top-section {
+		margin-top: 0;
+	}
+
+	.second-column.top-section {
+		margin-top: 8px;
+	}
+}
+
+@media (min-width: 490px) {
+	.ig-poll-chart.S {
+		display: block;
+	}
+
+	.ig-poll-chart.default, .ig-poll-chart.M, .ig-poll-chart.L, .ig-poll-chart.XL {
+		display: none;
+	}
+
+	.ig-card-heading {
+		font-size: 30px;
+	}
+}
+
+@media (min-width: 740px) {
+	.ig-poll-chart.M {
+		display: block;
+	}
+
+	.ig-poll-chart.S, .ig-poll-chart.L, .ig-poll-chart.XL {
+		display: none;
+	}
+
+	.first-column.bottom-section {
+		padding-right: 20px;
+	}
+
+	.second-column.bottom-section {
+		margin-left: 0;
+		border-left: 1px solid #e9decf;
+		margin-top: 0;
+		margin-right: 0;
+	}
+
+	.ig-card-heading {
+		margin-bottom: 15px;
+	}
+}
+
+@media (min-width: 980px) {
+	.ig-poll-chart.L {
+		display: block;
+	}
+
+	.ig-poll-chart.S, .ig-poll-chart.M, .ig-poll-chart.XL {
+		display: none;
+	}
+
+	.first-column.top-section {
+		margin-top: 8px;
+	}
+
+	.second-column.top-section {
+		margin-top: 26px;
+	}
+}
+
+@media (min-width: 1220px) {
+	.ig-poll-chart.XL {
+		display: block;
+	}
+
+	.ig-poll-chart.S, .ig-poll-chart.M, .ig-poll-chart.L {
+		display: none;
+	}
+}

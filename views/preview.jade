@@ -1,0 +1,19 @@
+//- just for previewing in development - this layout mimics the Next stream page's outer layout and styles so we can see how the card looks when inlined.
+
+html
+	head
+		title Brexit card preview
+
+		link(rel='stylesheet', href='https://next-geebee.ft.com/hashed-assets/stream-page/2c526d93/main.css')
+
+	body
+		.stream.o-grid-container
+			h1 Preview
+
+			#stream
+				.stream__container
+					.stream__list.js-stream-list
+						.stream-item.stream-item--row
+							.custom-fragment
+								.custom-fragment__content
+									include card.jade

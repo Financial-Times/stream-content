@@ -1,0 +1,45 @@
+{
+  "babel": {
+    "presets": [
+      "es2015-node5"
+    ],
+    "plugins": [
+      [
+        "transform-async-to-module-method",
+        {
+          "module": "bluebird",
+          "method": "coroutine"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-transform-async-to-module-method": "^6.5.2",
+    "babel-preset-es2015-node5": "^1.1.2",
+    "babel-register": "^6.5.2",
+    "bluebird": "^3.3.1",
+    "express": "^4.13.4",
+    "isomorphic-fetch": "^2.2.1",
+    "jade": "^1.11.0",
+    "koa": "^2.0.0-alpha.3",
+    "koa-router": "^7.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.0.0",
+    "eslint-config-trip": "^1.0.1",
+    "eslint-plugin-babel": "^3.1.0",
+    "nodemon": "^1.8.1"
+  },
+  "engines": {
+    "node": ">=5 <6"
+  },
+  "eslintConfig": {
+    "extends": "trip"
+  },
+  "private": "true",
+  "scripts": {
+    "dev": "nodemon --ext js,jade,css",
+    "test": "eslint ./server"
+  }
+}
