@@ -1,8 +1,10 @@
-import Koa from 'koa';
-import Router from 'koa-router';
-import jade from 'jade';
+/* global fetch */
 import 'isomorphic-fetch';
+import jade from 'jade';
+import Koa from 'koa';
 import path from 'path';
+import Promise from 'bluebird';
+import Router from 'koa-router';
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,9 +17,27 @@ const renderCard = jade.compileFile(path.join(views, 'card.jade'));
 const renderIframe = jade.compileFile(path.join(views, 'iframe.jade'));
 const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
 
+
 // function to load various resources and assemble template data
 async function getLocals() {
-	// TODO: load card text from Bertha and load SVGs from Tom's app
+	const pollCharts = await Promise.props({
+		default: fetchChart(300),
+		S: fetchChart(400),
+		M: fetchChart(300),
+		L: fetchChart(400),
+		XL: fetchChart(479),
+	});
+
+	// TODO: load card text from Bertha
+
+	return { pollCharts };
+}
+
+async function fetchChart(width, height = 75) {
+	const url = `https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/${width}-x-${height}.svg`;
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
+	return res.text();
 }
 
 // define routes

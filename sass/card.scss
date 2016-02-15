@@ -1,0 +1,91 @@
+@import 'o-grid/main';
+
+.ig-metacard {
+	background: white;
+	border: 1px solid #DCD3C9;
+	border-bottom-width: 3px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+
+	&__heading {
+		font: normal 30px FinancierDisplayWeb, serif;
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+	&__date {
+		text-align: center;
+		font-size: 12px;
+		color: #8b572a;
+
+		> span {
+			color: red;
+			margin-right: 0.15em;
+		}
+	}
+
+	&__main {
+		@include oGridRow;
+
+		margin-top: 20px;
+	}
+
+	&__summary,
+	&__charts {
+		@include oGridColspan(12);
+	}
+
+	&__summary > p {
+		margin-left: 20px;
+		font: normal 18px/1.375 FinancierDisplayWeb, serif;
+	}
+
+	&__chart {
+		display: none;
+	}
+
+	@include oGridRespondTo($until: M) {
+		&__chart > svg {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	@include oGridRespondTo(M) {
+		&__summary,
+		&__charts {
+			@include oGridColspan(6);
+		}
+	};
+
+	// unhide individual charts at breakpoints
+	@include oGridRespondTo($until: S) {
+		&__chart--default { display: block; }
+	}
+	@include oGridRespondTo(S, $until: M) {
+		&__chart--S { display: block; }
+	}
+	@include oGridRespondTo(M, $until: L) {
+		&__chart--M { display: block; }
+	}
+	@include oGridRespondTo(L, $until: XL) {
+		&__chart--L { display: block; }
+	}
+	@include oGridRespondTo(XL) {
+		&__chart--XL { display: block; }
+
+		&__summary {
+			@include oGridOffset(1);
+		}
+
+		&__summary,
+		&__charts {
+			@include oGridColspan(5);
+		}
+	}
+}
