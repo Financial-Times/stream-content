@@ -34,7 +34,7 @@ async function getLocals() {
 }
 
 async function fetchChart(width, height = 75) {
-	const url = `https://ft-ig-brexit-polling.herokuapp.com/poll-of-polls/${width}-x-${height}.svg`;
+	const url = `https://ig.ft.com/sites/brexit-polling/poll-of-polls/${width}-x-${height}.svg`;
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 	return res.text();
