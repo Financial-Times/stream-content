@@ -26,6 +26,7 @@
     "koa-router": "^7.0.0"
   },
   "devDependencies": {
+    "bower": "^1.7.7",
     "eslint": "^2.0.0",
     "eslint-config-trip": "^1.0.1",
     "eslint-plugin-babel": "^3.1.0",
@@ -40,6 +41,7 @@
   },
   "private": "true",
   "scripts": {
+    "postinstall": "bower install && npm run styles",
     "styles": "node-sass --output-style compressed --include-path bower_components --output public ./sass",
     "styles:dev": "node-sass --output-style compressed --include-path bower_components --watch --output public ./sass",
     "start:dev": "nodemon --ext js,jade,css",
