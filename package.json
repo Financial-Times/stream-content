@@ -43,7 +43,7 @@
   "scripts": {
     "postinstall": "bower install && npm run styles",
     "styles": "node-sass --output-style compressed --include-path bower_components --output public ./sass",
-    "styles:dev": "node-sass --output-style compressed --include-path bower_components --watch --output public ./sass",
+    "styles:dev": "node-sass --include-path bower_components --watch --output public ./sass",
     "start:dev": "nodemon --ext js,jade,css",
     "test": "eslint ./server"
   }
