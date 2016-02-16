@@ -1,8 +1,7 @@
 @import 'o-fonts/main';
 
 @include oFontsInclude(FinancierDisplayWeb);
-@include oFontsInclude(
-MetricWeb);
+@include oFontsInclude(MetricWeb);
 
 html, body {
 	width: 100%;
