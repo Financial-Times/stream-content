@@ -1,7 +1,7 @@
 @import 'o-grid/main';
 
 .ig-metacard {
-	margin: 30px 0;
+	margin: 20px 0 5px;
 	padding: 0 20px;
 	background: white;
 	border: 1px solid #DCD3C9;
@@ -14,7 +14,7 @@
 	&__heading {
 		font: normal 26px FinancierDisplayWeb, serif;
 		text-align: center;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 	}
 
 	&__date {
@@ -29,7 +29,7 @@
 	}
 
 	&__main {
-		margin: 20px auto 10px;
+		margin: 15px auto 10px;
 
 		&:after {
 			content: " ";
@@ -71,9 +71,9 @@
 
 		// the little "more polling" faux link
 		> span {
-			font-size: 13px;
+			font-size: 15px;
 			position: absolute;
-			bottom: 10px;
+			bottom: 8px;
 			right: 7px;
 			color: #27757b;
 			border-bottom: 1px dotted #27757b;
@@ -133,16 +133,8 @@
 		}
 
 		&__heading {
-			font-size: 35px;
-		}
-		&__date {
-			font-size: 14px;
+			font-size: 30px;
+			margin-top: 25px;
 		}
 	};
-
-	@include oGridRespondTo(L) {
-		&__summary > p {
-			font-size: 20px;
-		}
-	}
 }
