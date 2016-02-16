@@ -90,7 +90,7 @@
 		&:active { background: #f8f8f8; }
 	}
 	@include oGridRespondTo($until: S) {
-		&__charts { width: 300px; }
+		&__charts { max-width: 100%; }
 		&__chart--default { display: block; }
 	}
 	@include oGridRespondTo(S, $until: M) {
