@@ -17,5 +17,16 @@ body {
 
 	.ig-metacard {
 		margin: 0;
+
+		a,
+		&__chart > span {
+			text-decoration: none;
+
+			color: #2e6e9e;
+
+			&:hover {
+				color: black;
+			}
+		}
 	}
 }
