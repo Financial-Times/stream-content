@@ -1,4 +1,5 @@
 @import 'o-grid/main';
+@import 'o-fonts/main';
 
 .ig-metacard {
 	margin: 20px 0 5px;
@@ -12,7 +13,7 @@
 	-moz-osx-font-smoothing: grayscale;
 
 	&__heading {
-		font: normal 26px FinancierDisplayWeb, serif;
+		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
 		text-align: center;
 		margin-bottom: 10px;
 	}
@@ -39,7 +40,7 @@
 	}
 
 	&__summary > p {
-		font: normal 18px/1.375 FinancierDisplayWeb, serif;
+		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierTextWeb);
 		margin: 0 0 1em;
 	}
 
