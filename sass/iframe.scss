@@ -1,6 +1,7 @@
 @import 'o-fonts/main';
 
 @include oFontsInclude(FinancierDisplayWeb);
+@include oFontsInclude(FinancierTextWeb);
 @include oFontsInclude(MetricWeb);
 
 html, body {
@@ -13,7 +14,7 @@ html, body {
 body {
 	background: #fff1e0;
 	color: #333;
-	font-family: MetricWeb,sans-serif;
+	font-family: oFontsGetFontFamilyWithFallbacks(MetricWeb);
 
 	.ig-metacard {
 		margin: 0;
