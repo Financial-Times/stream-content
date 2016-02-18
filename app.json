@@ -1,5 +1,7 @@
 {
   "env": {
-    "NODE_ENV": "production"
+    "OPTIONS_SHEET_KEY": {
+      "description": "The spreadsheet key for loading options."
+    }
   }
 }

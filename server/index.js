@@ -1,4 +1,5 @@
 /* global fetch */
+import 'dotenv/config';
 import 'isomorphic-fetch';
 import jade from 'jade';
 import Koa from 'koa';
