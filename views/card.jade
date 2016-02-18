@@ -2,17 +2,17 @@ aside.ig-metacard
 	style
 		include ../public/card.css
 
-	h1.ig-metacard__heading What you need to know
+	h1.ig-metacard__heading= heading
 	.ig-metacard__date
-		<span>UPDATED:</span> Thursday Feb 18, 2016
+		<span>UPDATED: </span>
+		= updated
 
 	.ig-metacard__main
 		.ig-metacard__summary
-			p Today is the start of a two-day European Council summit, where David Cameron <a target="_top" href="http://www.ft.com/cms/s/0/4354e05a-d598-11e5-969e-9d801cf5e15b.html">hopes to seal</a> a “new settlement” on Britain’s relationship with the EU.
-			p The final draft of the proposed deal <a target="_top" href="http://blogs.ft.com/brusselsblog/2016/02/18/leaked-brexit-summit-text-full-annotated-document/">has been leaked</a>. An agreement at this summit will lead to an in-out referendum, mostly likely on June 23.
+			!= text
 
 		.ig-metacard__charts
 			each svg, gridSize in pollCharts
-				a(target='_top', href='https://ig.ft.com/sites/brexit-polling/', class='ig-metacard__chart ig-metacard__chart--' + gridSize)
+				a(href=morePollingLinkURL, class='ig-metacard__chart ig-metacard__chart--' + gridSize)
 					!= svg
-					span More polling
+					span= morePollingLinkText

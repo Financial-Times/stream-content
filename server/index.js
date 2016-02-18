@@ -3,6 +3,7 @@ import 'dotenv/config';
 import 'isomorphic-fetch';
 import jade from 'jade';
 import Koa from 'koa';
+import marked from 'marked';
 import path from 'path';
 import Promise from 'bluebird';
 import Router from 'koa-router';
@@ -21,17 +22,18 @@ const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
 
 // function to load various resources and assemble template data
 async function getLocals() {
-	const pollCharts = await Promise.props({
-		default: fetchChart(300),
-		S: fetchChart(400),
-		M: fetchChart(289),
-		L: fetchChart(409),
-		XL: fetchChart(529),
-	});
+	const [options, pollCharts] = await Promise.all([
+		fetchOptions(),
+		Promise.props({
+			default: fetchChart(300),
+			S: fetchChart(400),
+			M: fetchChart(289),
+			L: fetchChart(409),
+			XL: fetchChart(529),
+		}),
+	]);
 
-	// TODO: load card text from Bertha
-
-	return { pollCharts };
+	return { ...options, pollCharts };
 }
 
 async function fetchChart(width, height = 75) {
@@ -39,6 +41,21 @@ async function fetchChart(width, height = 75) {
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 	return res.text();
+}
+
+async function fetchOptions() {
+	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options`;
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
+
+	const rows = await res.json();
+	const options = {};
+	for (const {name, value} of rows) options[name] = value;
+
+	// process text with markdown
+	options.text = marked(options.text);
+
+	return options;
 }
 
 // define routes
