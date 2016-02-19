@@ -1,6 +1,7 @@
 @import 'o-fonts/main';
 
 @include oFontsInclude(FinancierDisplayWeb);
+@include oFontsInclude(FinancierDisplayWeb, $weight: bold);
 @include oFontsInclude(FinancierTextWeb);
 @include oFontsInclude(MetricWeb);
 

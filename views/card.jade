@@ -1,18 +1,42 @@
-aside.ig-metacard
+aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrink-to='hidden' data-o-expander-expanded-toggle-text='Close guide' data-o-expander-collapsed-toggle-text='Show full referendum guide')
 	style
 		include ../public/card.css
+		if expandable === 'enabled'
+			include ../public/card-extra.css
 
-	h1.ig-metacard__heading= heading
-	.ig-metacard__date
-		<span>UPDATED: </span>
-		= updated
+	.ig-metacard__inner
+		h1.ig-metacard__heading= heading
+		.ig-metacard__date
+			<span>UPDATED: </span>
+			= updated
 
-	.ig-metacard__main
-		.ig-metacard__summary
-			!= text
+		.ig-metacard__main
+			.ig-metacard__summary
+				!= text
 
-		.ig-metacard__charts
-			each svg, gridSize in pollCharts
-				a(href=morePollingLinkURL, class='ig-metacard__chart ig-metacard__chart--' + gridSize)
-					!= svg
-					span= morePollingLinkText
+			.ig-metacard__charts
+				each svg, gridSize in pollCharts
+					a(href=morePollingLinkURL class='ig-metacard__chart ig-metacard__chart--' + gridSize)
+						!= svg
+						span= morePollingLinkText
+
+		if expandable === 'enabled'
+			section.o-expander__content(aria-hidden='true')
+				.ig-metacard__video-wrapper
+					h2= videoTitle
+					.ig-metacard__video-placeholder
+						video.ig-metacard__video(controls)
+							source(type='video/webm' src=videoWEBM)
+							source(type='video/mp4' src=videoMP4)
+							source(type='video/ogg' src=videoOGV)
+				.ig-metacard__links-wrapper
+					h3= linksTitle
+
+					ul.ig-metacard__links
+						each link in links
+							li
+								a(href=link.url)=link.title
+
+
+	if expandable === 'enabled'
+		button.o-expander__toggle
