@@ -68,6 +68,8 @@ router
 
 	// iframe (for using on the Falcon brexit page)
 	.get('/metacard/iframe.html', async function getIframe(ctx) {
+		ctx.set('Cache-Control', 'max-age=500');
+
 		ctx.body = renderIframe(await getLocals());
 	})
 
