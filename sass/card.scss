@@ -1,9 +1,10 @@
 @import 'o-grid/main';
 @import 'o-fonts/main';
 
+$tint: #F6F0EA;
+
 .ig-metacard {
 	margin: 0 0 5px;
-	padding: 0 20px;
 	background: white;
 	border: 1px solid #DCD3C9;
 	border-bottom-width: 3px;
@@ -11,6 +12,10 @@
 	border-bottom-left-radius: 5px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	&__inner {
+		padding: 0 20px;
+	}
 
 	&__heading {
 		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
@@ -80,33 +85,40 @@
 			border-bottom: 1px dotted #27757b;
 		}
 
+		transition: background 0.1s linear;
+
 		&:hover {
-			background: #fafafa;
+			background: $tint;
+			transition-duration: 0;
 
 			> span {
 				color: black;
 				border-bottom: 1px solid transparent;
 			}
 		}
-		&:active { background: #f8f8f8; }
+
+		&:active { background: $tint; }
 	}
+
 	@include oGridRespondTo($until: S) {
 		&__charts { max-width: 100%; }
 		&__chart--default { display: block; }
 	}
+
 	@include oGridRespondTo(S, $until: M) {
 		&__charts { width: 400px; }
 		&__chart--S { display: block; }
 	}
+
 	@include oGridRespondTo(M, $until: L) {
 		&__chart--M { display: block; }
 	}
 	@include oGridRespondTo(L, $until: XL) {
 		&__chart--L { display: block; }
 	}
+
 	@include oGridRespondTo(XL) {
-		padding-left: 40px;
-		padding-right: 40px;
+		&__inner { padding: 0 40px; }
 		&__chart--XL { display: block; }
 	}
 
@@ -138,4 +150,24 @@
 			margin-top: 20px;
 		}
 	};
+
+	&:not([data-o-expander-js]) {
+		.o-expander__toggle {
+			display: none;
+		}
+	}
+
+	.o-expander__toggle {
+		display: block;
+		width: 100%;
+		border-top: 2px solid $tint;
+		height: 40px;
+		line-height: 40px;
+		transition: background 0.1s linear;
+
+		&:hover {
+			background: $tint;
+			transition-duration: 0;
+		}
+	}
 }

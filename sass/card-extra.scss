@@ -1,0 +1,103 @@
+@import 'o-grid/main';
+@import 'o-fonts/main';
+
+.ig-metacard {
+	.o-expander__content {
+		padding-bottom: 10px;
+		margin-top: 20px;
+
+		&:before {
+			content: '';
+			display: block;
+			border-top: 2px solid #F6F0EA;
+		}
+
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+
+	&__video-wrapper {
+		margin-bottom: 20px;
+
+		> h2 {
+			text-align: center;
+			font: normal 22px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+		}
+	}
+
+	&__video-placeholder {
+		width: 100%;
+		padding-top: percentage(9/16);
+		overflow: hidden;
+		position: relative;
+		box-sizing: border-box;
+	}
+
+	&__video {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+	}
+
+	&__links-wrapper {
+		> h3 {
+			font: bold 20px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+		}
+	}
+
+	&__links {
+		padding: 0;
+
+		> li {
+			list-style: none;
+			border-bottom: 1px solid #ccc;
+
+			&:first-child {
+				border-top: 1px solid #ccc;
+			}
+
+			> a {
+				display: block;
+				padding: 8px 0;
+				font: 500 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
+				border-bottom: 0;
+				position: relative;
+
+				&:after {
+					content: '›';
+					position: absolute;
+					right: 0;
+					top: 0;
+					font: bold 1.5em sans-serif;
+				}
+			}
+		}
+	}
+
+	@include oGridRespondTo(M) {
+		&__video-wrapper,
+		&__links-wrapper {
+			width: 50%;
+			box-sizing: border-box;
+			display: inline-block;
+			padding: 0 20px;
+		}
+
+		&__video-wrapper {
+			float: left;
+
+			> h2 {
+				text-align: left;
+				font-size: 26px;
+			}
+		}
+
+		&__links-wrapper {
+			float: right;
+		}
+	}
+}
