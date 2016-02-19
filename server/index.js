@@ -77,7 +77,7 @@ router
 	})
 
 	// redirect from root
-	.redirect('/', '/metacard/preview.html')
+	.redirect('/', '/metacard/preview.html', 302)
 ;
 
 // start it up
