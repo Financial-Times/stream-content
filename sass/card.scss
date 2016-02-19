@@ -158,11 +158,14 @@ $tint: #F6F0EA;
 	}
 
 	.o-expander__toggle {
+		outline: 0;
 		display: block;
 		width: 100%;
 		border-top: 2px solid $tint;
 		height: 40px;
 		line-height: 40px;
+		color: #27757b;
+		font: 200 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		transition: background 0.1s linear;
 
 		&:hover {
