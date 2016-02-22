@@ -1,3 +1,4 @@
+import cheerio from 'cheerio';
 import marked from 'marked';
 import Promise from 'bluebird';
 
@@ -34,8 +35,12 @@ async function fetchBerthaData() {
 
 	for (const {name, value} of options) data[name] = value;
 
-	// process text with markdown
-	data.text = marked(data.text);
+	// process text from markdown to html, then insert data-trackable attributes into any links
+	data.text = (() => {
+		const $ = cheerio.load( marked(data.text) );
+		$('a[href]').attr('data-trackable', 'link');
+		return $.html();
+	})();
 
 	return data;
 }
