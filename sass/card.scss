@@ -170,7 +170,28 @@ $tint: #F6F0EA;
 
 		&:hover {
 			background: $tint;
-			transition-duration: 0;
+			transition-duration: 0s;
+		}
+
+		&:active {
+			border-top-color: darken($tint, 5%);
+			background: darken($tint, 5%);
+			transition-duration: 0s;
+		}
+
+		// override the broken icon
+		> i:before {
+			content: '';
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 15px;
+			height: 15px;
+			display: inline-block;
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-down?format=svg&tint=27757B,27757B&source=ig-metacard);
+		}
+
+		&[aria-expanded="true"] > i:before {
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-up?format=svg&tint=27757B,27757B&source=ig-metacard);
 		}
 	}
 }
