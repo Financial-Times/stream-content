@@ -2,7 +2,6 @@
   "name": "none",
   "dependencies": {
     "o-grid": "^4.0.7",
-    "o-fonts": "^2.1.0",
-    "o-expander": "^2.0.1"
+    "o-fonts": "^2.1.0"
   }
 }
