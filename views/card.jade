@@ -16,7 +16,7 @@ aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrin
 
 			.ig-metacard__charts
 				each svg, gridSize in pollCharts
-					a(href=morePollingLinkURL class='ig-metacard__chart ig-metacard__chart--' + gridSize)
+					a(href=morePollingLinkURL class='ig-metacard__chart ig-metacard__chart--' + gridSize, data-trackable='poll-chart')
 						!= svg
 						span= morePollingLinkText
 
