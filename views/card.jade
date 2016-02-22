@@ -1,4 +1,4 @@
-aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrink-to='hidden' data-o-expander-expanded-toggle-text='Close guide' data-o-expander-collapsed-toggle-text='Show full referendum guide')
+aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrink-to='hidden' data-o-expander-expanded-toggle-text='Close guide' data-o-expander-collapsed-toggle-text='Show full referendum guide' data-trackable='ig-brexit-metacard')
 	style
 		include ../public/card.css
 		if expandable === 'enabled'
@@ -11,7 +11,7 @@ aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrin
 			= updated
 
 		.ig-metacard__main
-			.ig-metacard__summary
+			.ig-metacard__summary(data-trackable='summary')
 				!= text
 
 			.ig-metacard__charts
@@ -24,7 +24,7 @@ aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrin
 			section.o-expander__content(aria-hidden='true')
 				.ig-metacard__video-wrapper
 					h2= videoTitle
-					.ig-metacard__video-placeholder
+					.ig-metacard__video-placeholder(data-trackable='video')
 						video.ig-metacard__video(controls poster=videoPoster)
 							source(type='video/webm' src=videoWEBM)
 							source(type='video/mp4' src=videoMP4)
@@ -35,8 +35,8 @@ aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrin
 					ul.ig-metacard__links
 						each link in links
 							li
-								a(href=link.url)=link.title
+								a(href=link.url data-trackable='link')=link.title
 
 
 	if expandable === 'enabled'
-		button.o-expander__toggle
+		button.o-expander__toggle(data-trackable='expander-toggle')
