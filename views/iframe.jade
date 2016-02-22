@@ -8,3 +8,20 @@ html
 	body
 		div
 			include card.jade
+
+		script(src='https://build.origami.ft.com/v2/bundles/js?modules=o-expander@^2.0.1')
+		script.
+			function fixHeight() {
+				setTimeout(function () {
+					frameElement.height = document.querySelector('.ig-metacard').offsetHeight + 5;
+				}, 0);
+			}
+
+			document.addEventListener('DOMContentLoaded', fixHeight);
+			window.addEventListener('oExpander.init', fixHeight);
+			window.addEventListener('oExpander.expand', fixHeight);
+			window.addEventListener('oExpander.collapse', fixHeight);
+			window.onload = function () {
+				fixHeight();
+				setTimeout(fixHeight, 1000);
+			};

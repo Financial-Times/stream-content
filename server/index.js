@@ -33,9 +33,6 @@ router
 
 		const locals = await getLocals();
 
-		// TODO - temporary, until iframe supports expandability
-		locals.expandable = false;
-
 		ctx.body = renderIframe(locals);
 	})
 
