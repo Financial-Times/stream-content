@@ -2,7 +2,6 @@
 @import 'o-fonts/main';
 @import 'o-colors/main';
 
-// $tint: #F6F0EA;
 $button-color: #F7F7F7;
 $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
