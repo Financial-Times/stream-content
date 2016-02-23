@@ -2,7 +2,11 @@
 @import 'o-fonts/main';
 @import 'o-colors/main';
 
-$tint: #F6F0EA;
+// $tint: #F6F0EA;
+$button-color: #F7F7F7;
+$button-color-darker: oColorsGetPaletteColor('blue-2');
+$button-color-darker-still: darken($button-color-darker, 3%);
+$button-top-border-color: rgba(206,198,185,0.5);
 
 .ig-metacard {
 	margin: 0 0 5px;
@@ -89,7 +93,7 @@ $tint: #F6F0EA;
 		transition: background 0.1s linear;
 
 		&:hover {
-			background: $tint;
+			background: $button-color-darker;
 			transition-duration: 0;
 
 			> span {
@@ -98,7 +102,7 @@ $tint: #F6F0EA;
 			}
 		}
 
-		&:active { background: $tint; }
+		&:active { background: $button-color-darker-still; }
 	}
 
 	@include oGridRespondTo($until: S) {
@@ -162,20 +166,22 @@ $tint: #F6F0EA;
 		outline: 0;
 		display: block;
 		width: 100%;
-		border-top: 1px solid oColorsGetPaletteColor('pink-tint3');
+		background: $button-color;
+		border-top: 1px solid $button-top-border-color;
 		height: 40px;
 		color: #27757b;
 		font: 500 18px/40px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		transition: background 0.1s linear;
 
 		&:hover {
-			background: oColorsGetPaletteColor('blue-2');
+			background: $button-color-darker;
+			// border-top-color: $button-color-darker;
 			transition-duration: 0s;
 		}
 
 		&:active {
-			border-top-color: darken($tint, 5%);
-			background: darken($tint, 5%);
+			// border-top-color: $button-color-darker-still;
+			background: $button-color-darker-still;
 			transition-duration: 0s;
 		}
 
