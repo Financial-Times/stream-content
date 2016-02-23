@@ -164,9 +164,8 @@ $tint: #F6F0EA;
 		width: 100%;
 		border-top: 1px solid oColorsGetPaletteColor('pink-tint3');
 		height: 40px;
-		line-height: 40px;
 		color: #27757b;
-		font: 500 18px/14.39px oFontsGetFontFamilyWithFallbacks(MetricWeb);
+		font: 500 18px/40px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		transition: background 0.1s linear;
 
 		&:hover {
@@ -178,6 +177,23 @@ $tint: #F6F0EA;
 			border-top-color: darken($tint, 5%);
 			background: darken($tint, 5%);
 			transition-duration: 0s;
+		}
+
+		// override the broken icon
+		> i {
+			color: inherit;
+			font: bold 20px sans-serif;
+			position: relative;
+			top: -3px;
+
+			&:before {
+				content: '+';
+			}
+
+		}
+
+		&[aria-expanded=true] > i {
+			display: none;
 		}
 	}
 }
