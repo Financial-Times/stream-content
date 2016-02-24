@@ -174,7 +174,7 @@ $button-top-border-color: rgba(206,198,185,0.5);
 		border-top: 1px solid $button-top-border-color;
 		height: 55px;
 		color: #27757b;
-		font: 200 18px/55px oFontsGetFontFamilyWithFallbacks(MetricWeb);
+		font: 400 18px/55px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		transition: background 0.1s linear;
 
 		&:hover {
