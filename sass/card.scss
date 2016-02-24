@@ -167,9 +167,9 @@ $button-top-border-color: rgba(206,198,185,0.5);
 		width: 100%;
 		background: $button-color;
 		border-top: 1px solid $button-top-border-color;
-		height: 40px;
+		height: 55px;
 		color: #27757b;
-		font: 500 18px/40px oFontsGetFontFamilyWithFallbacks(MetricWeb);
+		font: 200 18px/55px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		transition: background 0.1s linear;
 
 		&:hover {
@@ -184,21 +184,21 @@ $button-top-border-color: rgba(206,198,185,0.5);
 			transition-duration: 0s;
 		}
 
-		// override the broken icon		
-		> i:before {		
-			content: '';		
-			background-repeat: no-repeat;		
-			background-size: cover;		
-			width: 15px;		
-			height: 15px;		
+		// override the broken icon
+		> i:before {
+			content: '';
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 15px;
+			height: 15px;
 			display: inline-block;
 			position: relative;
 			top: -1px;
-			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-down?format=svg&tint=27757B,27757B&source=ig-metacard);		
-		}		
-		
-		&[aria-expanded="true"] > i:before {		
-			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-up?format=svg&tint=27757B,27757B&source=ig-metacard);		
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-down?format=svg&tint=27757B,27757B&source=ig-metacard);
+		}
+
+		&[aria-expanded="true"] > i:before {
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-up?format=svg&tint=27757B,27757B&source=ig-metacard);
 		}
 	}
 }
