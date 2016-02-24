@@ -133,6 +133,11 @@ $button-top-border-color: rgba(206,198,185,0.5);
 	}
 
 	@include oGridRespondTo(M) {
+
+		.latest > text {
+			font-size: 58px;
+		}
+
 		&__summary,
 		&__charts {
 			width: 50%;
