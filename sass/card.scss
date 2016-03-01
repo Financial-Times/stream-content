@@ -131,6 +131,11 @@ $button-top-border-color: rgba(206,198,185,0.5);
 		&__main {
 			max-width: 500px;
 		}
+		.o-expander__toggle {
+			&[aria-expanded="true"] {
+				display: none;
+			}
+		}
 	}
 
 	@include oGridRespondTo(M) {
