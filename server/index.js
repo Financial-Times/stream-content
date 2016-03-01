@@ -1,7 +1,7 @@
 /* global fetch */
 import 'dotenv/config';
 import 'isomorphic-fetch';
-import getLocals from './getLocals';
+import getLocals, { fetchBerthaData } from './getLocals';
 import jade from 'jade';
 import Koa from 'koa';
 import path from 'path';
@@ -20,11 +20,11 @@ const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
 
 // define routes
 router
-	// just the template locals
+	// a route to get the bertha data (post-transformations)
 	.get('/metacard/data.json', async function getFragment(ctx) {
 		ctx.set('Content-Type', 'application/json');
 
-		ctx.body = JSON.stringify(await getLocals());
+		ctx.body = JSON.stringify(await fetchBerthaData());
 	})
 
 	// fragment (for inlining in Next stream page)

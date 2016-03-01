@@ -24,7 +24,7 @@ async function fetchChart(width, height = 75) {
 	return res.text();
 }
 
-async function fetchBerthaData() {
+export async function fetchBerthaData() {
 	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options,links`;
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
