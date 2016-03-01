@@ -20,6 +20,13 @@ const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
 
 // define routes
 router
+	// just the template locals
+	.get('/metacard/data.json', async function getFragment(ctx) {
+		ctx.set('Content-Type', 'application/json');
+
+		ctx.body = JSON.stringify(await getLocals());
+	})
+
 	// fragment (for inlining in Next stream page)
 	.get('/metacard/fragment.json', async function getFragment(ctx) {
 		ctx.set('Content-Type', 'application/json');
