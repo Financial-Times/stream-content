@@ -1,6 +1,7 @@
 @import 'o-grid/main';
 @import 'o-fonts/main';
 @import 'o-colors/main';
+@import 'n-section/main';
 
 .ig-metacard {
 	.o-expander__content {
@@ -28,6 +29,7 @@
 	&.bottom {
 		background-color: #eeeeee;
 		border: 0;
+		margin-bottom: 20px;
 
 		.ig-metacard {
 			&__video-wrapper > h2,
@@ -77,13 +79,19 @@
 		padding: 0;
 
 		> li {
+			padding: 6px 0;
 			> a {
-				display: block;
-				padding: 8px 0;
-				font: 500 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
-				border-bottom: 0;
+				border-bottom: 1px dotted #27757b;
+				display: inline;
+				font: 400 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 				position: relative;
-				text-decoration: underline;
+
+				&:hover {
+					border-bottom: 0;
+				}
+			}
+			@include oGridRespondTo(XL) {
+				padding: 9px 0;
 			}
 		}
 	}
