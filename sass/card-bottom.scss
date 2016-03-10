@@ -1,5 +1,6 @@
 @import 'o-grid/main';
 @import 'o-fonts/main';
+@import 'o-colors/main';
 
 .ig-metacard {
 	.o-expander__content {
@@ -16,6 +17,27 @@
 			content: '';
 			display: table;
 			clear: both;
+		}
+	}
+
+	.content {
+		overflow: hidden;
+		padding-top: 20px;
+	}
+
+	&.bottom {
+		background-color: #eeeeee;
+		border: 0;
+
+		.ig-metacard {
+			&__video-wrapper > h2,
+			&__links-wrapper > h3 {
+				display: none;
+			}
+
+			&__links {
+				margin-top: 0;
+			}
 		}
 	}
 
@@ -55,27 +77,13 @@
 		padding: 0;
 
 		> li {
-			list-style: none;
-			border-bottom: 1px solid #ccc;
-
-			&:first-child {
-				border-top: 1px solid #ccc;
-			}
-
 			> a {
 				display: block;
 				padding: 8px 0;
 				font: 500 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 				border-bottom: 0;
 				position: relative;
-
-				&:after {
-					content: '›';
-					position: absolute;
-					right: 0;
-					top: 0;
-					font: bold 1.5em sans-serif;
-				}
+				text-decoration: underline;
 			}
 		}
 	}

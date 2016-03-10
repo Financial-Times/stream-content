@@ -14,6 +14,8 @@ const router = new Router();
 
 // precompile template functions
 const views = path.resolve(__dirname, '..', 'views');
+const renderCardTop = jade.compileFile(path.join(views, 'card-top.jade'));
+const renderCardBottom = jade.compileFile(path.join(views, 'card-bottom.jade'));
 const renderCard = jade.compileFile(path.join(views, 'card.jade'));
 const renderIframe = jade.compileFile(path.join(views, 'iframe.jade'));
 const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
@@ -34,13 +36,26 @@ router
 		ctx.body = JSON.stringify({ fragment: renderCard(await getLocals()) });
 	})
 
+	// top fragment
+	.get('/metacard/fragment-top.json', async function getFragment(ctx) {
+		ctx.set('Content-Type', 'application/json');
+		
+		ctx.body = JSON.stringify({ fragment: renderCardTop(await getLocals()) });
+	})
+
+	// bottom fragment
+	.get('/metacard/fragment-bottom.json', async function getFragment(ctx) {
+		ctx.set('Content-Type', 'application/json');
+
+		const locals = await getLocals()
+		ctx.body = JSON.stringify({ fragment: renderCardBottom(locals) });
+	})
+
 	// iframe (for using on the Falcon brexit page)
 	.get('/metacard/iframe.html', async function getIframe(ctx) {
 		ctx.set('Cache-Control', 'max-age=500');
 
-		const locals = await getLocals();
-
-		ctx.body = renderIframe(locals);
+		ctx.body = renderIframe(await getLocals());
 	})
 
 	// preview (for dev only)
