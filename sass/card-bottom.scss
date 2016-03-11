@@ -27,7 +27,7 @@
 	}
 
 	&.bottom {
-		background-color: #eeeeee;
+		background-color: oColorsGetPaletteColor('blue-2');
 		border: 0;
 		margin-bottom: 20px;
 
@@ -58,7 +58,7 @@
 		// overflow: hidden;
 		// box-sizing: border-box;
 		position: relative;
-		background: #333;
+		background: oColorsGetPaletteColor('cold-2');
 	}
 
 	&__video {
@@ -81,7 +81,7 @@
 		> li {
 			padding: 6px 0;
 			> a {
-				border-bottom: 1px dotted #27757b;
+				border-bottom: 1px dotted oColorsGetPaletteColor('teal-1');
 				display: inline;
 				font: 400 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 				position: relative;

@@ -15,8 +15,8 @@ html, body {
 }
 
 body {
-	background: #fff1e0;
-	color: #333;
+	background: oColorsGetPaletteColor('pink');
+	color: oColorsGetPaletteColor('grey-tint5');
 	font-family: oFontsGetFontFamilyWithFallbacks(MetricWeb);
 
 	.ig-metacard {
@@ -26,7 +26,7 @@ body {
 		&__chart > span {
 			text-decoration: none;
 
-			color: #2e6e9e;
+			color: oColorsGetPaletteColor('blue');
 
 			&:hover {
 				color: black;

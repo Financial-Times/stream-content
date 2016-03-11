@@ -38,7 +38,7 @@ $button-top-border-color: rgba(206,198,185,0.5);
 		background: $button-color;
 		border-top: 1px solid $button-top-border-color;
 		height: 55px;
-		color: #27757b;
+		color: oColorsGetPaletteColor('teal-1');
 		font: 400 18px/55px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		transition: background 0.1s linear;
 
