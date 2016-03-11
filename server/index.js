@@ -47,8 +47,7 @@ router
 	.get('/metacard/fragment-bottom.json', async function getFragment(ctx) {
 		ctx.set('Content-Type', 'application/json');
 
-		const locals = await getLocals()
-		ctx.body = JSON.stringify({ fragment: renderCardBottom(locals) });
+		ctx.body = JSON.stringify({ fragment: renderCardBottom(await getLocals()) });
 	})
 
 	// iframe (for using on the Falcon brexit page)
