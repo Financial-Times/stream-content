@@ -1,12 +1,12 @@
 aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrink-to='hidden' data-o-expander-expanded-toggle-text='Close' data-o-expander-collapsed-toggle-text='Open for full Brexit explainers' data-trackable='ig-brexit-metacard')
 	style
 		include ../public/card.css
-		include ../public/card-top.css
-		include ../public/card-bottom.css
+		include ../public/card-topic-summary.css
+		include ../public/card-topic-guide.css
 
 	.ig-metacard__inner
-		include _card-content-top.jade
+		include _card-content-topic-summary.jade
 		section.o-expander__content(aria-hidden='true')
-			include _card-content-bottom.jade
+			include _card-content-topic-guide.jade
 
 	button.o-expander__toggle(data-trackable='expander-toggle')

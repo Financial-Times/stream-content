@@ -20,25 +20,23 @@
 		}
 	}
 
-	.content {
+	&__content {
 		overflow: hidden;
 		padding-top: 20px;
 	}
 
-	&.bottom {
+	&__lower {
 		background-color: oColorsGetPaletteColor('blue-2');
 		border: 0;
 		margin-bottom: 20px;
 
-		.ig-metacard {
-			&__video-wrapper > h2,
-			&__links-wrapper > h3 {
-				display: none;
-			}
+		.ig-metacard__video-wrapper > h2,
+		.ig-metacard__links-wrapper > h3 {
+			display: none;
+		}
 
-			&__links {
-				margin-top: 0;
-			}
+		.ig-metacard__links {
+			margin-top: 0;
 		}
 	}
 
