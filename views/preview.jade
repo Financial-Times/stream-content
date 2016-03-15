@@ -11,7 +11,7 @@ html
 
 	body
 		.stream.o-grid-container
-			h1 inline preview (for Next)
+			h1 full card inline preview (for Next)
 
 			#stream
 				.stream__container
@@ -21,6 +21,25 @@ html
 								.custom-fragment__content
 									include card.jade
 
+			h1 topic summary card inline preview (for Next)
+
+			#stream
+				.stream__container
+					.stream__list.js-stream-list
+						.stream-item.stream-item--row
+							.custom-fragment
+								.custom-fragment__content
+									include card-topic-summary.jade
+
+			h1 topic guide card inline preview (for Next)
+
+			#stream
+				.stream__container
+					.stream__list.js-stream-list
+						.stream-item.stream-item--row
+							.custom-fragment
+								.custom-fragment__content
+									include card-topic-guide.jade
 
 		.stream.o-grid-container
 			h1 iframe preview (for old FT)

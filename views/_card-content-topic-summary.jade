@@ -1,0 +1,14 @@
+h1.ig-metacard__heading= heading
+.ig-metacard__date
+	<span>UPDATED: </span>
+	= updated
+
+.ig-metacard__main
+	.ig-metacard__summary(data-trackable='summary')
+		!= text
+
+	.ig-metacard__charts
+		each svg, gridSize in pollCharts
+			a(href=morePollingLinkURL class='ig-metacard__chart ig-metacard__chart--' + gridSize, data-trackable='poll-chart')
+				!= svg
+				span= morePollingLinkText

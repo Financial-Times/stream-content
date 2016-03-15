@@ -1,21 +1,25 @@
 @import 'o-grid/main';
 @import 'o-fonts/main';
+@import 'o-colors/main';
 
 .ig-metacard {
-	.o-expander__content {
-		padding-bottom: 10px;
-		margin-top: 20px;
 
-		&:before {
-			content: '';
-			display: block;
-			border-top: 2px solid #F6F0EA;
+	&__content {
+		overflow: hidden;
+		padding-top: 20px;
+	}
+
+	&__inner--topic-guide {
+		border: 0;
+		margin-bottom: 20px;
+
+		.ig-metacard__video-wrapper > h2,
+		.ig-metacard__links-wrapper > h3 {
+			display: none;
 		}
 
-		&:after {
-			content: '';
-			display: table;
-			clear: both;
+		.ig-metacard__links {
+			margin-top: 0;
 		}
 	}
 
@@ -34,7 +38,7 @@
 		// overflow: hidden;
 		// box-sizing: border-box;
 		position: relative;
-		background: #333;
+		background: oColorsGetPaletteColor('cold-2');
 	}
 
 	&__video {
@@ -55,27 +59,19 @@
 		padding: 0;
 
 		> li {
-			list-style: none;
-			border-bottom: 1px solid #ccc;
-
-			&:first-child {
-				border-top: 1px solid #ccc;
-			}
-
+			padding: 6px 0;
 			> a {
-				display: block;
-				padding: 8px 0;
-				font: 500 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
-				border-bottom: 0;
+				border-bottom: 1px dotted oColorsGetPaletteColor('teal-1');
+				display: inline;
+				font: 400 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 				position: relative;
 
-				&:after {
-					content: '›';
-					position: absolute;
-					right: 0;
-					top: 0;
-					font: bold 1.5em sans-serif;
+				&:hover {
+					border-bottom: 0;
 				}
+			}
+			@include oGridRespondTo(XL) {
+				padding: 9px 0;
 			}
 		}
 	}

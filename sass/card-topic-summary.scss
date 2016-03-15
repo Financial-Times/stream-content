@@ -1,0 +1,149 @@
+@import 'o-grid/main';
+@import 'o-fonts/main';
+@import 'o-colors/main';
+
+$button-color-darker: oColorsGetPaletteColor('blue-2');
+$button-color-darker-still: darken($button-color-darker, 3%);
+
+.ig-metacard {
+
+	&__heading {
+		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	&__date {
+		text-align: center;
+		font-size: 12px;
+		color: oColorsGetPaletteColor('warm-6');
+
+		> span {
+			color: red;
+			margin-right: 0.15em;
+		}
+	}
+
+	&__main {
+		margin: 15px auto 10px;
+
+		&:after {
+			content: " ";
+			display: table;
+			clear: both;
+		}
+	}
+
+	&__summary > p {
+		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierTextWeb);
+		margin: 0 0 1em;
+	}
+
+	&__charts {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 20px;
+	}
+
+	&__summary,
+	&__charts {
+		margin-top: 10px;
+	}
+
+	&__chart {
+		display: none;
+		border-bottom: 0;
+		position: relative;
+		padding: 7px;
+
+		> svg {
+			width: 100%;
+			max-width: 100%;
+			shape-rendering: crispEdges;
+
+			.chart-source {
+				color: #666;
+			}
+		}
+
+		// the little "more polling" faux link
+		> span {
+			font-size: 15px;
+			position: absolute;
+			bottom: 8px;
+			right: 7px;
+			color: oColorsGetPaletteColor('teal-1');
+			border-bottom: 1px dotted oColorsGetPaletteColor('teal-1');
+		}
+
+		transition: background 0.1s linear;
+
+		&:hover {
+			background: $button-color-darker;
+			transition-duration: 0;
+
+			> span {
+				color: black;
+				border-bottom: 1px solid transparent;
+			}
+		}
+
+		&:active { background: $button-color-darker-still; }
+	}
+
+	@include oGridRespondTo($until: S) {
+		&__charts { max-width: 100%; }
+		&__chart--default { display: block; }
+	}
+
+	@include oGridRespondTo(S, $until: M) {
+		&__charts { width: 400px; }
+		&__chart--S { display: block; }
+	}
+
+	@include oGridRespondTo(M, $until: L) {
+		&__chart--M { display: block; }
+	}
+	@include oGridRespondTo(L, $until: XL) {
+		&__chart--L { display: block; }
+	}
+
+	@include oGridRespondTo(XL) {
+		&__inner { padding: 0 40px; }
+		&__chart--XL { display: block; }
+	}
+
+	@include oGridRespondTo($until: M) {
+		&__main {
+			max-width: 500px;
+		}
+	}
+
+	@include oGridRespondTo(M) {
+
+		.latest > text {
+			font-size: 58px;
+		}
+
+		&__summary,
+		&__charts {
+			width: 50%;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+		&__summary {
+			float: left;
+		}
+		&__charts {
+			float: right;
+		}
+		&__chart {
+			width: auto;
+		}
+
+		&__heading {
+			font-size: 30px;
+			margin-top: 20px;
+		}
+	}
+}

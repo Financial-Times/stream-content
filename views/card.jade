@@ -1,42 +1,12 @@
-aside.ig-metacard.o-expander(data-o-component='o-expander' data-o-expander-shrink-to='hidden' data-o-expander-expanded-toggle-text='Close' data-o-expander-collapsed-toggle-text='Open for full Brexit explainers' data-trackable='ig-brexit-metacard')
+aside.ig-metacard__container.ig-metacard__container--paper.o-expander(data-o-component='o-expander' data-o-expander-shrink-to='hidden' data-o-expander-expanded-toggle-text='Close' data-o-expander-collapsed-toggle-text='Open for full Brexit explainers' data-trackable='ig-brexit-metacard')
 	style
 		include ../public/card.css
-		if expandable === 'enabled'
-			include ../public/card-extra.css
+		include ../public/card-topic-summary.css
+		include ../public/card-topic-guide.css
 
 	.ig-metacard__inner
-		h1.ig-metacard__heading= heading
-		.ig-metacard__date
-			<span>UPDATED: </span>
-			= updated
+		include _card-content-topic-summary.jade
+		section.ig-metacard__expander-content.o-expander__content(aria-hidden='true')
+			include _card-content-topic-guide.jade
 
-		.ig-metacard__main
-			.ig-metacard__summary(data-trackable='summary')
-				!= text
-
-			.ig-metacard__charts
-				each svg, gridSize in pollCharts
-					a(href=morePollingLinkURL class='ig-metacard__chart ig-metacard__chart--' + gridSize, data-trackable='poll-chart')
-						!= svg
-						span= morePollingLinkText
-
-		if expandable === 'enabled'
-			section.o-expander__content(aria-hidden='true')
-				.ig-metacard__video-wrapper
-					h2= videoTitle
-					.ig-metacard__video-placeholder(data-trackable='video')
-						video.ig-metacard__video(controls poster=videoPoster)
-							source(type='video/webm' src=videoWEBM)
-							source(type='video/mp4' src=videoMP4)
-							source(type='video/ogg' src=videoOGV)
-				.ig-metacard__links-wrapper
-					h3= linksTitle
-
-					ul.ig-metacard__links
-						each link in links
-							li
-								a(href=link.url data-trackable='link')=link.title
-
-
-	if expandable === 'enabled'
-		button.o-expander__toggle(data-trackable='expander-toggle')
+	button.ig-metacard__toggle.o-expander__toggle(data-trackable='expander-toggle')
