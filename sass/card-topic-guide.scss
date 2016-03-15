@@ -57,13 +57,14 @@
 
 	&__links {
 		padding: 0;
+		list-style-type: square;
 
 		> li {
 			padding: 6px 0;
 			> a {
 				border-bottom: 1px dotted oColorsGetPaletteColor('teal-1');
 				display: inline;
-				font: 400 17px oFontsGetFontFamilyWithFallbacks(MetricWeb);
+				font: 500 16px oFontsGetFontFamilyWithFallbacks(MetricWeb);
 				position: relative;
 
 				&:hover {
