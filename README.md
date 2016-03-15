@@ -8,9 +8,9 @@ Warning: this has no caching, no efficiency – it builds every response from sc
 
 - `/metacard/fragment.json` – outputs the metacard HTML but in a JSON object in the form `{"fragment": "..."}`. The stream app polls this via ft-poller and inlines it into the page.
 
-- `/metacard/fragment-top.json` – outputs the top part of the metacard HTML but in a JSON object in the form `{"fragment": "..."}`. The stream app polls this via ft-poller and inlines it into the page.
+- `/metacard/fragment-topic-summary.json` – outputs the topic-summary part of the metacard HTML but in a JSON object in the form `{"fragment": "..."}`. The stream app polls this via ft-poller and inlines it into the page.
 
-- `/metacard/fragment-bottom.json` – outputs the bottom part of the metacard HTML (which is initially hidden in the complete fragment) but in a JSON object in the form `{"fragment": "..."}`. The stream app polls this via ft-poller and inlines it into the page.
+- `/metacard/fragment-topic-guide.json` – outputs the topic-guide part of the metacard HTML (which is initially hidden in the complete fragment) but in a JSON object in the form `{"fragment": "..."}`. The stream app polls this via ft-poller and inlines it into the page.
 
 - `/metacard/iframe.html` – the metacard, wrapped in an basic HTML document that's suitable for iframing.
 	- [CDN-fronted URL for iframing](http://www.ft.com/ig/brexit-metacard-iframe.html) – this doesn't work if you're opted into Next, but doesn't need to as it's for embedding in old FT.com only.
