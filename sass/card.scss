@@ -9,16 +9,45 @@ $button-top-border-color: rgba(206,198,185,0.5);
 
 .ig-metacard {
 	margin: 0 0 5px;
-	background: white;
-	border: 1px solid #DCD3C9;
-	border-bottom-width: 3px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
+	&__container {
+		&--paper {
+			background-color: oColorsGetPaletteColor('white');
+			border: 1px solid #DCD3C9;
+			border-bottom-width: 3px;
+			border-bottom-right-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		&--tint {
+			background-color: oColorsGetPaletteColor('blue-2');
+		}
+	}
+
+	&__inner {
+		padding: 0 20px;
+	}
+
+	&__expander-content {
+		padding-bottom: 10px;
+		margin-top: 20px;
+
+		&:before {
+			content: '';
+			display: block;
+			border-top: 2px solid #F6F0EA;
+		}
+
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+
 	@include oGridRespondTo($until: M) {
-		.o-expander__toggle {
+		&__toggle {
 			&[aria-expanded="true"] {
 				display: none;
 			}
@@ -26,12 +55,12 @@ $button-top-border-color: rgba(206,198,185,0.5);
 	}
 
 	&:not([data-o-expander-js]) {
-		.o-expander__toggle {
+		&__toggle {
 			display: none;
 		}
 	}
 
-	.o-expander__toggle {
+	&__toggle {
 		outline: 0;
 		display: block;
 		width: 100%;

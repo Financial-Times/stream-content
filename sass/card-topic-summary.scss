@@ -6,9 +6,6 @@ $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
 
 .ig-metacard {
-	&__inner {
-		padding: 0 20px;
-	}
 
 	&__heading {
 		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);

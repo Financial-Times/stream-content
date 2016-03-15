@@ -3,30 +3,13 @@
 @import 'o-colors/main';
 
 .ig-metacard {
-	.o-expander__content {
-		padding-bottom: 10px;
-		margin-top: 20px;
-
-		&:before {
-			content: '';
-			display: block;
-			border-top: 2px solid #F6F0EA;
-		}
-
-		&:after {
-			content: '';
-			display: table;
-			clear: both;
-		}
-	}
 
 	&__content {
 		overflow: hidden;
 		padding-top: 20px;
 	}
 
-	&__topic-guide {
-		background-color: oColorsGetPaletteColor('blue-2');
+	&__inner--topic-guide {
 		border: 0;
 		margin-bottom: 20px;
 
