@@ -54,7 +54,16 @@ router
 	.get('/metacard/iframe.html', async function getIframe(ctx) {
 		ctx.set('Cache-Control', 'max-age=500');
 
-		ctx.body = renderIframe(await getLocals());
+		try {
+			ctx.body = renderIframe(await getLocals());
+		}
+		catch (error) {
+			console.error('ERROR!', error ? error.stack : error);
+
+			ctx.status = 500;
+			ctx.body = `<script>frameElement.height=0;frameElement.style='display:none'</script>`;
+			return;
+		}
 	})
 
 	// preview (for dev only)
