@@ -20,38 +20,69 @@ const renderCard = jade.compileFile(path.join(views, 'card.jade'));
 const renderIframe = jade.compileFile(path.join(views, 'iframe.jade'));
 const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
 
+const elements = {
+	brexit: {
+		summary: async ctx => {
+
+			ctx.set('Content-Type', 'application/json');
+			ctx.body = JSON.stringify({ fragment: renderCardTopicSummary(await getLocals()) });
+		},
+		guide: async ctx => {
+
+			ctx.set('Content-Type', 'application/json');
+			ctx.body = JSON.stringify({ fragment: renderCardTopicGuide(await getLocals()) });
+		}
+	},
+	us_election_2016: {
+		summary: async ctx => {
+
+			ctx.set('Content-Type', 'application/json');
+			ctx.body = JSON.stringify({ fragment: renderCardTopicSummary(await getLocals()) });
+		}
+	}
+};
+
 // define routes
 router
 	// a route to get the bertha data (post-transformations)
-	.get('/metacard/data.json', async function getFragment(ctx) {
-		ctx.set('Content-Type', 'application/json');
+	.get('/metacard/data.json', async ctx => {
 
+		ctx.set('Content-Type', 'application/json');
 		ctx.body = JSON.stringify(await fetchBerthaData());
 	})
 
-	// fragment (for inlining in Next stream page)
-	.get('/metacard/fragment.json', async function getFragment(ctx) {
-		ctx.set('Content-Type', 'application/json');
+	.get('/elements/:name.json', async ctx => {
 
+		const [ name, element ] = ctx.params.name.split("-");
+
+		if (elements[name][element]) {
+			await elements[name][element](ctx);
+		}
+	})
+
+	// fragment (for inlining in Next stream page)
+	.get('/metacard/fragment.json', async ctx => {
+
+		ctx.set('Content-Type', 'application/json');
 		ctx.body = JSON.stringify({ fragment: renderCard(await getLocals()) });
 	})
 
 	// topic summary fragment
-	.get('/metacard/fragment-topic-summary.json', async function getFragment(ctx) {
+	.get('/metacard/fragment-topic-summary.json', async ctx => {
+
 		ctx.set('Content-Type', 'application/json');
-		
 		ctx.body = JSON.stringify({ fragment: renderCardTopicSummary(await getLocals()) });
 	})
 
 	// topic guide fragment
-	.get('/metacard/fragment-topic-guide.json', async function getFragment(ctx) {
-		ctx.set('Content-Type', 'application/json');
+	.get('/metacard/fragment-topic-guide.json', async ctx => {
 
+		ctx.set('Content-Type', 'application/json');
 		ctx.body = JSON.stringify({ fragment: renderCardTopicGuide(await getLocals()) });
 	})
 
 	// iframe (for using on the Falcon brexit page)
-	.get('/metacard/iframe.html', async function getIframe(ctx) {
+	.get('/metacard/iframe.html', async ctx => {
 		ctx.set('Cache-Control', 'max-age=500');
 
 		try {
@@ -67,7 +98,7 @@ router
 	})
 
 	// preview (for dev only)
-	.get('/metacard/preview.html', async function getPreview(ctx) {
+	.get('/metacard/preview.html', async ctx => {
 		ctx.body = renderPreview(await getLocals());
 	})
 
