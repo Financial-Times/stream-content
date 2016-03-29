@@ -14,31 +14,31 @@ const router = new Router();
 
 // precompile template functions
 const views = path.resolve(__dirname, '..', 'views');
-const renderCardTopicSummary = jade.compileFile(path.join(views, 'card-topic-summary.jade'));
-const renderCardTopicGuide = jade.compileFile(path.join(views, 'card-topic-guide.jade'));
-const renderCard = jade.compileFile(path.join(views, 'card.jade'));
-const renderIframe = jade.compileFile(path.join(views, 'iframe.jade'));
-const renderPreview = jade.compileFile(path.join(views, 'preview.jade'));
+
+const renderBrexitCard = jade.compileFile(path.join(views, 'brexit/card.jade'));
+const renderBrexitSummary = jade.compileFile(path.join(views, 'brexit/summary.jade'));
+const renderBrexitGuide = jade.compileFile(path.join(views, 'brexit/guide.jade'));
+const renderBrexitIframe = jade.compileFile(path.join(views, 'brexit/iframe.jade'));
+const renderBrexitPreview = jade.compileFile(path.join(views, 'brexit/preview.jade'));
+
+const renderUsElection2016Summary = jade.compileFile(path.join(views, 'us-election-2016/summary.jade'));
+const renderUsElection2016Preview = jade.compileFile(path.join(views, 'us-election-2016/preview.jade'));
 
 const elements = {
-	brexit: {
-		summary: async ctx => {
+	'brexit-summary': async ctx => {
 
-			ctx.set('Content-Type', 'application/json');
-			ctx.body = JSON.stringify({ fragment: renderCardTopicSummary(await getLocals()) });
-		},
-		guide: async ctx => {
-
-			ctx.set('Content-Type', 'application/json');
-			ctx.body = JSON.stringify({ fragment: renderCardTopicGuide(await getLocals()) });
-		}
+		ctx.set('Content-Type', 'application/json');
+		ctx.body = JSON.stringify({ fragment: renderBrexitSummary(await getLocals()) });
 	},
-	us_election_2016: {
-		summary: async ctx => {
+	'brexit-guide': async ctx => {
 
-			ctx.set('Content-Type', 'application/json');
-			ctx.body = JSON.stringify({ fragment: renderCardTopicSummary(await getLocals()) });
-		}
+		ctx.set('Content-Type', 'application/json');
+		ctx.body = JSON.stringify({ fragment: renderBrexitGuide(await getLocals()) });
+	},
+	'us-election-2016-summary': async ctx => {
+
+		ctx.set('Content-Type', 'application/json');
+		ctx.body = JSON.stringify({ fragment: renderUsElection2016Summary() });
 	}
 };
 
@@ -53,10 +53,8 @@ router
 
 	.get('/elements/:name.json', async ctx => {
 
-		const [ name, element ] = ctx.params.name.split("-");
-
-		if (elements[name][element]) {
-			await elements[name][element](ctx);
+		if (elements[ctx.params.name]) {
+			await elements[ctx.params.name](ctx);
 		}
 	})
 
@@ -64,21 +62,21 @@ router
 	.get('/metacard/fragment.json', async ctx => {
 
 		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({ fragment: renderCard(await getLocals()) });
+		ctx.body = JSON.stringify({ fragment: renderBrexitCard(await getLocals()) });
 	})
 
 	// topic summary fragment
 	.get('/metacard/fragment-topic-summary.json', async ctx => {
 
 		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({ fragment: renderCardTopicSummary(await getLocals()) });
+		ctx.body = JSON.stringify({ fragment: renderBrexitSummary(await getLocals()) });
 	})
 
 	// topic guide fragment
 	.get('/metacard/fragment-topic-guide.json', async ctx => {
 
 		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({ fragment: renderCardTopicGuide(await getLocals()) });
+		ctx.body = JSON.stringify({ fragment: renderBrexitGuide(await getLocals()) });
 	})
 
 	// iframe (for using on the Falcon brexit page)
@@ -86,7 +84,7 @@ router
 		ctx.set('Cache-Control', 'max-age=500');
 
 		try {
-			ctx.body = renderIframe(await getLocals());
+			ctx.body = renderBrexitIframe(await getLocals());
 		}
 		catch (error) {
 			console.error('ERROR!', error ? error.stack : error);
@@ -99,7 +97,12 @@ router
 
 	// preview (for dev only)
 	.get('/metacard/preview.html', async ctx => {
-		ctx.body = renderPreview(await getLocals());
+		ctx.body = renderBrexitPreview(await getLocals());
+	})
+
+	// preview (for dev only)
+	.get('/us-election-2016/preview.html', async ctx => {
+		ctx.body = renderUsElection2016Preview();
 	})
 
 	// redirect from root

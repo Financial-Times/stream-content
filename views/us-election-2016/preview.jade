@@ -1,0 +1,24 @@
+//- just for previewing in development - this layout mimics the Next stream page's outer layout and styles so we can see how the card looks when inlined.
+
+html
+	head
+		title US Election 2016 card preview
+
+		link(rel='stylesheet' href='https://next-geebee.ft.com/hashed-assets/stream-page/15aa8ebd/main.css')
+
+		style.
+			body {background: #fff1e0}
+
+	body
+		.stream.o-grid-container
+			h1 US Election 2016 summary inline preview (for Next)
+
+			#stream
+				.stream__container
+					.stream__list.js-stream-list
+						.stream-item.stream-item--row
+							.custom-fragment
+								.custom-fragment__content
+									include summary.jade
+
+		script(src='https://build.origami.ft.com/v2/bundles/js?modules=o-expander@^2.0.1')
