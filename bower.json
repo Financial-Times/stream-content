@@ -1,8 +1,10 @@
 {
   "name": "none",
   "dependencies": {
-    "o-grid": "^4.0.7",
-    "o-fonts": "^2.1.0",
-    "o-colors": "^3.3.1"
+    "next-sass-setup": "^7.8.4",
+    "o-expander": "3.0.0-beta.1"
+  },
+  "resolutions": {
+    "o-ft-icons": "next"
   }
 }

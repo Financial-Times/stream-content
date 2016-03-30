@@ -96,7 +96,7 @@ router
 	})
 
 	// preview (for dev only)
-	.get('/brexit/preview.html', async ctx => {
+	.get('/metacard/preview.html', async ctx => {
 		ctx.body = renderBrexitPreview(await getLocals());
 	})
 

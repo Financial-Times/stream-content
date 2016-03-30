@@ -1,6 +1,5 @@
-$o-fonts-path: 'https://next-geebee.ft.com/build/files/o-fonts-assets@1.3.0/';
-
-@import 'o-fonts/main';
+@import 'next-sass-setup/main';
+@import 'o-expander/main';
 
 @include oFontsInclude(FinancierDisplayWeb);
 @include oFontsInclude(FinancierDisplayWeb, $weight: bold);
