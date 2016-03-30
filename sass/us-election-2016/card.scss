@@ -7,7 +7,7 @@ $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
 $button-top-border-color: rgba(206,198,185,0.5);
 
-.ig-metacard {
+.ig-us-election-2016 {
 	margin: 0 0 5px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -93,11 +93,11 @@ $button-top-border-color: rgba(206,198,185,0.5);
 			display: inline-block;
 			position: relative;
 			top: -1px;
-			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-down?format=svg&tint=27757B,27757B&source=ig-metacard);
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-down?format=svg&tint=27757B,27757B&source=ig);
 		}
 
 		&[aria-expanded="true"] > i:before {
-			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-up?format=svg&tint=27757B,27757B&source=ig-metacard);
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-up?format=svg&tint=27757B,27757B&source=ig);
 		}
 	}
 }

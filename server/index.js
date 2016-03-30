@@ -2,6 +2,7 @@
 import 'dotenv/config';
 import 'isomorphic-fetch';
 import getBrexitLocals, { fetchBerthaData } from './getBrexitLocals';
+import getUSElectionLocals from './getUSElectionLocals';
 import jade from 'jade';
 import Koa from 'koa';
 import path from 'path';
@@ -15,14 +16,14 @@ const router = new Router();
 // precompile template functions
 const views = path.resolve(__dirname, '..', 'views');
 
-const renderBrexitCard = jade.compileFile(path.join(views, 'brexit/card.jade'));
-const renderBrexitSummary = jade.compileFile(path.join(views, 'brexit/summary.jade'));
+// const renderBrexitCard = jade.compileFile(path.join(views, 'brexit/card.jade'));
+const renderBrexitSummary = jade.compileFile(path.join(views, 'brexit/summary-card.jade'));
 const renderBrexitGuide = jade.compileFile(path.join(views, 'brexit/guide.jade'));
 const renderBrexitIframe = jade.compileFile(path.join(views, 'brexit/iframe.jade'));
 const renderBrexitPreview = jade.compileFile(path.join(views, 'brexit/preview.jade'));
 
 const renderUsElection2016Summary = jade.compileFile(
-	path.join(views, 'us-election-2016/summary.jade')
+	path.join(views, 'us-election-2016/summary-card.jade')
 );
 const renderUsElection2016Preview = jade.compileFile(
 	path.join(views, 'us-election-2016/preview.jade')
@@ -39,7 +40,7 @@ const elements = {
 	},
 	'us-election-2016-summary': async ctx => {
 		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({ fragment: renderUsElection2016Summary() });
+		ctx.body = JSON.stringify({ fragment: renderUsElection2016Summary(await getUSElectionLocals()) });
 	},
 };
 
@@ -57,11 +58,11 @@ router
 		}
 	})
 
-	// fragment (for inlining in Next stream page)
-	.get('/metacard/fragment.json', async ctx => {
-		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({ fragment: renderBrexitCard(await getBrexitLocals()) });
-	})
+	// // fragment (for inlining in Next stream page)
+	// .get('/metacard/fragment.json', async ctx => {
+	// 	ctx.set('Content-Type', 'application/json');
+	// 	ctx.body = JSON.stringify({ fragment: renderBrexitCard(await getBrexitLocals()) });
+	// })
 
 	// topic summary fragment
 	.get('/metacard/fragment-topic-summary.json', async ctx => {
@@ -98,7 +99,7 @@ router
 
 	// preview (for dev only)
 	.get('/us-election-2016/preview.html', async ctx => {
-		ctx.body = renderUsElection2016Preview();
+		ctx.body = renderUsElection2016Preview(await getUSElectionLocals());
 	})
 
 	// redirect from root
