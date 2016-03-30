@@ -96,7 +96,7 @@ router
 	})
 
 	// preview (for dev only)
-	.get('/metacard/preview.html', async ctx => {
+	.get('/brexit/preview.html', async ctx => {
 		ctx.body = renderBrexitPreview(await getLocals());
 	})
 
@@ -106,7 +106,7 @@ router
 	})
 
 	// redirect from root
-	.redirect('/', '/metacard/preview.html', 302)
+	.redirect('/', '/us-election-2016/preview.html', 302)
 ;
 
 // start it up
