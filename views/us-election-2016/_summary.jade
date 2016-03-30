@@ -10,7 +10,16 @@ h1.ig-us-election-2016__heading= heading
 	.ig-us-election-2016__charts
 		h2 The race for nomination
 		| CHART
+		p.ig-us-election-2016__more-polling
+			a(href=morePollingLinkURL)
+				= morePollingLinkText
 
-	.ig-us-election-2016__video-container
+	.ig-us-election-2016__video-wrapper
 		h2 Explainer
-		.ig-us-election-2016__video
+		.ig-us-election-2016__video-placeholder(data-trackable='video')
+		//- h2= videoTitle
+		//- .ig-us-election-2016__video-placeholder(data-trackable='video')
+		//- 	video.ig-us-election-2016__video(controls poster=videoPoster)
+		//- 		source(type='video/webm' src=videoWEBM)
+		//- 		source(type='video/mp4' src=videoMP4)
+		//- 		source(type='video/ogg' src=videoOGV)

@@ -40,9 +40,19 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__summary,
-	&__charts,
-	&__video-container {
+	&__charts {
 		margin-top: 10px;
+	}
+
+	&__charts {
+		position: relative;
+	}
+
+	&__more-polling {
+		position: absolute;
+		margin: 0;
+		right: 0;
+		bottom: 0;
 	}
 
 	&__chart {
@@ -86,16 +96,31 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		&:active { background: $button-color-darker-still; }
 	}
 
-	&__video {
-		background-color: oColorsGetPaletteColor('grey-tint1');
-		height: 0;
+	&__video-wrapper {
+		margin-top: 10px;
+		margin-bottom: 20px;
+
+		// > h2 {
+		// 	text-align: center;
+		// 	font: normal 22px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+		// }
+	}
+
+	&__video-placeholder {
 		position: relative;
-		padding-bottom: 56.25% !important;
+		background: oColorsGetPaletteColor('cold-2');
+		height: 0;
+		padding-bottom: 56.25%;
+	}
+
+	&__video {
+		width: 100%;
+		display: block;
 	}
 
 	@include oGridRespondTo($until: S) {
 		&__charts,
-		&__video-container {
+		&__video-wrapper {
 			margin-top: 20px;
 		}
 		&__charts { max-width: 100%; }
@@ -104,7 +129,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	@include oGridRespondTo(S, $until: M) {
 		&__charts,
-		&__video-container {
+		&__video-wrapper {
 			margin-top: 20px;
 		}
 		&__charts { width: 400px; }
@@ -119,7 +144,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 		&__summary,
 		&__charts,
-		&__video-container {
+		&__video-wrapper {
 			float: left;
 			width: 33%;
 			box-sizing: border-box;
@@ -140,7 +165,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		&__charts {
 			width: 50%;
 		}
-		&__video-container {
+		&__video-wrapper {
 			clear: both;
 			float: none;
 			width: 100%;
