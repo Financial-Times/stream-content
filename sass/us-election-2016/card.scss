@@ -7,12 +7,18 @@ $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
 $button-top-border-color: rgba(206,198,185,0.5);
 
+h2 {
+	font: normal 16px/1.375 oFontsGetFontFamilyWithFallbacks(MetricWeb);
+	margin-top: 0;
+}
+
 .ig-us-election-2016 {
 	margin: 0 0 5px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
 	&__container {
+		padding-bottom: 20px;
 		&--paper {
 			background-color: oColorsGetPaletteColor('white');
 			border: 1px solid #DCD3C9;
