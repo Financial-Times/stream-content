@@ -1,0 +1,103 @@
+@import 'o-grid/main';
+@import 'o-fonts/main';
+@import 'o-colors/main';
+
+$button-color: #F7F7F7;
+$button-color-darker: oColorsGetPaletteColor('blue-2');
+$button-color-darker-still: darken($button-color-darker, 3%);
+$button-top-border-color: rgba(206,198,185,0.5);
+
+.ig-metacard {
+	margin: 0 0 5px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	&__container {
+		&--paper {
+			background-color: oColorsGetPaletteColor('white');
+			border: 1px solid #DCD3C9;
+			border-bottom-width: 3px;
+			border-bottom-right-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		&--tint {
+			background-color: oColorsGetPaletteColor('blue-2');
+		}
+	}
+
+	&__inner {
+		padding: 0 20px;
+	}
+
+	&__expander-content {
+		padding-bottom: 10px;
+		margin-top: 20px;
+
+		&:before {
+			content: '';
+			display: block;
+			border-top: 2px solid #F6F0EA;
+		}
+
+		&:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+	}
+
+	@include oGridRespondTo($until: M) {
+		&__toggle {
+			&[aria-expanded="true"] {
+				display: none;
+			}
+		}
+	}
+
+	&:not([data-o-expander-js]) {
+		&__toggle {
+			display: none;
+		}
+	}
+
+	&__toggle {
+		outline: 0;
+		display: block;
+		width: 100%;
+		background: $button-color;
+		border-top: 1px solid $button-top-border-color;
+		height: 55px;
+		color: oColorsGetPaletteColor('teal-1');
+		font: 400 18px/55px oFontsGetFontFamilyWithFallbacks(MetricWeb);
+		transition: background 0.1s linear;
+
+		&:hover {
+			background: $button-color-darker;
+			// border-top-color: $button-color-darker;
+			transition-duration: 0s;
+		}
+
+		&:active {
+			// border-top-color: $button-color-darker-still;
+			background: $button-color-darker-still;
+			transition-duration: 0s;
+		}
+
+		// override the broken icon
+		> i:before {
+			content: '';
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 15px;
+			height: 15px;
+			display: inline-block;
+			position: relative;
+			top: -1px;
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-down?format=svg&tint=27757B,27757B&source=ig-metacard);
+		}
+
+		&[aria-expanded="true"] > i:before {
+			background-image: url(https://image.webservices.ft.com/v1/images/raw/fticon:arrow-up?format=svg&tint=27757B,27757B&source=ig-metacard);
+		}
+	}
+}
