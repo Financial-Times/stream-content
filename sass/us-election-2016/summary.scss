@@ -154,6 +154,10 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			width: auto;
 		}
 
+		&__more-polling {
+			right: 20px;
+		}
+
 		&__heading {
 			font-size: 30px;
 			margin-top: 20px;
