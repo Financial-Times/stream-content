@@ -2,7 +2,8 @@
   "name": "none",
   "dependencies": {
     "next-sass-setup": "^7.8.4",
-    "o-expander": "3.0.0-beta.1"
+    "o-expander": "3.0.0-beta.1",
+    "n-video": "^4.0.3"
   },
   "resolutions": {
     "o-ft-icons": "next"

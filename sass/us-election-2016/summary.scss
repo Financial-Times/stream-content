@@ -1,6 +1,8 @@
+@import 'next-sass-setup/main';
 @import 'o-grid/main';
 @import 'o-fonts/main';
 @import 'o-colors/main';
+@import 'n-video/main';
 
 $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
@@ -108,12 +110,12 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	&__video-placeholder {
 		position: relative;
-		background: oColorsGetPaletteColor('cold-2');
 		height: 0;
 		padding-bottom: 56.25%;
 	}
 
 	&__video {
+		background: oColorsGetPaletteColor('cold-2');
 		width: 100%;
 		display: block;
 	}

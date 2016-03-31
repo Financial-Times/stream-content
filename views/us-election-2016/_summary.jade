@@ -15,11 +15,8 @@ h1.ig-us-election-2016__heading= heading
 				= morePollingLinkText
 
 	.ig-us-election-2016__video-wrapper
-		h2 Explainer
-		.ig-us-election-2016__video-placeholder(data-trackable='video')
-		//- h2= videoTitle
-		//- .ig-us-election-2016__video-placeholder(data-trackable='video')
-		//- 	video.ig-us-election-2016__video(controls poster=videoPoster)
-		//- 		source(type='video/webm' src=videoWEBM)
-		//- 		source(type='video/mp4' src=videoMP4)
-		//- 		source(type='video/ogg' src=videoOGV)
+		h2= videoTitle
+		.ig-us-election-2016__video-placeholder(data-n-components='n-video'
+			data-n-video-source='brightcove'
+			data-n-video-id='4824352444001'
+			data-trackable='video')
