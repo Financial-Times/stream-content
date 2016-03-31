@@ -81,7 +81,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	&__candidate-label {
 		float: left;
-		width: 22%;
+		width: 25%;
 		min-width: 60px;
 		text-align: right;
 		padding-right: 5px;
@@ -95,7 +95,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		background-color: oColorsGetPaletteColor('blue-2');
 		float: right;
 		height: 15px;
-		width: 78%;
+		width: 75%;
 		position: absolute;
 		top: 5px;
 		right: 0;
@@ -194,6 +194,16 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		display: block;
 	}
 
+	@media (max-width: 260px) {
+		&__candidate-label { width: 40%; }
+		&__candidate-result { width: 60%; }
+	}
+
+	@media (max-width: 335px) {
+		&__candidate-label { width: 35%; }
+		&__candidate-result { width: 65%; }
+	}
+
 	@include oGridRespondTo($until: S) {
 		&__charts,
 		&__video-wrapper {
@@ -208,8 +218,10 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		&__video-wrapper {
 			margin-top: 20px;
 		}
-		&__charts { width: 400px; }
 		&__chart--S { display: block; }
+
+		&__candidate-label { width: 15%; }
+		&__candidate-result { width: 85%; }
 	}
 
 	@include oGridRespondTo(M) {
@@ -256,6 +268,9 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	@include oGridRespondTo(XL) {
 		&__inner { padding: 0 40px; }
 		&__chart--XL { display: block; }
+
+		&__candidate-label { width: 20%; }
+		&__candidate-result { width: 80%; }
 	}
 
 	@include oGridRespondTo($until: M) {
