@@ -52,7 +52,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__charts > h3 {
-		color: oColorsGetPaletteColor('pink-tint-5');
+		color: oColorsGetPaletteColor('grey-tint2');
 		font-size: 11px;
 		font-weight: normal;
 		margin: 0;
@@ -63,7 +63,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__total-to-win {
-		color: oColorsGetPaletteColor('pink-tint-5');
+		color: oColorsGetPaletteColor('grey-tint2');
 		font-size: 11px;
 		text-align: right;
 	}
