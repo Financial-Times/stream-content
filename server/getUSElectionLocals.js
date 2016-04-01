@@ -53,5 +53,8 @@ export default async function getUSElectionLocals() {
 		return $.html();
 	})();
 
+	data.isBrightcove = typeof data.video === 'number';
+	data.isYoutube = !data.isBrightcove;
+
 	return data;
 }

@@ -50,7 +50,14 @@ h1.ig-us-election-2016__heading= heading
 
 	.ig-us-election-2016__video-wrapper
 		h2= videoTitle
-		.ig-us-election-2016__video-placeholder(data-n-components='n-video'
-			data-n-video-source='brightcove'
-			data-n-video-id='4824352444001'
-			data-trackable='video')
+
+		if isBrightcove
+			.ig-us-election-2016__video-placeholder(data-n-components='n-video'
+				data-trackable='video'
+				data-n-video-source='brightcove'
+				data-n-video-id=video)
+		else
+			.ig-us-election-2016__video-placeholder(data-n-components='n-video'
+				data-trackable='video'
+				data-n-video-source='youtube'
+				data-n-video-id=video)
