@@ -1,0 +1,25 @@
+//- iframe for FT.com (falcon)
+html
+	head
+		title US Election 2016 iFrame
+		base(target='_parent')
+		style
+			include ../../public/us-election-2016/iframe.css
+	body
+		div
+			include summary-card.jade
+
+		script(src='https://build.origami.ft.com/v2/bundles/js?modules=n-video@^4.0.3')
+		script.
+			function fixHeight() {
+				setTimeout(function () {
+					frameElement.height = document.querySelector('.ig-us-election-2016__container').offsetHeight + 5;
+				}, 0);
+			}
+
+			document.addEventListener('DOMContentLoaded', fixHeight);
+			window.onload = function () {
+				fixHeight();
+				setTimeout(fixHeight, 1000);
+				Origami['n-video'].init();
+			};

@@ -22,6 +22,10 @@ html
 								.custom-fragment__content
 									include summary-card.jade
 
+		.stream.o-grid-container
+			h1 Brexit iframe preview (for old FT)
+			iframe(src='iframe.html' width='972' height='330' scrolling='no' frameborder='0')
+
 		script(src='https://build.origami.ft.com/v2/bundles/js?modules=n-video@^4.0.3')
 		script.
 			Origami['n-video'].init();

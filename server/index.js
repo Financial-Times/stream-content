@@ -25,6 +25,9 @@ const renderBrexitPreview = jade.compileFile(path.join(views, 'brexit/preview.ja
 const renderUsElection2016Summary = jade.compileFile(
 	path.join(views, 'us-election-2016/summary-card.jade')
 );
+const renderUsElectionIframe = jade.compileFile(
+	path.join(views, 'us-election-2016/iframe.jade')
+);
 const renderUsElection2016Preview = jade.compileFile(
 	path.join(views, 'us-election-2016/preview.jade')
 );
@@ -82,6 +85,22 @@ router
 
 		try {
 			ctx.body = renderBrexitIframe(await getBrexitLocals());
+		}
+		catch (error) {
+			console.error('ERROR!', error ? error.stack : error);
+
+			ctx.status = 500;
+			ctx.body = '<script>frameElement.height=0;frameElement.style=\'display:none\'</script>';
+			return;
+		}
+	})
+
+	// iframe (for using on the Falcon US Election page)
+	.get('/us-election-2016/iframe.html', async ctx => {
+		ctx.set('Cache-Control', 'max-age=500');
+
+		try {
+			ctx.body = renderUsElectionIframe(await getUSElectionLocals());
 		}
 		catch (error) {
 			console.error('ERROR!', error ? error.stack : error);
