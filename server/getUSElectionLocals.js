@@ -21,16 +21,12 @@ export default async function getUSElectionLocals() {
 		return b.total - a.total;
 	});
 	
-	// get the last name of each candidarte
+	// only use the last name for each candidate
 	resultsData = resultsData.map( candidate => {
-		let candidateLastName = candidate.label.split(" ");
-		candidateLastName = candidateLastName[candidateLastName.length-1];
+		candidate.label = candidate.label.split(" ");
+		candidate.label = candidate.label[candidate.label.length-1];
 
-		return {
-			label: candidateLastName,
-			party: candidate.party,
-			total: candidate.total
-		};
+		return candidate;
 	});
 
 	// split democrats and republicans so we can get the top 2 of each
