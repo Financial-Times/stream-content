@@ -5,7 +5,6 @@ import getBrexitLocals, { fetchBerthaData } from './getBrexitLocals';
 import getUSElectionLocals from './getUSElectionLocals';
 import jade from 'jade';
 import Koa from 'koa';
-import koaCompress from 'koa-compress';
 import koaLogger from 'koa-logger';
 import koaStatic from 'koa-static';
 import path from 'path';
@@ -140,7 +139,6 @@ app
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(koaStatic(path.resolve(__dirname, '..', 'client')))
-	.use(koaCompress())
 	.listen(PORT, () => {
 		console.log(`\nRunning on port ${PORT} - http://localhost:${PORT}/`);
 	})
