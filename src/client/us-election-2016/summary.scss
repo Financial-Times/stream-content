@@ -55,8 +55,8 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__chart-legend {
-		color: oColorsGetPaletteColor('grey-tint2');
-		font-size: 11px;
+		color: oColorsGetPaletteColor('grey-tint3');
+		font-size: 13px;
 		font-weight: normal;
 		margin: 0;
 	}
@@ -64,23 +64,25 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	&__d-delegates-symbol,
 	&__d-superdelegates-symbol,
 	&__r-delegates-symbol {
-		font-size: 18px;
 		vertical-align: middle;
-		margin: 0 5px 0 2px;
+		margin: 0 8px 0 4px;
 		position: relative;
 		top: -1px;
+		display: inline-block;
+		width: 8px;
+		height: 8px;
 	}
 
 	&__d-delegates-symbol {
-		color: #273c8f;
+		background-color: #273c8f;
 	}
 
 	&__d-superdelegates-symbol {
-		color: #9eace4;
+		background-color: #9eace4;
 	}
 
 	&__r-delegates-symbol {
-		color: #b3244b;
+		background-color: #b3244b;
 	}
 
 	&__republican {
@@ -88,8 +90,8 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__total-to-win-label {
-		color: oColorsGetPaletteColor('grey-tint2');
-		font-size: 11px;
+		color: oColorsGetPaletteColor('grey-tint3');
+		font-size: 13px;
 		text-align: right;
 		margin-left: 50px;
 	}
@@ -108,6 +110,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__candidate-label {
+		font-size: 14px;
 		float: left;
 		width: 50px;
 		text-align: right;

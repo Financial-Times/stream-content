@@ -2,7 +2,7 @@
 html
 	head
 		title US Election 2016 card preview
-
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
 		link(rel='stylesheet' href='https://next-geebee.ft.com/hashed-assets/stream-page/ec0b295a/main.css')
 		script(defer async src='https://next-geebee.ft.com/hashed-assets/stream-page/ef049b42/main.js')
 
@@ -23,5 +23,6 @@ html
 									include summary-card.jade
 
 		.stream.o-grid-container
-			h1 Brexit iframe preview (for old FT)
-			iframe(src='iframe.html' width='972' height='330' scrolling='no' frameborder='0')
+			div(style='max-width:100%;overflow:hidden')
+				h1 Brexit iframe preview (for old FT)
+				iframe(src='iframe.html' width='972' height='330' scrolling='no' frameborder='0')
