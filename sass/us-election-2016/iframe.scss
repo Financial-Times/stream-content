@@ -1,10 +1,3 @@
-@import 'next-sass-setup/main';
-
-@include oFontsInclude(FinancierDisplayWeb);
-@include oFontsInclude(FinancierDisplayWeb, $weight: bold);
-@include oFontsInclude(FinancierTextWeb);
-@include oFontsInclude(MetricWeb);
-
 html, body {
 	width: 100%;
 	height: 100%;
@@ -16,19 +9,4 @@ body {
 	background: oColorsGetPaletteColor('pink');
 	color: oColorsGetPaletteColor('grey-tint5');
 	font-family: oFontsGetFontFamilyWithFallbacks(MetricWeb);
-
-	.ig-us-election-2016 {
-		margin: 0;
-
-		a,
-		&__chart > span {
-			text-decoration: none;
-
-			color: oColorsGetPaletteColor('blue');
-
-			&:hover {
-				color: black;
-			}
-		}
-	}
 }
