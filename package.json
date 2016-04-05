@@ -15,12 +15,12 @@
     ]
   },
   "dependencies": {
-    "babel-eslint": "^5.0.0-beta6",
-    "babel-plugin-transform-async-to-module-method": "^6.5.2",
-    "babel-plugin-transform-object-rest-spread": "^6.5.0",
-    "babel-preset-es2015-node5": "^1.1.2",
-    "babel-register": "^6.5.2",
-    "bluebird": "^3.3.1",
+    "babel-eslint": "^6.0.0",
+    "babel-plugin-transform-async-to-module-method": "^6.7.0",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-register": "^6.7.2",
+    "bluebird": "^3.3.4",
     "bower": "^1.7.7",
     "cheerio": "^0.20.0",
     "dotenv": "^2.0.0",
@@ -33,16 +33,13 @@
     "node-sass": "^3.4.2"
   },
   "devDependencies": {
-    "eslint": "^2.0.0",
-    "eslint-config-trip": "^1.0.1",
+    "eslint": "^2.5.3",
+    "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-babel": "^3.1.0",
-    "nodemon": "^1.8.1"
+    "nodemon": "^1.9.1"
   },
   "engines": {
     "node": ">=5 <6"
-  },
-  "eslintConfig": {
-    "extends": "trip"
   },
   "private": "true",
   "scripts": {

@@ -1,11 +1,10 @@
-@import 'o-grid/main';
-@import 'o-fonts/main';
-@import 'o-colors/main';
+@import 'next-sass-setup/main';
+@import 'n-video/main';
 
 $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
 
-.ig-metacard {
+.ig-us-election-2016 {
 
 	&__heading {
 		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
@@ -39,78 +38,124 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		margin: 0 0 1em;
 	}
 
-	&__charts {
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 20px;
-	}
-
 	&__summary,
 	&__charts {
 		margin-top: 10px;
 	}
 
-	&__chart {
-		display: none;
-		border-bottom: 0;
+	&__charts {
+		font: normal 12px/1 oFontsGetFontFamilyWithFallbacks(MetricWeb);
 		position: relative;
-		padding: 7px;
-
-		> svg {
-			width: 100%;
-			max-width: 100%;
-			shape-rendering: crispEdges;
-
-			.chart-source {
-				color: #666;
-			}
-		}
-
-		// the little "more polling" faux link
-		> span {
-			font-size: 15px;
-			position: absolute;
-			bottom: 8px;
-			right: 7px;
-			color: oColorsGetPaletteColor('teal-1');
-			border-bottom: 1px dotted oColorsGetPaletteColor('teal-1');
-		}
-
-		transition: background 0.1s linear;
-
-		&:hover {
-			background: $button-color-darker;
-			transition-duration: 0;
-
-			> span {
-				color: black;
-				border-bottom: 1px solid transparent;
-			}
-		}
-
-		&:active { background: $button-color-darker-still; }
 	}
 
+	&__charts > h3 {
+		color: oColorsGetPaletteColor('grey-tint2');
+		font-size: 11px;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	&__republican {
+		margin-top: 15px;
+	}
+
+	&__total-to-win {
+		color: oColorsGetPaletteColor('grey-tint2');
+		font-size: 11px;
+		text-align: right;
+	}
+
+	&__first-place {
+		margin-top: 5px;
+	}
+
+	&__first-place,
+	&__second-place {
+		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
+		height: 25px;
+		position: relative;
+	}
+
+	&__candidate-label {
+		float: left;
+		width: 50px;
+		text-align: right;
+		padding-right: 5px;
+		box-sizing: border-box;
+		position: absolute;
+		top: 5px;
+		left: 0;
+	}
+
+	&__candidate-result {
+		background-color: oColorsGetPaletteColor('blue-2');
+		float: right;
+		height: 15px;
+		width: calc(100% - 50px);
+		position: absolute;
+		top: 5px;
+		right: 0;
+	}
+
+	&__result-data {
+		color: oColorsGetPaletteColor('white');
+		text-align: right;
+		font-size: 11px;
+		height: 100%;
+		padding: 2px 5px 2px 0;
+		box-sizing: border-box;
+	}
+
+	&__democrat &__first-place &__result-data {
+		background-color: #273c8f;
+	}
+
+	&__democrat &__second-place &__result-data {
+		background-color: #8b689c;
+	}
+
+	&__republican &__first-place &__result-data {
+		background-color: #b3244b;
+	}
+
+	&__republican &__second-place &__result-data {
+		background-color: #c17853;
+	}
+
+	&__more-polling {
+		margin: 5px 0 0;
+		text-align: right;
+	}
+
+	&__video-wrapper {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	&__video-placeholder {
+		position: relative;
+		height: 0;
+		padding-bottom: 56.25%;
+	}
+
+	&__video {
+		background: oColorsGetPaletteColor('cold-2');
+		width: 100%;
+		display: block;
+	}
 	@include oGridRespondTo($until: S) {
+		&__charts,
+		&__video-wrapper {
+			margin-top: 20px;
+		}
 		&__charts { max-width: 100%; }
-		&__chart--default { display: block; }
 	}
 
 	@include oGridRespondTo(S, $until: M) {
-		&__charts { width: 400px; }
-		&__chart--S { display: block; }
-	}
-
-	@include oGridRespondTo(M, $until: L) {
-		&__chart--M { display: block; }
-	}
-	@include oGridRespondTo(L, $until: XL) {
-		&__chart--L { display: block; }
-	}
-
-	@include oGridRespondTo(XL) {
-		&__inner { padding: 0 40px; }
-		&__chart--XL { display: block; }
+		&__charts,
+		&__video-wrapper {
+			margin-top: 20px;
+		}
 	}
 
 	@include oGridRespondTo($until: M) {
@@ -121,24 +166,13 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	@include oGridRespondTo(M) {
 
-		.latest > text {
-			font-size: 58px;
-		}
-
 		&__summary,
-		&__charts {
+		&__charts,
+		&__video-wrapper {
+			float: left;
 			width: 50%;
 			box-sizing: border-box;
 			padding: 0 20px;
-		}
-		&__summary {
-			float: left;
-		}
-		&__charts {
-			float: right;
-		}
-		&__chart {
-			width: auto;
 		}
 
 		&__heading {
@@ -146,4 +180,29 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			margin-top: 20px;
 		}
 	}
+
+	// @include oGridRespondTo(M, $until: L) {
+	// 	&__summary,
+	// 	&__charts {
+	// 		width: 50%;
+	// 	}
+	// 	&__video-wrapper {
+	// 		clear: both;
+	// 		float: none;
+	// 		width: 100%;
+	// 	}
+	// }
+
+	// @include oGridRespondTo(L) {
+	// 	&__summary,
+	// 	&__charts,
+	// 	&__video-wrapper {
+	// 		width: 33%;
+	// 	}
+	// }
+
+	@include oGridRespondTo(XL) {
+		&__inner { padding: 0 40px; }
+	}
+
 }
