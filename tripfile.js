@@ -6,6 +6,7 @@ import path from 'path';
 import { directory, chain, plugin } from 'exhibit';
 
 const src = directory('src');
+const dist = directory('dist');
 
 const preprocess = chain(
 	plugin('sass', {
@@ -31,8 +32,6 @@ const optimise = chain(
 );
 
 export async function build() {
-	const dist = directory('dist');
-
 	await src.read()
 		.then(preprocess)
 		.then(optimise)
@@ -40,19 +39,17 @@ export async function build() {
 }
 
 export async function develop({ prod }) {
-	const outputDir = prod ? 'dist' : 'stage';
-
 	await src.watch(chain(
 		preprocess,
 
 		prod ? optimise : null,
 
-		directory(outputDir).write,
+		dist.write,
 
 		// [re]start development server
 		(() => {
 			let serverProcess;
-			const serverScript = path.join(outputDir, 'server', 'server.js');
+			const serverScript = path.join('dist', 'server', 'server.js');
 
 			const restart = _.debounce(() => {
 				if (serverProcess) serverProcess.kill();
