@@ -8,15 +8,55 @@ h1.ig-us-election-2016__heading= heading
 		!= text
 
 	.ig-us-election-2016__charts
-		h2 The race for nomination
-		| CHART
+		h2= chartTitle
+		h3= chartSubtitle
+		.ig-us-election-2016__democrat
+			.ig-us-election-2016__total-to-win
+				= democratTotalToWin.toLocaleString()
+				| &nbsp;to win
+			.ig-us-election-2016__first-place
+				.ig-us-election-2016__candidate-label
+					= democratFirstCandidate
+				.ig-us-election-2016__candidate-result
+					.ig-us-election-2016__result-data(style='width:'+(democratFirstCandidateDelegates/democratTotalToWin)*100+'%;')
+						= democratFirstCandidateDelegates.toLocaleString()
+			.ig-us-election-2016__second-place
+				.ig-us-election-2016__candidate-label
+					= democratSecondCandidate
+				.ig-us-election-2016__candidate-result
+					.ig-us-election-2016__result-data(style='width:'+(democratSecondCandidateDelegates/democratTotalToWin)*100+'%;')
+						= democratSecondCandidateDelegates.toLocaleString()
+
+		.ig-us-election-2016__republican
+			.ig-us-election-2016__total-to-win
+				= republicanTotalToWin.toLocaleString()
+				| &nbsp;to win
+			.ig-us-election-2016__first-place
+				.ig-us-election-2016__candidate-label
+					= republicanFirstCandidate
+				.ig-us-election-2016__candidate-result
+					.ig-us-election-2016__result-data(style='width:'+(republicanFirstCandidateDelegates/republicanTotalToWin)*100+'%;')
+						= republicanFirstCandidateDelegates.toLocaleString()
+			.ig-us-election-2016__second-place
+				.ig-us-election-2016__candidate-label
+					= republicanSecondCandidate
+				.ig-us-election-2016__candidate-result
+					.ig-us-election-2016__result-data(style='width:'+(republicanSecondCandidateDelegates/republicanTotalToWin)*100+'%;')
+						= republicanSecondCandidateDelegates.toLocaleString()
+
 		p.ig-us-election-2016__more-polling
 			a(href=morePollingLinkURL)
 				= morePollingLinkText
 
-	.ig-us-election-2016__video-wrapper
-		h2= videoTitle
-		.ig-us-election-2016__video-placeholder(data-n-components='n-video'
-			data-n-video-source='brightcove'
-			data-n-video-id='4824352444001'
-			data-trackable='video')
+	//- .ig-us-election-2016__video-wrapper
+	//- 	h2= videoTitle
+	//- 	if isBrightcove
+	//- 		.ig-us-election-2016__video-placeholder(data-n-components='n-video'
+	//- 			data-trackable='video'
+	//- 			data-n-video-source='brightcove'
+	//- 			data-n-video-id=video)
+	//- 	else
+	//- 		.ig-us-election-2016__video-placeholder(data-n-components='n-video'
+	//- 			data-trackable='video'
+	//- 			data-n-video-source='youtube'
+	//- 			data-n-video-id=video)

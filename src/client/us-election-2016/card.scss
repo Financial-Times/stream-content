@@ -2,6 +2,11 @@
 @import 'o-fonts/main';
 @import 'o-colors/main';
 
+@include oFontsInclude(FinancierDisplayWeb);
+@include oFontsInclude(FinancierDisplayWeb, $weight: bold);
+@include oFontsInclude(FinancierTextWeb);
+@include oFontsInclude(MetricWeb);
+
 $button-color: #F7F7F7;
 $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
@@ -10,6 +15,7 @@ $button-top-border-color: rgba(206,198,185,0.5);
 h2 {
 	font: normal 16px/1.375 oFontsGetFontFamilyWithFallbacks(MetricWeb);
 	margin-top: 0;
+	margin-bottom: 5px;
 }
 
 .ig-us-election-2016 {

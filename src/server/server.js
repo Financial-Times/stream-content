@@ -5,9 +5,9 @@ import getBrexitLocals, { fetchBerthaData } from './getBrexitLocals';
 import getUSElectionLocals from './getUSElectionLocals';
 import jade from 'jade';
 import Koa from 'koa';
+import koaLogger from 'koa-logger';
 import path from 'path';
 import Router from 'koa-router';
-import logger from 'koa-logger';
 
 const PORT = process.env.PORT || 5000;
 
@@ -26,6 +26,9 @@ const renderBrexitPreview = jade.compileFile(path.join(views, 'brexit/preview.ja
 const renderUsElection2016Summary = jade.compileFile(
 	path.join(views, 'us-election-2016/summary-card.jade')
 );
+const renderUsElectionIframe = jade.compileFile(
+	path.join(views, 'us-election-2016/iframe.jade')
+);
 const renderUsElection2016Preview = jade.compileFile(
 	path.join(views, 'us-election-2016/preview.jade')
 );
@@ -41,9 +44,7 @@ const elements = {
 	},
 	'us-election-2016-summary': async ctx => {
 		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({
-			fragment: renderUsElection2016Summary(await getUSElectionLocals()),
-		});
+		ctx.body = JSON.stringify({ fragment: renderUsElection2016Summary(await getUSElectionLocals()) });
 	},
 };
 
@@ -95,6 +96,22 @@ router
 		}
 	})
 
+	// iframe (for using on the Falcon US Election page)
+	.get('/us-election-2016/iframe.html', async ctx => {
+		ctx.set('Cache-Control', 'max-age=500');
+
+		try {
+			ctx.body = renderUsElectionIframe(await getUSElectionLocals());
+		}
+		catch (error) {
+			console.error('ERROR!', error ? error.stack : error);
+
+			ctx.status = 500;
+			ctx.body = '<script>frameElement.height=0;frameElement.style=\'display:none\'</script>';
+			return;
+		}
+	})
+
 	// preview (for dev only)
 	.get('/metacard/preview.html', async ctx => {
 		ctx.body = renderBrexitPreview(await getBrexitLocals());
@@ -111,7 +128,7 @@ router
 
 // log in development
 if (process.env.ENVIRONMENT === 'development') {
-	app.use(logger());
+	app.use(koaLogger());
 }
 
 // start it up
@@ -119,8 +136,6 @@ app
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.listen(PORT, () => {
-		console.log('Running on port', PORT);
-
-		console.log(`http://localhost:${PORT}/`);
+		console.log(`\nRunning on port ${PORT} - http://localhost:${PORT}/`);
 	})
 ;

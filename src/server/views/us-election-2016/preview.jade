@@ -1,5 +1,4 @@
 //- just for previewing in development - this layout mimics the Next stream page's outer layout and styles so we can see how the card looks when inlined.
-
 html
 	head
 		title US Election 2016 card preview
@@ -8,7 +7,6 @@ html
 
 		style.
 			body {background: #fff1e0}
-
 
 	body
 		p Element previews: <a href="../metacard/preview.html">Britain's EU Referendum</a> | US Election 2016
@@ -23,5 +21,10 @@ html
 								.custom-fragment__content
 									include summary-card.jade
 
-		script
-			include ../../../client/us-election.entry.js
+		.stream.o-grid-container
+			h1 Brexit iframe preview (for old FT)
+			iframe(src='iframe.html' width='972' height='330' scrolling='no' frameborder='0')
+
+		script(src='https://build.origami.ft.com/v2/bundles/js?modules=n-video@^4.0.3')
+		script.
+			Origami['n-video'].init();
