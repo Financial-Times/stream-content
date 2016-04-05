@@ -1,7 +1,15 @@
+$o-grid-layouts: (
+	S:  490px,
+	M:  740px,
+	L:  970px,
+	XL: 1220px,
+);
+
 html, body {
 	width: 100%;
 	height: 100%;
 	margin: 0;
+	padding: 0;
 	overflow: hidden;
 }
 
@@ -10,3 +18,6 @@ body {
 	color: oColorsGetPaletteColor('grey-tint5');
 	font-family: oFontsGetFontFamilyWithFallbacks(MetricWeb);
 }
+
+@import 'card';
+@import 'summary';

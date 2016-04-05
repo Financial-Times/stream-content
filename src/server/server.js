@@ -5,7 +5,9 @@ import getBrexitLocals, { fetchBerthaData } from './getBrexitLocals';
 import getUSElectionLocals from './getUSElectionLocals';
 import jade from 'jade';
 import Koa from 'koa';
+import koaCompress from 'koa-compress';
 import koaLogger from 'koa-logger';
+import koaStatic from 'koa-static';
 import path from 'path';
 import Router from 'koa-router';
 
@@ -44,7 +46,9 @@ const elements = {
 	},
 	'us-election-2016-summary': async ctx => {
 		ctx.set('Content-Type', 'application/json');
-		ctx.body = JSON.stringify({ fragment: renderUsElection2016Summary(await getUSElectionLocals()) });
+		ctx.body = JSON.stringify({
+			fragment: renderUsElection2016Summary(await getUSElectionLocals()),
+		});
 	},
 };
 
@@ -135,6 +139,8 @@ if (process.env.ENVIRONMENT === 'development') {
 app
 	.use(router.routes())
 	.use(router.allowedMethods())
+	.use(koaStatic(path.resolve(__dirname, '..', 'client')))
+	.use(koaCompress())
 	.listen(PORT, () => {
 		console.log(`\nRunning on port ${PORT} - http://localhost:${PORT}/`);
 	})
