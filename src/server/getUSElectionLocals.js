@@ -30,7 +30,7 @@ export default async function getUSElectionLocals() {
 		return candidate;
 	});
 
-	// split democrats and republicans so we can get the top 2 of each
+	// split democrats and republicans so we can get the top candidates from each party
 	const democrats = resultsData.filter( candidate => {
 		return !candidate.droppedout && candidate.party === 'democrats'
 	});
@@ -39,6 +39,13 @@ export default async function getUSElectionLocals() {
 	});
 
 	// variables used inside template
+
+	data.democrat100Percent = data.democratTotalToWin;
+
+	if (democrats[0].total > data.democratTotalToWin) {
+		data.democrat100Percent = democrats[0].total;
+	}
+
 	data.democratFirstCandidate = democrats[0].label;
 	data.democratFirstCandidatePledgedDelegates = democrats[0].value;
 	data.democratFirstCandidateSuperdelegates = democrats[0].superdelegates;
@@ -48,6 +55,13 @@ export default async function getUSElectionLocals() {
 	data.democratSecondCandidatePledgedDelegates = democrats[1].value;
 	data.democratSecondCandidateSuperdelegates = democrats[1].superdelegates;
 	data.democratSecondCandidateDelegates = democrats[1].total;
+
+
+	data.republican100Percent = data.republicanTotalToWin;
+
+	if (republicans[0].total > data.republicanTotalToWin) {
+		data.republican100Percent = republicans[0].total;
+	}
 
 	data.republicanFirstCandidate = republicans[0].label;
 	data.republicanFirstCandidateDelegates = republicans[0].total;

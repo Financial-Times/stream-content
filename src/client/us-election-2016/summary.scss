@@ -59,7 +59,6 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		font-size: 11px;
 		font-weight: normal;
 		margin: 0;
-		float: left;
 	}
 
 	&__d-delegates-symbol,
@@ -88,11 +87,11 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		margin-top: 15px;
 	}
 
-	&__total-to-win {
+	&__total-to-win-label {
 		color: oColorsGetPaletteColor('grey-tint2');
 		font-size: 11px;
 		text-align: right;
-		float: right;
+		margin-left: 50px;
 	}
 
 	&__first-place {
@@ -146,6 +145,13 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	&__republican &__result-data {
 		background-color: #b3244b;
+	}
+
+	&__total-to-win-line {
+		border-right: 1px dashed oColorsGetPaletteColor('grey-tint2');
+		height: 25px;
+		position: absolute;
+		top: -5px;
 	}
 
 	&__more-polling {
