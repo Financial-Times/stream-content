@@ -20,46 +20,53 @@ h1.ig-us-election-2016__heading= heading
 				| superdelegates
 				span.ig-us-election-2016__d-superdelegates-symbol
 					| ■
-			.ig-us-election-2016__total-to-win
-				= democratTotalToWin.toLocaleString()
-				| &nbsp;to win
+			.ig-us-election-2016__total-to-win-label-container(style='width: calc(100% - 50px);')
+				.ig-us-election-2016__total-to-win-label(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
+					= democratTotalToWin.toLocaleString()
+					| &nbsp;to win
 			.ig-us-election-2016__first-place
 				.ig-us-election-2016__candidate-label
 					= democratFirstCandidate
 				.ig-us-election-2016__candidate-result
-					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(democratFirstCandidatePledgedDelegates/democratTotalToWin)*100+'%;')
-					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(democratFirstCandidateSuperdelegates/democratTotalToWin)*100+'%;')
+					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(democratFirstCandidatePledgedDelegates/democrat100Percent)*100+'%;')
+					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(democratFirstCandidateSuperdelegates/democrat100Percent)*100+'%;')
+					.ig-us-election-2016__total-to-win-line(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
 			.ig-us-election-2016__second-place
 				.ig-us-election-2016__candidate-label
 					= democratSecondCandidate
 				.ig-us-election-2016__candidate-result
-					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(democratSecondCandidatePledgedDelegates/democratTotalToWin)*100+'%;')
-					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(democratSecondCandidateSuperdelegates/democratTotalToWin)*100+'%;')
+					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(democratSecondCandidatePledgedDelegates/democrat100Percent)*100+'%;')
+					.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(democratSecondCandidateSuperdelegates/democrat100Percent)*100+'%;')
+					.ig-us-election-2016__total-to-win-line(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
 
 		.ig-us-election-2016__republican
 			.ig-us-election-2016__chart-legend
 				| Republican delegates
 				span.ig-us-election-2016__r-delegates-symbol
 					| ■
-			.ig-us-election-2016__total-to-win
-				= republicanTotalToWin.toLocaleString()
-				| &nbsp;to win
+			.ig-us-election-2016__total-to-win-label-container(style='width: calc(100% - 50px);')
+				.ig-us-election-2016__total-to-win-label(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
+					= republicanTotalToWin.toLocaleString()
+					| &nbsp;to win
 			.ig-us-election-2016__first-place
 				.ig-us-election-2016__candidate-label
 					= republicanFirstCandidate
 				.ig-us-election-2016__candidate-result
-					.ig-us-election-2016__result-data(style='width:'+(republicanFirstCandidateDelegates/republicanTotalToWin)*100+'%;')
+					.ig-us-election-2016__result-data(style='width:'+(republicanFirstCandidateDelegates/republican100Percent)*100+'%;')
+					.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
 			.ig-us-election-2016__second-place
 				.ig-us-election-2016__candidate-label
 					= republicanSecondCandidate
 				.ig-us-election-2016__candidate-result
-					.ig-us-election-2016__result-data(style='width:'+(republicanSecondCandidateDelegates/republicanTotalToWin)*100+'%;')
+					.ig-us-election-2016__result-data(style='width:'+(republicanSecondCandidateDelegates/republican100Percent)*100+'%;')
+					.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
 
 			.ig-us-election-2016__third-place
 				.ig-us-election-2016__candidate-label
 					= republicanThirdCandidate
 				.ig-us-election-2016__candidate-result
-					.ig-us-election-2016__result-data(style='width:'+(republicanThirdCandidateDelegates/republicanTotalToWin)*100+'%;')
+					.ig-us-election-2016__result-data(style='width:'+(republicanThirdCandidateDelegates/republican100Percent)*100+'%;')
+					.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
 
 		p.ig-us-election-2016__more-polling
 			a(href=morePollingLinkURL)
