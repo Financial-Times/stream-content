@@ -1,55 +1,46 @@
 {
-  "babel": {
-    "presets": [
-      "es2015-node5"
-    ],
-    "plugins": [
-      "transform-object-rest-spread",
-      [
-        "transform-async-to-module-method",
-        {
-          "module": "bluebird",
-          "method": "coroutine"
-        }
-      ]
-    ]
-  },
   "dependencies": {
-    "babel-eslint": "^5.0.0-beta6",
-    "babel-plugin-transform-async-to-module-method": "^6.5.2",
-    "babel-plugin-transform-object-rest-spread": "^6.5.0",
-    "babel-preset-es2015-node5": "^1.1.2",
-    "babel-register": "^6.5.2",
-    "bluebird": "^3.3.1",
+    "autoprefixer": "^6.3.6",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.6.1",
+    "babelify": "^7.2.0",
+    "bluebird": "^3.3.4",
     "bower": "^1.7.7",
     "cheerio": "^0.20.0",
+    "cssnano": "^3.5.2",
+    "debowerify": "^1.4.1",
+    "del-cli": "^0.2.0",
     "dotenv": "^2.0.0",
-    "express": "^4.13.4",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-react": "^4.2.3",
+    "execa": "^0.2.2",
+    "exhibit": "^0.8.4",
+    "exhibit-plugin-babel": "^0.1.1",
+    "exhibit-plugin-browserify": "^0.1.2",
+    "exhibit-plugin-postcss": "^0.1.0",
+    "exhibit-plugin-sass": "^0.1.3",
     "isomorphic-fetch": "^2.2.1",
     "jade": "^1.11.0",
-    "koa": "^2.0.0-alpha.3",
-    "koa-router": "^7.0.0",
+    "koa": "^2.0.0",
+    "koa-logger": "^2.0.0",
+    "koa-router": "^7.0.1",
+    "koa-static": "^2.0.0",
+    "lodash": "^4.8.2",
     "marked": "^0.3.5",
-    "node-sass": "^3.4.2"
+    "trip": "^1.0.3"
   },
-  "devDependencies": {
-    "eslint": "^2.0.0",
-    "eslint-config-trip": "^1.0.1",
-    "eslint-plugin-babel": "^3.1.0",
-    "nodemon": "^1.8.1"
-  },
-  "engines": {
-    "node": ">=5 <6"
-  },
-  "eslintConfig": {
-    "extends": "trip"
-  },
-  "private": "true",
   "scripts": {
-    "postinstall": "bower install && npm run styles",
-    "styles": "node-sass --output-style compressed --include-path bower_components --output public/ ./sass/",
-    "styles:dev": "node-sass --include-path bower_components --watch --output public/ ./sass/",
-    "start:dev": "nodemon --ext js,jade,css",
-    "test": "eslint ./server"
+    "build": "trip build",
+    "develop": "trip develop",
+    "develop:prod": "trip develop:prod",
+    "postinstall": "bower install && npm run build",
+    "start": "node dist/server/server.js",
+    "test": "eslint . && npm run build"
   }
 }

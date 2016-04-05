@@ -1,2 +1,14 @@
-extends: trip
 root: true
+parser: babel-eslint
+extends: airbnb/base
+rules:
+  indent: [2, tab]
+  brace-style: [2, stroustrup, {allowSingleLine: false}]
+  no-console: 0
+  prefer-template: 0
+  func-names: 0
+  prefer-rest-params: 0
+  no-lone-blocks: 0
+  new-cap: 0
+  no-use-before-define: 0
+  no-param-reassign: 0

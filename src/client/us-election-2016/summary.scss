@@ -1,0 +1,238 @@
+@import 'next-sass-setup/main';
+@import 'n-video/main';
+
+$button-color-darker: oColorsGetPaletteColor('blue-2');
+$button-color-darker-still: darken($button-color-darker, 3%);
+
+.ig-us-election-2016 {
+
+	&__heading {
+		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	&__date {
+		text-align: center;
+		font-size: 12px;
+		color: oColorsGetPaletteColor('warm-6');
+
+		> span {
+			color: red;
+			margin-right: 0.15em;
+		}
+	}
+
+	&__main {
+		margin: 15px auto 10px;
+
+		&:after {
+			content: " ";
+			display: table;
+			clear: both;
+		}
+	}
+
+	&__summary-text > p,
+	&__summary-secondary-text > p {
+		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierTextWeb);
+		margin: 0 0 1em;
+	}
+
+	&__summary-secondary-text {
+		display: none;
+	}
+
+
+	&__summary,
+	&__charts {
+		margin-top: 10px;
+	}
+
+	&__charts {
+		font: normal 12px/1 oFontsGetFontFamilyWithFallbacks(MetricWeb);
+		position: relative;
+	}
+
+	&__chart-legend {
+		color: oColorsGetPaletteColor('grey-tint2');
+		font-size: 11px;
+		font-weight: normal;
+		margin: 0;
+		float: left;
+	}
+
+	&__d-delegates-symbol,
+	&__d-superdelegates-symbol,
+	&__r-delegates-symbol {
+		font-size: 18px;
+		vertical-align: middle;
+		margin: 0 5px 0 2px;
+		position: relative;
+		top: -1px;
+	}
+
+	&__d-delegates-symbol {
+		color: #273c8f;
+	}
+
+	&__d-superdelegates-symbol {
+		color: #9eace4;
+	}
+
+	&__r-delegates-symbol {
+		color: #b3244b;
+	}
+
+	&__republican {
+		margin-top: 15px;
+	}
+
+	&__total-to-win {
+		color: oColorsGetPaletteColor('grey-tint2');
+		font-size: 11px;
+		text-align: right;
+		float: right;
+	}
+
+	&__first-place {
+		margin-top: 5px;
+	}
+
+	&__first-place,
+	&__second-place,
+	&__third-place {
+		clear: both;
+		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
+		height: 25px;
+		position: relative;
+	}
+
+	&__candidate-label {
+		float: left;
+		width: 50px;
+		text-align: right;
+		padding-right: 5px;
+		box-sizing: border-box;
+		position: absolute;
+		top: 5px;
+		left: 0;
+	}
+
+	&__candidate-result {
+		background-color: oColorsGetPaletteColor('blue-2');
+		float: right;
+		height: 15px;
+		width: calc(100% - 50px);
+		position: absolute;
+		top: 5px;
+		right: 0;
+	}
+
+	&__result-data {
+		height: 100%;
+	}
+
+	&__democrat &__result-data {
+		float: left;
+		&--pledged {
+			background-color: #273c8f;
+		}
+
+		&--super {
+			background-color: #768ada;
+		}
+	}
+
+	&__republican &__result-data {
+		background-color: #b3244b;
+	}
+
+	&__more-polling {
+		margin: 5px 0 0;
+		text-align: right;
+	}
+
+	&__video-wrapper {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	&__video-placeholder {
+		position: relative;
+		height: 0;
+		padding-bottom: 56.25%;
+	}
+
+	&__video {
+		background: oColorsGetPaletteColor('cold-2');
+		width: 100%;
+		display: block;
+	}
+	@include oGridRespondTo($until: S) {
+		&__charts,
+		&__video-wrapper {
+			margin-top: 20px;
+		}
+		&__charts { max-width: 100%; }
+	}
+
+	@include oGridRespondTo(S, $until: M) {
+		&__charts,
+		&__video-wrapper {
+			margin-top: 20px;
+		}
+	}
+
+	@include oGridRespondTo($until: M) {
+		&__main {
+			max-width: 500px;
+		}
+	}
+
+	@include oGridRespondTo(M) {
+
+		&__summary,
+		&__charts,
+		&__video-wrapper {
+			float: left;
+			width: 50%;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+
+		&__summary-secondary-text {
+			display: block;
+		}
+
+		&__heading {
+			font-size: 30px;
+			margin-top: 20px;
+		}
+	}
+
+	// @include oGridRespondTo(M, $until: L) {
+	// 	&__summary,
+	// 	&__charts {
+	// 		width: 50%;
+	// 	}
+	// 	&__video-wrapper {
+	// 		clear: both;
+	// 		float: none;
+	// 		width: 100%;
+	// 	}
+	// }
+
+	// @include oGridRespondTo(L) {
+	// 	&__summary,
+	// 	&__charts,
+	// 	&__video-wrapper {
+	// 		width: 33%;
+	// 	}
+	// }
+
+	@include oGridRespondTo(XL) {
+		&__inner { padding: 0 40px; }
+	}
+
+}
