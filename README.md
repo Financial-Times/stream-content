@@ -25,7 +25,7 @@ Warning: this serverside application has no caching, no efficiency – it builds
 
 1. clone this repo
 2. `npm install`
-3. `npm develop`
+3. `npm run develop`
 4. code away
 
 Things should refresh in your browser automatically.
