@@ -33,10 +33,16 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		}
 	}
 
-	&__summary > p {
+	&__summary-text > p,
+	&__summary-secondary-text > p {
 		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierTextWeb);
 		margin: 0 0 1em;
 	}
+
+	&__summary-secondary-text {
+		display: none;
+	}
+
 
 	&__summary,
 	&__charts {
@@ -48,11 +54,34 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		position: relative;
 	}
 
-	&__charts > h3 {
+	&__chart-legend {
 		color: oColorsGetPaletteColor('grey-tint2');
 		font-size: 11px;
 		font-weight: normal;
 		margin: 0;
+		float: left;
+	}
+
+	&__d-delegates-symbol,
+	&__d-superdelegates-symbol,
+	&__r-delegates-symbol {
+		font-size: 18px;
+		vertical-align: middle;
+		margin: 0 5px 0 2px;
+		position: relative;
+		top: -1px;
+	}
+
+	&__d-delegates-symbol {
+		color: #273c8f;
+	}
+
+	&__d-superdelegates-symbol {
+		color: #9eace4;
+	}
+
+	&__r-delegates-symbol {
+		color: #b3244b;
 	}
 
 	&__republican {
@@ -63,6 +92,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		color: oColorsGetPaletteColor('grey-tint2');
 		font-size: 11px;
 		text-align: right;
+		float: right;
 	}
 
 	&__first-place {
@@ -70,7 +100,9 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__first-place,
-	&__second-place {
+	&__second-place,
+	&__third-place {
+		clear: both;
 		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
 		height: 25px;
 		position: relative;
@@ -98,28 +130,22 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__result-data {
-		color: oColorsGetPaletteColor('white');
-		text-align: right;
-		font-size: 11px;
 		height: 100%;
-		padding: 2px 5px 2px 0;
-		box-sizing: border-box;
 	}
 
-	&__democrat &__first-place &__result-data {
-		background-color: #273c8f;
+	&__democrat &__result-data {
+		float: left;
+		&--pledged {
+			background-color: #273c8f;
+		}
+
+		&--super {
+			background-color: #768ada;
+		}
 	}
 
-	&__democrat &__second-place &__result-data {
-		background-color: #8b689c;
-	}
-
-	&__republican &__first-place &__result-data {
+	&__republican &__result-data {
 		background-color: #b3244b;
-	}
-
-	&__republican &__second-place &__result-data {
-		background-color: #c17853;
 	}
 
 	&__more-polling {
@@ -173,6 +199,10 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			width: 50%;
 			box-sizing: border-box;
 			padding: 0 20px;
+		}
+
+		&__summary-secondary-text {
+			display: block;
 		}
 
 		&__heading {

@@ -13,8 +13,9 @@ export default async function getUSElectionLocals() {
 	const data = {};
 	for (const { name, value } of options) data[name] = value;
 
+
 	let resultsData = [];
-	for (const { label, party, total } of results) resultsData.push({ label, party, total });
+	for (const { label, party, value, superdelegates, total, droppedout } of results) resultsData.push({ label, party, value, superdelegates, total, droppedout });
 	
 	// sort by total delegates descending
 	resultsData.sort( (a, b) => {
@@ -30,14 +31,22 @@ export default async function getUSElectionLocals() {
 	});
 
 	// split democrats and republicans so we can get the top 2 of each
-	const democrats = resultsData.filter( candidate => candidate.party === 'democrats' );
-	const republicans = resultsData.filter( candidate => candidate.party === 'republicans' );
+	const democrats = resultsData.filter( candidate => {
+		return !candidate.droppedout && candidate.party === 'democrats'
+	});
+	const republicans = resultsData.filter( candidate => {
+		return !candidate.droppedout && candidate.party === 'republicans'
+	});
 
 	// variables used inside template
 	data.democratFirstCandidate = democrats[0].label;
+	data.democratFirstCandidatePledgedDelegates = democrats[0].value;
+	data.democratFirstCandidateSuperdelegates = democrats[0].superdelegates;
 	data.democratFirstCandidateDelegates = democrats[0].total;
 
 	data.democratSecondCandidate = democrats[1].label;
+	data.democratSecondCandidatePledgedDelegates = democrats[1].value;
+	data.democratSecondCandidateSuperdelegates = democrats[1].superdelegates;
 	data.democratSecondCandidateDelegates = democrats[1].total;
 
 	data.republicanFirstCandidate = republicans[0].label;
@@ -46,12 +55,22 @@ export default async function getUSElectionLocals() {
 	data.republicanSecondCandidate = republicans[1].label;
 	data.republicanSecondCandidateDelegates = republicans[1].total;
 
+	data.republicanThirdCandidate = republicans[2].label;
+	data.republicanThirdCandidateDelegates = republicans[2].total;
+
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
 		const $ = cheerio.load(marked(data.text));
 		$('a[href]').attr('data-trackable', 'link');
 		return $.html();
 	})();
+	if (data.secondaryText) {
+		data.secondaryText = (() => {
+			const $ = cheerio.load(marked(data.secondaryText));
+			$('a[href]').attr('data-trackable', 'link');
+			return $.html();
+		})();
+	}
 
 	data.isBrightcove = typeof data.video === 'number';
 	data.isYoutube = !data.isBrightcove;
