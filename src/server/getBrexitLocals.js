@@ -2,7 +2,7 @@ import cheerio from 'cheerio';
 import marked from 'marked';
 import Promise from 'bluebird';
 
-export default async function getLocals() {
+export default async function getBrexitLocals() {
 	const [data, pollCharts] = await Promise.all([
 		fetchBerthaData(),
 		Promise.props({
@@ -18,7 +18,7 @@ export default async function getLocals() {
 }
 
 async function fetchChart(width, height = 75) {
-	const url = `https://ig.ft.com/sites/brexit-polling/poll-of-polls/fontless/${width}-x-${height}.svg`;
+	const url = `https://ig.ft.com/sites/brexit-polling/poll-of-polls/${width}-x-${height}.svg`;
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 	return res.text();
@@ -29,15 +29,15 @@ export async function fetchBerthaData() {
 	const res = await fetch(url);
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 
-	const {options, links} = await res.json();
+	const { options, links } = await res.json();
 
-	const data = {links};
+	const data = { links };
 
-	for (const {name, value} of options) data[name] = value;
+	for (const { name, value } of options) data[name] = value;
 
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
-		const $ = cheerio.load( marked(data.text) );
+		const $ = cheerio.load(marked(data.text));
 		$('a[href]').attr('data-trackable', 'link');
 		return $.html();
 	})();

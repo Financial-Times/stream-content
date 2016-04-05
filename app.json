@@ -1,7 +1,10 @@
 {
   "env": {
     "OPTIONS_SHEET_KEY": {
-      "description": "The spreadsheet key for loading options."
+      "description": "The key of the Brexit spreadsheet (TODO: change the name of this one)."
+    },
+    "US_ELECTION_SPREADSHEET_KEY": {
+      "description": "The key of the US Election spreadsheet"
     }
   }
 }
