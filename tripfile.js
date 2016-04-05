@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import autoprefixer from 'autoprefixer';
+import chalk from 'chalk';
 import cssnano from 'cssnano';
 import execa from 'execa';
 import path from 'path';
@@ -7,6 +8,8 @@ import { directory, chain, plugin } from 'exhibit';
 
 const src = directory('src');
 const dist = directory('dist');
+
+const PORT = process.env.PORT || 5000;
 
 const preprocess = chain(
 	plugin('sass', {
@@ -49,6 +52,7 @@ export async function develop({ prod }) {
 		// [re]start development server
 		(() => {
 			let serverProcess;
+			let started;
 			const serverScript = path.join('dist', 'server', 'server.js');
 
 			const restart = _.debounce(() => {
@@ -56,6 +60,20 @@ export async function develop({ prod }) {
 
 				console.log('\nnode', serverScript);
 				serverProcess = execa.spawn('node', [serverScript], { stdio: 'inherit' });
+
+				if (!started) {
+					started = true;
+
+					setTimeout(() => {
+						console.log(
+							'\nIf you like, run BrowserSync in another terminal:',
+							chalk.grey('\n  >'),
+							chalk.cyan(
+								`browser-sync start --proxy="localhost:${PORT}" --files="./dist/**" --open=1`
+							)
+						);
+					}, 2000);
+				}
 			}, 500);
 
 			return files => {
