@@ -39,38 +39,20 @@ export default async function getUSElectionLocals() {
 	});
 
 	// variables used inside template
-
+	data.democrats = democrats;
 	data.democrat100Percent = data.democratTotalToWin;
 
 	if (democrats[0].total > data.democratTotalToWin) {
 		data.democrat100Percent = democrats[0].total;
 	}
 
-	data.democratFirstCandidate = democrats[0].label;
-	data.democratFirstCandidatePledgedDelegates = democrats[0].value;
-	data.democratFirstCandidateSuperdelegates = democrats[0].superdelegates;
-	data.democratFirstCandidateDelegates = democrats[0].total;
-
-	data.democratSecondCandidate = democrats[1].label;
-	data.democratSecondCandidatePledgedDelegates = democrats[1].value;
-	data.democratSecondCandidateSuperdelegates = democrats[1].superdelegates;
-	data.democratSecondCandidateDelegates = democrats[1].total;
-
-
+	// variables used inside template
+	data.republicans = republicans;
 	data.republican100Percent = data.republicanTotalToWin;
 
 	if (republicans[0].total > data.republicanTotalToWin) {
 		data.republican100Percent = republicans[0].total;
 	}
-
-	data.republicanFirstCandidate = republicans[0].label;
-	data.republicanFirstCandidateDelegates = republicans[0].total;
-
-	data.republicanSecondCandidate = republicans[1].label;
-	data.republicanSecondCandidateDelegates = republicans[1].total;
-
-	data.republicanThirdCandidate = republicans[2].label;
-	data.republicanThirdCandidateDelegates = republicans[2].total;
 
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
@@ -78,6 +60,7 @@ export default async function getUSElectionLocals() {
 		$('a[href]').attr('data-trackable', 'link');
 		return $.html();
 	})();
+
 	if (data.secondaryText) {
 		data.secondaryText = (() => {
 			const $ = cheerio.load(marked(data.secondaryText));
