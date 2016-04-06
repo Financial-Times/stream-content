@@ -96,13 +96,11 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		margin-left: 50px;
 	}
 
-	&__first-place {
+	&__candidates {
 		margin-top: 5px;
 	}
 
-	&__first-place,
-	&__second-place,
-	&__third-place {
+	&__candidate {
 		clear: both;
 		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
 		height: 25px;
