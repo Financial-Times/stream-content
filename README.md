@@ -1,6 +1,6 @@
-# stream-fragments
+# stream-content
 
-> This is currently halfway through being renamed from 'brexit-stream-content' to 'stream-fragments'. The Heroku app is still called ft-ig-brexit-stream-content.
+ft-ig-stream-content
 
 Assembles and outputs the 'metacard' used in the [Brexit stream](http://ft.com/brexit).
 
