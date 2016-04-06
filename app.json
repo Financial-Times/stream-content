@@ -6,9 +6,5 @@
     "US_ELECTION_SPREADSHEET_KEY": {
       "description": "The key of the US Election spreadsheet"
     }
-  },
-  "addons": [
-    "deploy-hooks",
-    "logentries"
-  ]
+  }
 }
