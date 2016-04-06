@@ -53,8 +53,12 @@ h1.ig-us-election-2016__heading= heading
 			a(href=morePollingLinkURL)
 				= morePollingLinkText
 
-	//- .ig-us-election-2016__video-wrapper
-	//- 	h2= videoTitle
+	if video
+		if isYoutube
+			.ig-us-election-2016__video-wrapper
+				h2= videoTitle
+				.ig-us-election-2016__video-container
+					iframe(width='560' height='315' src='https://www.youtube.com/embed/'+video frameborder='0' allowfullscreen='allowfullscreen')
 	//- 	if isBrightcove
 	//- 		.ig-us-election-2016__video-placeholder(data-n-components='n-video'
 	//- 			data-trackable='video'
