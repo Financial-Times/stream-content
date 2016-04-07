@@ -2,7 +2,7 @@
 
 ft-ig-stream-content
 
-Assembles and outputs the 'metacard' used in the [Brexit stream](http://ft.com/brexit).
+Assembles and outputs content fragments used in various stream pages, e.g. [Brexit](http://ft.com/brexit) and [US Election](http://ft.com/us-election-2016).
 
 Warning: this serverside application has no caching, no efficiency – it builds every response from scratch, including loading content from remote URLs. It will break if put under heavy load. Must have a CDN or poller in front of it.
 
