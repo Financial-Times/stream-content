@@ -54,6 +54,10 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		position: relative;
 	}
 
+	&__chart-party {
+		margin-top: 10px;
+	}
+
 	&__chart-legend {
 		color: oColorsGetPaletteColor('grey-tint3');
 		font-size: 13px;
@@ -61,11 +65,15 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		margin: 0;
 	}
 
+	&__chart-legend-delegate-type {
+		margin-top: 5px;
+	}
+	
 	&__d-delegates-symbol,
 	&__d-superdelegates-symbol,
 	&__r-delegates-symbol {
 		vertical-align: middle;
-		margin: 0 8px 0 4px;
+		margin: 0 4px;
 		position: relative;
 		top: -1px;
 		display: inline-block;
@@ -101,10 +109,14 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__candidate {
-		clear: both;
 		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
 		height: 25px;
 		position: relative;
+		&:after {
+			clear: both;
+			content: "";
+			display: block;
+		}
 	}
 
 	&__candidate-label {
@@ -133,7 +145,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		height: 100%;
 	}
 
-	&__democrat &__result-data {
+	&__chart-party--democrat &__result-data {
 		float: left;
 		&--pledged {
 			background-color: #273c8f;
@@ -144,7 +156,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		}
 	}
 
-	&__republican &__result-data {
+	&__chart-party--republican &__result-data {
 		background-color: #b3244b;
 	}
 
@@ -185,6 +197,12 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	@include oGridRespondTo($until: S) {
 		&__charts,
 		&__charts { max-width: 100%; }
+	}
+
+	@media (min-width: 300px) {
+		&__chart-legend {
+			margin-bottom: -13px;
+		}
 	}
 
 	@include oGridRespondTo(S, $until: M) {
