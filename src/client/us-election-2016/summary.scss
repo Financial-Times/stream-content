@@ -57,7 +57,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	&__chart-party {
 		margin-top: 10px;
 		&--republican {
-			margin-top: 15px;
+			margin-top: 20px;
 		}
 	}
 
@@ -211,6 +211,9 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	@include oGridRespondTo($until: M) {
 		&__main {
 			max-width: 500px;
+		}
+		&__video-wrapper {
+			margin-top: 15px;
 		}
 	}
 
