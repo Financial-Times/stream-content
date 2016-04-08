@@ -54,39 +54,18 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		position: relative;
 	}
 
-	&__chart-legend {
+	&__chart-party {
+		margin-top: 10px;
+		&--republican {
+			margin-top: 20px;
+		}
+	}
+
+
+	&__chart-party-label {
 		color: oColorsGetPaletteColor('grey-tint3');
-		font-size: 13px;
-		font-weight: normal;
-		margin: 0;
-	}
-
-	&__d-delegates-symbol,
-	&__d-superdelegates-symbol,
-	&__r-delegates-symbol {
-		vertical-align: middle;
-		margin: 0 8px 0 4px;
-		position: relative;
-		top: -1px;
-		display: inline-block;
-		width: 8px;
-		height: 8px;
-	}
-
-	&__d-delegates-symbol {
-		background-color: #273c8f;
-	}
-
-	&__d-superdelegates-symbol {
-		background-color: #9eace4;
-	}
-
-	&__r-delegates-symbol {
-		background-color: #b3244b;
-	}
-
-	&__republican {
-		margin-top: 15px;
+		font-size: 14px;
+		margin-bottom: -13px;
 	}
 
 	&__total-to-win-label {
@@ -101,10 +80,14 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__candidate {
-		clear: both;
 		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
 		height: 25px;
 		position: relative;
+		&:after {
+			clear: both;
+			content: "";
+			display: block;
+		}
 	}
 
 	&__candidate-label {
@@ -133,7 +116,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		height: 100%;
 	}
 
-	&__democrat &__result-data {
+	&__chart-party--democrat &__result-data {
 		float: left;
 		&--pledged {
 			background-color: #273c8f;
@@ -144,7 +127,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		}
 	}
 
-	&__republican &__result-data {
+	&__chart-party--republican &__result-data {
 		background-color: #b3244b;
 	}
 
@@ -155,10 +138,41 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		top: -5px;
 	}
 
-	&__more-polling {
+	&__chart-legend {
+		color: oColorsGetPaletteColor('grey-tint3');
+		font-size: 13px;
+		font-weight: normal;
 		margin: 5px 0 0;
+	}
+
+	&__d-delegates-symbol,
+	&__d-superdelegates-symbol,
+	&__r-delegates-symbol {
+		vertical-align: middle;
+		margin: 0 4px;
+		position: relative;
+		top: -1px;
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+	}
+
+	&__d-delegates-symbol {
+		background-color: #273c8f;
+	}
+
+	&__d-superdelegates-symbol {
+		background-color: #9eace4;
+	}
+
+	&__r-delegates-symbol {
+		background-color: #b3244b;
+	}
+
+	&__more-polling {
 		text-align: right;
 		font-size: 15px;
+		margin: 0;
 	}
 
 	&__video-wrapper {
@@ -197,6 +211,9 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	@include oGridRespondTo($until: M) {
 		&__main {
 			max-width: 500px;
+		}
+		&__video-wrapper {
+			margin-top: 15px;
 		}
 	}
 
