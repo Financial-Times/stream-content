@@ -16,7 +16,7 @@ if updated
 		.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--democrat
 			.ig-us-election-2016__chart-party-label
 				| Democratic
-			.ig-us-election-2016__total-to-win-label-container(style='width: calc(100% - 50px);')
+			.ig-us-election-2016__total-to-win-label-container
 				.ig-us-election-2016__total-to-win-label(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
 					= democratTotalToWin.toLocaleString()
 					| &nbsp;to win
@@ -39,7 +39,7 @@ if updated
 		.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--republican
 			.ig-us-election-2016__chart-party-label
 				| Republican
-			.ig-us-election-2016__total-to-win-label-container(style='width: calc(100% - 50px);')
+			.ig-us-election-2016__total-to-win-label-container
 				.ig-us-election-2016__total-to-win-label(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
 					= republicanTotalToWin.toLocaleString()
 					| &nbsp;to win
