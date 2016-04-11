@@ -3,11 +3,11 @@ import marked from 'marked';
 
 export default async function getUSElectionLocals() {
 	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
-	const contentRes = await fetch(contentURL);
-	if (!contentRes.ok) throw new Error(`Request failed with ${contentRes.status}: ${contentURL}`);
-
 	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results`;
-	const resultsRes = await fetch(resultsURL);
+
+	const [contentRes, resultsRes] = await Promise.all([fetch(contentURL), fetch(resultsURL)]);
+
+	if (!contentRes.ok) throw new Error(`Request failed with ${contentRes.status}: ${contentURL}`);
 	if (!resultsRes.ok) throw new Error(`Request failed with ${resultsRes.status}: ${resultsURL}`);
 
 	const contentSheets = await contentRes.json();
@@ -16,10 +16,9 @@ export default async function getUSElectionLocals() {
 	const { options } = contentSheets;
 
 	const data = {};
-	for (const { name, value } of options) data[name] = value;
-
-
 	let resultsData = [];
+
+	for (const { name, value } of options) data[name] = value;
 	for (const { label, party, value, superdelegates, total, droppedout } of results) resultsData.push({ label, party, value, superdelegates, total, droppedout });
 
 	// sort by total delegates descending
