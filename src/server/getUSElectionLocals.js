@@ -2,13 +2,18 @@ import cheerio from 'cheerio';
 import marked from 'marked';
 
 export default async function getUSElectionLocals() {
-	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,results,links`;
-	const res = await fetch(url);
-	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
+	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
+	const contentRes = await fetch(contentURL);
+	if (!contentRes.ok) throw new Error(`Request failed with ${contentRes.status}: ${contentURL}`);
 
-	const sheets = await res.json();
+	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results`;
+	const resultsRes = await fetch(resultsURL);
+	if (!resultsRes.ok) throw new Error(`Request failed with ${resultsRes.status}: ${resultsURL}`);
 
-	const { options, results } = sheets;
+	const contentSheets = await contentRes.json();
+	const results = await resultsRes.json();
+
+	const { options } = contentSheets;
 
 	const data = {};
 	for (const { name, value } of options) data[name] = value;
