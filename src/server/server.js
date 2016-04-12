@@ -12,6 +12,18 @@ import Router from 'koa-router';
 
 const PORT = process.env.PORT || 5000;
 
+process.on('uncaughtException', error => {
+	console.log('Global uncaughtException!', error.stack);
+	console.dir(error);
+	process.exit(1);
+});
+
+process.on('unhandledRejection', error => {
+	console.log('Global uncaughtException!', error.stack);
+	console.dir(error);
+	process.exit(1);
+});
+
 const app = new Koa();
 const router = new Router();
 
