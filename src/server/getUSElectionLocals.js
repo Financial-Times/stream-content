@@ -19,28 +19,29 @@ export default async function getUSElectionLocals() {
 	let resultsData = [];
 
 	for (const { name, value } of options) data[name] = value;
-	for (const { label, party, value, superdelegates, total, droppedout } of results) resultsData.push({ label, party, value, superdelegates, total, droppedout });
+
+	for (const { label, party, value, superdelegates, total, droppedout } of results) {
+		resultsData.push({ label, party, value, superdelegates, total, droppedout });
+	}
 
 	// sort by total delegates descending
-	resultsData.sort( (a, b) => {
-		return b.total - a.total;
-	});
+	resultsData.sort((a, b) => b.total - a.total);
 
 	// only use the last name for each candidate
-	resultsData = resultsData.map( candidate => {
+	resultsData = resultsData.map(candidate => {
 		candidate.label = candidate.label.split(" ");
-		candidate.label = candidate.label[candidate.label.length-1];
+		candidate.label = candidate.label[candidate.label.length - 1];
 
 		return candidate;
 	});
 
 	// split democrats and republicans so we can get the top candidates from each party
-	const democrats = resultsData.filter( candidate => {
-		return !candidate.droppedout && candidate.party === 'democrats'
-	});
-	const republicans = resultsData.filter( candidate => {
-		return !candidate.droppedout && candidate.party === 'republicans'
-	});
+	const democrats = resultsData.filter(candidate =>
+		!candidate.droppedout && candidate.party === 'democrats'
+	);
+	const republicans = resultsData.filter(candidate =>
+		!candidate.droppedout && candidate.party === 'republicans'
+	);
 
 	// variables used inside template
 	data.democrats = democrats;
