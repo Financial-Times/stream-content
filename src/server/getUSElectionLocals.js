@@ -3,7 +3,7 @@ import marked from 'marked';
 
 export default async function getUSElectionLocals() {
 	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
-	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}-/results,options`;
+	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results,options`;
 
 	const [contentRes, resultsRes] = await Promise.all([fetch(contentURL), fetch(resultsURL)]);
 
@@ -57,17 +57,17 @@ export default async function getUSElectionLocals() {
 
 		let resultsData = [];
 
-		for (const { label, party, value, superdelegates, total, droppedout } of results) resultsData.push({ label, party, value, superdelegates, total, droppedout });
+		for (const { label, party, value, superdelegates, total, droppedout } of results) {
+			resultsData.push({ label, party, value, superdelegates, total, droppedout });
+		}
 
 		// sort by total delegates descending
-		resultsData.sort( (a, b) => {
-			return b.total - a.total;
-		});
+		resultsData.sort((a, b) => b.total - a.total);
 
 		// only use the last name for each candidate
-		resultsData = resultsData.map( candidate => {
+		resultsData = resultsData.map(candidate => {
 			candidate.label = candidate.label.split(" ");
-			candidate.label = candidate.label[candidate.label.length-1];
+			candidate.label = candidate.label[candidate.label.length - 1];
 
 			return candidate;
 		});
@@ -76,12 +76,12 @@ export default async function getUSElectionLocals() {
 		data.republicanTotalToWin = options.find(option => option.name === 'repdelegatestotal').value;
 
 		// split democrats and republicans so we can get the top candidates from each party
-		const democrats = resultsData.filter( candidate => {
-			return !candidate.droppedout && candidate.party === 'democrats'
-		});
-		const republicans = resultsData.filter( candidate => {
-			return !candidate.droppedout && candidate.party === 'republicans'
-		});
+		const democrats = resultsData.filter(candidate =>
+			!candidate.droppedout && candidate.party === 'democrats'
+		);
+		const republicans = resultsData.filter(candidate =>
+			!candidate.droppedout && candidate.party === 'republicans'
+		);
 
 		// variables used inside template
 		data.democrats = democrats;
