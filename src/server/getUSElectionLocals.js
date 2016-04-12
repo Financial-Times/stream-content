@@ -29,7 +29,7 @@ export default async function getUSElectionLocals() {
 
 	// only use the last name for each candidate
 	resultsData = resultsData.map(candidate => {
-		candidate.label = candidate.label.split(" ");
+		candidate.label = candidate.label.split(' ');
 		candidate.label = candidate.label[candidate.label.length - 1];
 
 		return candidate;
