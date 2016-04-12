@@ -1,27 +1,28 @@
 //- iframe for FT.com (falcon)
-html
-	head
-		meta(name='viewport' content='width=device-width, initial-scale=1.0')
-		title US Election 2016 iFrame
-		base(target='_parent')
-		style
-			include ../../../client/us-election-2016/iframe.css
-	body
-		.ig-us-election-2016__container.ig-us-election-2016__container--paper(data-trackable='topic-summary')
-			.ig-us-election-2016__inner.ig-us-election-2016__inner--topic-summary
-				include _summary.jade
+if showData
+	html
+		head
+			meta(name='viewport' content='width=device-width, initial-scale=1.0')
+			title US Election 2016 iFrame
+			base(target='_parent')
+			style
+				include ../../../client/us-election-2016/iframe.css
+		body
+			.ig-us-election-2016__container.ig-us-election-2016__container--paper(data-trackable='topic-summary')
+				.ig-us-election-2016__inner.ig-us-election-2016__inner--topic-summary
+					include _summary.jade
 
-		script.
-			function fixHeight() {
-				setTimeout(function () {
-					try {
-						frameElement.height = document.querySelector('.ig-us-election-2016__container').offsetHeight;
-					} catch (e) {}
-				}, 0);
-			}
+			script.
+				function fixHeight() {
+					setTimeout(function () {
+						try {
+							frameElement.height = document.querySelector('.ig-us-election-2016__container').offsetHeight;
+						} catch (e) {}
+					}, 0);
+				}
 
-			document.addEventListener('DOMContentLoaded', fixHeight);
-			window.onload = function () {
-				fixHeight();
-				setTimeout(fixHeight, 1000);
-			};
+				document.addEventListener('DOMContentLoaded', fixHeight);
+				window.onload = function () {
+					fixHeight();
+					setTimeout(fixHeight, 1000);
+				};
