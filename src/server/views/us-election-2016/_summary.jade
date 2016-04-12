@@ -5,63 +5,65 @@ if updated
 		= updated
 
 .ig-us-election-2016__main
-	.ig-us-election-2016__summary(data-trackable='summary')
-		.ig-us-election-2016__summary-text
-			!= text
-		.ig-us-election-2016__summary-secondary-text
-			!= secondaryText
+	if showContent
+		.ig-us-election-2016__content-block.ig-us-election-2016__summary(data-trackable='summary')
+			.ig-us-election-2016__summary-text
+				!= text
+			.ig-us-election-2016__summary-secondary-text
+				!= secondaryText
 
-	.ig-us-election-2016__charts
-		h2= chartTitle
-		.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--democrat
-			.ig-us-election-2016__chart-party-label
-				| Democratic
-			.ig-us-election-2016__total-to-win-label-container
-				.ig-us-election-2016__total-to-win-label(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
-					= democratTotalToWin.toLocaleString()
-					| &nbsp;to win
-			.ig-us-election-2016__candidates
-				each candidate in democrats
-					.ig-us-election-2016__candidate
-						.ig-us-election-2016__candidate-label
-							= candidate.label
-						.ig-us-election-2016__candidate-result
-							.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(candidate.value/democrat100Percent)*100+'%;')
-							.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(candidate.superdelegates/democrat100Percent)*100+'%;')
-							.ig-us-election-2016__total-to-win-line(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
-			.ig-us-election-2016__chart-legend
-				span.ig-us-election-2016__d-delegates-symbol
-				| Delegates
-				span.ig-us-election-2016__d-superdelegates-symbol
-				| Superdelegates
+	if showResults
+		.ig-us-election-2016__content-block.ig-us-election-2016__charts
+			h2= chartTitle
+			.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--democrat
+				.ig-us-election-2016__chart-party-label
+					| Democratic
+				.ig-us-election-2016__total-to-win-label-container
+					.ig-us-election-2016__total-to-win-label(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
+						= democratTotalToWin.toLocaleString()
+						| &nbsp;to win
+				.ig-us-election-2016__candidates
+					each candidate in democrats
+						.ig-us-election-2016__candidate
+							.ig-us-election-2016__candidate-label
+								= candidate.label
+							.ig-us-election-2016__candidate-result
+								.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(candidate.value/democrat100Percent)*100+'%;')
+								.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(candidate.superdelegates/democrat100Percent)*100+'%;')
+								.ig-us-election-2016__total-to-win-line(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
+				.ig-us-election-2016__chart-legend
+					span.ig-us-election-2016__d-delegates-symbol
+					| Delegates
+					span.ig-us-election-2016__d-superdelegates-symbol
+					| Superdelegates
 
 
-		.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--republican
-			.ig-us-election-2016__chart-party-label
-				| Republican
-			.ig-us-election-2016__total-to-win-label-container
-				.ig-us-election-2016__total-to-win-label(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
-					= republicanTotalToWin.toLocaleString()
-					| &nbsp;to win
-			.ig-us-election-2016__candidates
-				each candidate in republicans
-					.ig-us-election-2016__candidate
-						.ig-us-election-2016__candidate-label
-							= candidate.label
-						.ig-us-election-2016__candidate-result
-							.ig-us-election-2016__result-data(style='width:'+(candidate.value/republican100Percent)*100+'%;')
-							.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
-			.ig-us-election-2016__chart-legend
-				span.ig-us-election-2016__r-delegates-symbol
-				| Delegates
+			.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--republican
+				.ig-us-election-2016__chart-party-label
+					| Republican
+				.ig-us-election-2016__total-to-win-label-container
+					.ig-us-election-2016__total-to-win-label(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
+						= republicanTotalToWin.toLocaleString()
+						| &nbsp;to win
+				.ig-us-election-2016__candidates
+					each candidate in republicans
+						.ig-us-election-2016__candidate
+							.ig-us-election-2016__candidate-label
+								= candidate.label
+							.ig-us-election-2016__candidate-result
+								.ig-us-election-2016__result-data(style='width:'+(candidate.value/republican100Percent)*100+'%;')
+								.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
+				.ig-us-election-2016__chart-legend
+					span.ig-us-election-2016__r-delegates-symbol
+					| Delegates
 
-		p.ig-us-election-2016__more-polling
-			a(href=morePollingLinkURL)
-				= morePollingLinkText
+			p.ig-us-election-2016__more-polling
+				a(href=morePollingLinkURL)
+					= morePollingLinkText
 
 	if video
 		if isYoutube
-			.ig-us-election-2016__video-wrapper
+			.ig-us-election-2016__content-block.ig-us-election-2016__video-wrapper
 				h2= videoTitle
 				.ig-us-election-2016__video-container
 					iframe(width='560' height='315' src='https://www.youtube.com/embed/'+video+'?rel=0&amp;showinfo=0' frameborder='0' allowfullscreen='allowfullscreen')

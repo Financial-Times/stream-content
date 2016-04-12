@@ -24,13 +24,15 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
 		margin: 15px auto 10px;
+	}
 
-		&:after {
-			content: " ";
-			display: table;
-			clear: both;
-		}
+	&__content-block {
+		flex-grow: 1;
+		width: 100%;
 	}
 
 	&__summary-text > p,
@@ -222,12 +224,13 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	@include oGridRespondTo(M) {
+		&__main {
+			flex-direction: row;
+		}
 
 		&__summary,
 		&__charts,
 		&__video-wrapper {
-			float: left;
-			width: 50%;
 			box-sizing: border-box;
 			padding: 0 20px;
 		}
@@ -243,6 +246,10 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	@include oGridRespondTo(M, $until: L) {
+		&__main {
+			flex-wrap: wrap;
+		}
+
 		&__summary,
 		&__charts {
 			width: 50%;
@@ -251,14 +258,6 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			clear: both;
 			float: none;
 			width: 100%;
-		}
-	}
-
-	@include oGridRespondTo(L) {
-		&__summary,
-		&__charts,
-		&__video-wrapper {
-			width: 33%;
 		}
 	}
 
