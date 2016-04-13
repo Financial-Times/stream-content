@@ -3,43 +3,41 @@ import marked from 'marked';
 
 export default async function getUSElectionLocals() {
 	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
-	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results`;
+	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results,options`;
 
 	const [contentRes, resultsRes] = await Promise.all([fetch(contentURL), fetch(resultsURL)]);
 
 	if (!contentRes.ok) throw new Error(`Request failed with ${contentRes.status}: ${contentURL}`);
 	if (!resultsRes.ok) throw new Error(`Request failed with ${resultsRes.status}: ${resultsURL}`);
 
-	const contentSheets = await contentRes.json();
-	const results = await resultsRes.json();
-
-	const { options } = contentSheets;
-
 	const data = {};
-	let resultsData = [];
 
+	const { options } = await contentRes.json();
 	for (const { name, value } of options) data[name] = value;
 
-	for (const { label, party, value, superdelegates, total, droppedout } of results) {
-		resultsData.push({ label, party, value, superdelegates, total, droppedout });
-	}
+	let { results, options: resultsOptionsSheet } = await resultsRes.json();
+	const resultsOptions = {};
+	for (const { name, value } of resultsOptionsSheet) resultsOptions[name] = value;
 
 	// sort by total delegates descending
-	resultsData.sort((a, b) => b.total - a.total);
+	results.sort((a, b) => b.total - a.total);
 
 	// only use the last name for each candidate
-	resultsData = resultsData.map(candidate => {
+	results = results.map(candidate => {
 		candidate.label = candidate.label.split(' ');
 		candidate.label = candidate.label[candidate.label.length - 1];
 
 		return candidate;
 	});
 
+	data.democratTotalToWin = resultsOptions.demdelegatestotal;
+	data.republicanTotalToWin = resultsOptions.repdelegatestotal;
+
 	// split democrats and republicans so we can get the top candidates from each party
-	const democrats = resultsData.filter(candidate =>
+	const democrats = results.filter(candidate =>
 		!candidate.droppedout && candidate.party === 'democrats'
 	);
-	const republicans = resultsData.filter(candidate =>
+	const republicans = results.filter(candidate =>
 		!candidate.droppedout && candidate.party === 'republicans'
 	);
 
