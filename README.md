@@ -24,9 +24,10 @@ Warning: this serverside application has no caching, no efficiency – it builds
 ## Developing
 
 1. clone this repo
-2. `npm install`
-3. `npm run develop`
-4. code away
+1. add a `.env` file with those variables described in [app.json](./app.json) (you'll need to get the actual values off another dev)
+1. `npm install`
+1. `npm run develop`
+1. code away
 
 Things should refresh in your browser automatically.
 
