@@ -15,11 +15,14 @@ export default async function getUSElectionLocals() {
 	const { options } = await contentRes.json();
 	for (const { name, value } of options) data[name] = value;
 
-	let { results, options: resultsOptionsSheet } = await resultsRes.json();
-	const resultsOptions = {};
-	for (const { name, value } of resultsOptionsSheet) resultsOptions[name] = value;
+	const allResultsSheets = await resultsRes.json();
 
-	// sort by total delegates descending
+	// build a convenient options lookup
+	const resultsOptions = {};
+	for (const { name, value } of allResultsSheets.options) resultsOptions[name] = value;
+
+	// sort results by total delegates descending
+	let results = allResultsSheets.results;
 	results.sort((a, b) => b.total - a.total);
 
 	// only use the last name for each candidate
