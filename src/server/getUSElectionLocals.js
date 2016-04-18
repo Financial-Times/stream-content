@@ -13,13 +13,19 @@ export default async function getUSElectionLocals() {
 	const data = {};
 
 	const { options } = await contentRes.json();
-	for (const { name, value } of options) data[name] = value;
+	for (const { name, value } of options) {
+		if(!name) throw new Error(`Malformed content. Found an undefined option name in the spreadsheet: ${contentURL}`);
+		data[name] = value;
+	}
 
 	const allResultsSheets = await resultsRes.json();
 
 	// build a convenient options lookup
 	const resultsOptions = {};
-	for (const { name, value } of allResultsSheets.options) resultsOptions[name] = value;
+	for (const { name, value } of allResultsSheets.options) {
+		if(!name) throw new Error(`Malformed content. Found an undefined option name in the spreadsheet: ${resultsURL}`);
+		resultsOptions[name] = value;
+	}
 
 	// sort results by total delegates descending
 	let results = allResultsSheets.results;
