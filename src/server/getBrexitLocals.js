@@ -33,7 +33,10 @@ export async function fetchBerthaData() {
 
 	const data = { links };
 
-	for (const { name, value } of options) data[name] = value;
+	for (const { name, value } of options) {
+		if(!name) throw new Error(`Malformed content. Make sure each name is defined in the name-value pairs: ${url}`);
+		data[name] = value;
+	}
 
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
