@@ -34,7 +34,7 @@ export async function fetchBerthaData() {
 	const data = { links };
 
 	for (const { name, value } of options) {
-		if(!name) throw new Error(`Malformed content. Found an undefined option label in the spreadsheet: ${url}`);
+		if(!name) throw new Error(`Malformed content. Found an undefined option name in the spreadsheet: ${url}`);
 		data[name] = value;
 	}
 
