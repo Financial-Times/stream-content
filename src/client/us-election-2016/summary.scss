@@ -117,7 +117,12 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__result-data {
+		color: oColorsGetPaletteColor('white');
 		height: 100%;
+		font-weight: 600;
+		font-size: 14px;
+		box-sizing: border-box;
+		padding-left: 2px;
 	}
 
 	&__chart-party--democrat &__result-data {
@@ -146,31 +151,18 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		color: oColorsGetPaletteColor('grey-tint3');
 		font-size: 13px;
 		font-weight: normal;
-		margin: 5px 0 0;
+		margin: 5px 0 0 50px;
 	}
 
-	&__d-delegates-symbol,
-	&__d-superdelegates-symbol,
-	&__r-delegates-symbol {
+	&__d-superdelegates-symbol {
+		background-color: #9eace4;
 		vertical-align: middle;
-		margin: 0 4px;
+		margin: 0 4px 0 0;
 		position: relative;
 		top: -1px;
 		display: inline-block;
 		width: 8px;
 		height: 8px;
-	}
-
-	&__d-delegates-symbol {
-		background-color: #273c8f;
-	}
-
-	&__d-superdelegates-symbol {
-		background-color: #9eace4;
-	}
-
-	&__r-delegates-symbol {
-		background-color: #b3244b;
 	}
 
 	&__more-polling {
@@ -187,7 +179,6 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	&__video-container {
 		position: relative;
 		padding-bottom: 56.25%;
-		padding-top: 35px;
 		height: 0;
 		overflow: hidden;
 

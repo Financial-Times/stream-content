@@ -15,7 +15,7 @@ if updated
 		h2= chartTitle
 		.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--democrat
 			.ig-us-election-2016__chart-party-label
-				| Democratic
+				| Democratic delegates
 			.ig-us-election-2016__total-to-win-label-container
 				.ig-us-election-2016__total-to-win-label(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
 					= democratTotalToWin.toLocaleString()
@@ -27,18 +27,19 @@ if updated
 							= candidate.label
 						.ig-us-election-2016__candidate-result
 							.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(candidate.value/democrat100Percent)*100+'%;')
+								= candidate.value
+								| &nbsp;+&nbsp;
+								= candidate.superdelegates
 							.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(candidate.superdelegates/democrat100Percent)*100+'%;')
 							.ig-us-election-2016__total-to-win-line(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
 			.ig-us-election-2016__chart-legend
-				span.ig-us-election-2016__d-delegates-symbol
-				| Delegates
 				span.ig-us-election-2016__d-superdelegates-symbol
 				| Superdelegates
 
 
 		.ig-us-election-2016__chart-party.ig-us-election-2016__chart-party--republican
 			.ig-us-election-2016__chart-party-label
-				| Republican
+				| Republican delegates
 			.ig-us-election-2016__total-to-win-label-container
 				.ig-us-election-2016__total-to-win-label(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
 					= republicanTotalToWin.toLocaleString()
@@ -50,10 +51,8 @@ if updated
 							= candidate.label
 						.ig-us-election-2016__candidate-result
 							.ig-us-election-2016__result-data(style='width:'+(candidate.value/republican100Percent)*100+'%;')
+								= candidate.value
 							.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
-			.ig-us-election-2016__chart-legend
-				span.ig-us-election-2016__r-delegates-symbol
-				| Delegates
 
 		p.ig-us-election-2016__more-polling
 			a(href=morePollingLinkURL)
