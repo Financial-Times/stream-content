@@ -3,7 +3,7 @@ import marked from 'marked';
 
 export default async function getUSElectionLocals() {
 	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
-	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results,options?d=spreadsheet`;
+	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results,options`;
 
 	const [contentRes, resultsRes] = await Promise.all([fetch(contentURL), fetch(resultsURL)]);
 
