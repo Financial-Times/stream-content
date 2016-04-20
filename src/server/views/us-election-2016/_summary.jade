@@ -27,7 +27,7 @@ if updated
 							= candidate.label
 						.ig-us-election-2016__candidate-result
 							.ig-us-election-2016__result-data.ig-us-election-2016__result-data--pledged(style='width:'+(candidate.value/democrat100Percent)*100+'%;')
-								= candidate.total
+								= candidate.total.toLocaleString()
 							.ig-us-election-2016__result-data.ig-us-election-2016__result-data--super(style='width:'+(candidate.superdelegates/democrat100Percent)*100+'%;')
 							.ig-us-election-2016__total-to-win-line(style='width:'+(democratTotalToWin/democrat100Percent)*100+'%;')
 			.ig-us-election-2016__chart-legend
@@ -56,7 +56,7 @@ if updated
 							= candidate.label
 						.ig-us-election-2016__candidate-result
 							.ig-us-election-2016__result-data(style='width:'+(candidate.total/republican100Percent)*100+'%;')
-								= candidate.total
+								= candidate.total.toLocaleString()
 							.ig-us-election-2016__total-to-win-line(style='width:'+(republicanTotalToWin/republican100Percent)*100+'%;')
 
 		p.ig-us-election-2016__more-polling
