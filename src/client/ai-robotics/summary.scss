@@ -1,0 +1,53 @@
+@import 'o-grid/main';
+@import 'o-fonts/main';
+@import 'o-colors/main';
+
+.ig-ai-robotics {
+
+	margin: 15px auto 10px;
+
+	&:after {
+		clear: both;
+		display: block;
+		content: "";
+	}
+
+	&__section {
+		&--heading {
+			font: bold 70px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+			margin-top: 70px;
+		}
+
+		&--text {
+			color: white;
+			font-size: 25px;
+			margin-top: 250px;
+		}
+	}
+
+	&__main-heading {
+		color: oColorsGetPaletteColor('black');
+	}
+
+	&__sub-heading {
+		color: #f0cc5d;
+	}
+
+	&__sub-text {
+		font-size: 30px;
+		font-weight: bold;
+	}
+
+	@include oGridRespondTo(M) {
+		&__section {
+			width: 33%;
+			&--heading {
+				float: left;
+			}
+
+			&--text {
+				float: right;
+			}
+		}
+	}
+}

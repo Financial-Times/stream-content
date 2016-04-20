@@ -1,0 +1,14 @@
+@import 'o-grid/main';
+@import 'o-fonts/main';
+@import 'o-colors/main';
+
+.ig-ai-robotics {
+	margin: 0 0 5px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	&__inner {
+		padding: 0 20px;
+	}
+
+}
