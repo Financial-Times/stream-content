@@ -1,5 +1,4 @@
 @import 'next-sass-setup/main';
-@import 'o-expander/main';
 
 @include oFontsInclude(FinancierDisplayWeb);
 @include oFontsInclude(FinancierDisplayWeb, $weight: bold);
