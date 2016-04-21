@@ -30,8 +30,9 @@ const router = new Router();
 // precompile template functions
 const views = path.resolve(__dirname, 'views');
 
-const renderAIRoboticsPreview = jade.compileFile(path.join(views, 'ai-robotics/preview.jade'));
+const renderAIRoboticsSummary = jade.compileFile(path.join(views, 'ai-robotics/summary-card.jade'));
 const renderAIRoboticsIframe = jade.compileFile(path.join(views, 'ai-robotics/iframe.jade'));
+const renderAIRoboticsPreview = jade.compileFile(path.join(views, 'ai-robotics/preview.jade'));
 
 const renderBrexitSummary = jade.compileFile(path.join(views, 'brexit/summary-card.jade'));
 const renderBrexitGuide = jade.compileFile(path.join(views, 'brexit/guide.jade'));
@@ -47,8 +48,6 @@ const renderUsElectionIframe = jade.compileFile(
 const renderUsElection2016Preview = jade.compileFile(
 	path.join(views, 'us-election-2016/preview.jade')
 );
-
-const renderAIRoboticsSummary = jade.compileFile(path.join(views, 'ai-robotics/summary-card.jade'));
 
 const elements = {
 	'ai-robotics-summary': async ctx => {
