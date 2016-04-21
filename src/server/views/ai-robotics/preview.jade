@@ -1,6 +1,6 @@
 //- just for previewing in development - this layout mimics the Next stream page's outer layout and styles so we can see how the card looks when inlined.
 
-html(data-concept-id='ZTBiZDJjNjktZmM5OS00ZjMyLWE3MDgtNmMyZTRlOGQ3NjFj-VG9waWNz')
+html
 	head
 		title Robot Week card preview
 
@@ -11,17 +11,16 @@ html(data-concept-id='ZTBiZDJjNjktZmM5OS00ZjMyLWE3MDgtNmMyZTRlOGQ3NjFj-VG9waWNz'
 
 	body
 		p Element previews: <a href="../us-election-2016/preview.html">Britain's EU Referendum</a> | <a href="../us-election-2016/preview.html">US Election 2016</a> | Robot Week
-		#site-content(role='main' data-concept-id='ZTBiZDJjNjktZmM5OS00ZjMyLWE3MDgtNmMyZTRlOGQ3NjFj-VG9waWNz')
-			.stream.stream--ai-robotics.o-grid-container
-				h1 Robot Week inline preview (for Next)
+		.stream.stream--ai-robotics.o-grid-container
+			h1 Robot Week inline preview (for Next)
 
-				#stream
-					.stream__container
-						.stream__list.js-stream-list
-							.stream-item.stream-item--row.stream-item--bleed(data-trackable='stream-item-0')
-								.custom-fragment
-									.custom-fragment__content
-										include summary-card.jade
+			#stream
+				.stream__container
+					.stream__list.js-stream-list
+						.stream-item.stream-item--row.stream-item--bleed(data-trackable='stream-item-0')
+							.custom-fragment
+								.custom-fragment__content
+									include summary-card.jade
 
 		.stream.o-grid-container
 			h1 Robot Week iFrame preview (for old FT)
