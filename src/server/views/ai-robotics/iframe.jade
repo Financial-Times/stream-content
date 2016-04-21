@@ -1,0 +1,23 @@
+//- iframe for FT.com (falcon)
+html
+	head
+		title Robot Week iFrame
+		base(target='_parent')
+		style
+			include ../../../client/ai-robotics/iframe.css
+	body
+		div
+			include summary-card.jade
+
+		script.
+			function fixHeight() {
+				setTimeout(function () {
+					frameElement.height = document.querySelector('.ig-ai-robotics__container').offsetHeight + 5;
+				}, 0);
+			}
+
+			document.addEventListener('DOMContentLoaded', fixHeight);
+			window.onload = function () {
+				fixHeight();
+				setTimeout(fixHeight, 1000);
+			};
