@@ -47,7 +47,7 @@ export async function fetchBerthaData() {
 
 	const daystogo = countdown()
 	if (daystogo > 1) {
-		data.heading = data.heading + countdown() + ' days until the referendum' 
+		data.heading = `${data.heading}: ${daystogo} days until the referendum`;
 	}
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
