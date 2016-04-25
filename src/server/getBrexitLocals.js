@@ -45,8 +45,10 @@ export async function fetchBerthaData() {
 		data[name] = value;
 	}
 
-	// date process: days 2016-06-23 roundded down to nearest full day
-	data.heading = data.heading + countdown() + ' days until the referendum' 
+	const daystogo = countdown()
+	if (daystogo > 1) {
+		data.heading = data.heading + countdown() + ' days until the referendum' 
+	}
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
 		const $ = cheerio.load(marked(data.text));
