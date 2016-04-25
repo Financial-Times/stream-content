@@ -24,6 +24,13 @@ async function fetchChart(width, height = 75) {
 	return res.text();
 }
 
+function countdown() {
+	const oneday = 24 * 60 * 60 * 1000;
+	const referendum = new Date(2016, 5, 23);
+	const today = new Date();
+	return Math.round(Math.abs((today.getTime() - referendum.getTime())/(oneday)));
+}
+
 export async function fetchBerthaData() {
 	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options,links`;
 	const res = await fetch(url);
@@ -39,7 +46,7 @@ export async function fetchBerthaData() {
 	}
 
 	// date process: days 2016-06-23 roundded down to nearest full day
-	data.heading = data.heading + (new Date(new Date(2016, 05, 23) - new Date())).toUTCDays() + ' days until the referendum' 
+	data.heading = data.heading + countdown() + ' days until the referendum' 
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
 		const $ = cheerio.load(marked(data.text));
