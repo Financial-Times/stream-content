@@ -1,13 +1,18 @@
-- var mainHeading = "ROBOTS"
-- var subHeading = "FRIEND OR FOE?"
+- var mainHeading = "Robots"
+- var subHeading = "Friend or Foe?"
 - var mainText = "How will robots really change our world? In this week's special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
 - var subText = "Today: The Robot Economy"
 
 .ig-ai-robotics
-	.ig-ai-robotics__section.ig-ai-robotics__section--heading
+	.ig-ai-robotics__robot-head
+		include _robot-head.jade
+
+	.ig-ai-robotics__section.ig-ai-robotics__section--heading(data-o-grid-colspan="12")
 		.ig-ai-robotics__main-heading= mainHeading
+
+	.ig-ai-robotics__section.ig-ai-robotics__section--subheading(data-o-grid-colspan="12 M8")
 		.ig-ai-robotics__sub-heading= subHeading
 
-	.ig-ai-robotics__section.ig-ai-robotics__section--text
+	.ig-ai-robotics__section.ig-ai-robotics__section--explainer(data-o-grid-colspan="12 M4")
 		.ig-ai-robotics__main-text= mainText
 		.ig-ai-robotics__sub-text= subText
