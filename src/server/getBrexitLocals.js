@@ -28,7 +28,7 @@ function countdown() {
 	const oneday = 24 * 60 * 60 * 1000;
 	const referendum = new Date(2016, 5, 23);
 	const today = new Date();
-	return Math.round(Math.abs((today.getTime() - referendum.getTime())/(oneday)));
+	return Math.floor(Math.abs((today.getTime() - referendum.getTime())/(oneday)));
 }
 
 export async function fetchBerthaData() {
