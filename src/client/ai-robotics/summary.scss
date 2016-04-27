@@ -2,9 +2,26 @@
 @import 'o-typography/main';
 @import 'o-colors/main';
 
+.sub-header--ai-robotics {
+	.subheader__section {
+		display: none;
+	}
+}
+
+.stream--ai-robotics {
+	.custom-fragment__content {
+		margin-top: 0;
+	}
+}
+
+.ig-ai-robotics__container {
+	padding-left: 0;
+	padding-right: 0;
+}
+
 .ig-ai-robotics {
 	position: relative;
-	overflow: hidden;
+	// overflow: hidden;
 
 	background-color: #67A4C7;
 
@@ -97,7 +114,7 @@
 	top: 23px;
 
 	@include oGridRespondTo(M) {
-		bottom: -4px;
+		bottom: -10px;
 		width: 41%;
 		right: 41%;
 		top: inherit;
@@ -108,7 +125,7 @@
 	}
 
 	@include oGridRespondTo(XL) {
-		width: 34%;
+		width: 32%;
 	}
 
 
@@ -118,9 +135,10 @@
 	display: none;
 	position: absolute;
 	z-index: 2;
-	width: 14%;
+	transform: rotate(315deg);
+	width: 5%;
 	bottom: -95px;
-	left: 10%;
+	left: 20%;
 	@include oGridRespondTo(M) {
 		display: block;
 	}
@@ -128,6 +146,6 @@
 		bottom: -125px;
 	}
 	@include oGridRespondTo(XL) {
-		bottom: -160px;
+		bottom: -200px;
 	}
 }
