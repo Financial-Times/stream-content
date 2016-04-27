@@ -1,0 +1,23 @@
+@import 'o-grid/main';
+
+.n-myft-ui {
+  @include oGridRespondTo(M) {
+    margin-top: 10px;
+    margin-bottom: 90px;
+    animation-name: follow-spin;
+    animation-iteration-count: 1;
+    animation-duration: 5s;
+  }
+}
+
+@keyframes follow-spin {
+  from {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}

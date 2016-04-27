@@ -1,15 +1,12 @@
 @import 'o-grid/main';
-@import 'o-fonts/main';
+@import 'o-typography/main';
 @import 'o-colors/main';
 
 .ig-ai-robotics {
 	position: relative;
+	overflow: hidden;
 
 	background-color: #67A4C7;
-	// background-image: url('https://ig.ft.com/static/robots/bg.png');
-	// background-repeat: no-repeat;
-	// background-size: auto 100%;
-	// background-position: center top;
 
 	&:after {
 		clear: both;
@@ -19,17 +16,30 @@
 }
 
 .ig-ai-robotics__section--heading {
-	font: bold 70px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
-	font-weight: 900;
+	@include oTypographySerifDisplay(xl);
 	margin-top: 20px;
 	padding: 0;
-	border-bottom: 5px solid white;
+	border-bottom: 2px solid white;
+	@include oGridRespondTo(M) {
+		border-width: 3px
+	}
+	@include oGridRespondTo(L) {
+		border-width: 4px;
+		font-size: 70px;
+		line-height: 70px;
+	}
+	@include oGridRespondTo(XL) {
+		margin-top: 40px;
+	}
 }
 
 .ig-ai-robotics__main-heading {
 	color: oColorsGetPaletteColor('black');
-	padding-left: 20px;
+	padding-left: 10px;
 	padding-right: 66%;
+	@include oGridRespondTo(M) {
+		padding-left: 20px;
+	}
 }
 
 .ig-ai-robotics__section--subheading {
@@ -37,30 +47,87 @@
 }
 
 .ig-ai-robotics__sub-heading {
-	font: 70px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+	@include oTypographySerifDisplay(xl);
 	color: #f0cc5d;
-	padding-right: 50%;
+	padding-right: 55%;
+	@include oGridRespondTo(L) {
+		font-size: 70px;
+		line-height: 70px;
+	}
 }
 
 .ig-ai-robotics__section--explainer {
-	font: 25px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
+	@include oTypographySerifDisplay(s);
 	color: white;
 	padding-left: 0;
+
+	@include oGridRespondTo(L) {
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	@include oGridRespondTo(XL) {
+		@include oTypographySerifDisplay(m);
+		line-height: 28px;
+	}
 }
 
-.ig-ai-robotics__main-text {
-	margin-top: 20px;
-	margin-right: 20px;
-}
+.ig-ai-robotics__main-text,
 .ig-ai-robotics__sub-text {
-	margin: 20px 20px 20px 0;
-	font-size: 30px;
-	font-weight: bold;
+	margin: 5px 10px 10px 10px;
+	@include oGridRespondTo(M) {
+		margin-left: 0;
+	}
+}
+
+.ig-ai-robotics__sub-text {
+	@include oTypographySerifDisplay(m);
+	font-weight: 600;
+
+	@include oGridRespondTo(XL) {
+		@include oTypographySerifDisplaySize(l);
+	}
 }
 
 .ig-ai-robotics__robot-head {
-	width: 35%;
 	position: absolute;
-	bottom: 0;
-	right: 30%;
+	z-index: 2;
+	width: 120px;
+	right: 20px;
+	top: 23px;
+
+	@include oGridRespondTo(M) {
+		bottom: -4px;
+		width: 41%;
+		right: 41%;
+		top: inherit;
+	}
+
+	@include oGridRespondTo(L) {
+		right: 34%;
+	}
+
+	@include oGridRespondTo(XL) {
+		width: 34%;
+	}
+
+
+}
+
+.ig-ai-robotics__robot-hand {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	width: 14%;
+	bottom: -95px;
+	left: 10%;
+	@include oGridRespondTo(M) {
+		display: block;
+	}
+	@include oGridRespondTo(L) {
+		bottom: -125px;
+	}
+	@include oGridRespondTo(XL) {
+		bottom: -160px;
+	}
 }

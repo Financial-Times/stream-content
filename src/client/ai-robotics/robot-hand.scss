@@ -1,0 +1,21 @@
+@import 'o-grid/main';
+
+.robot__hand {
+  display: none;
+  @include oGridRespondTo(M) {
+    display: block;
+    animation-duration: 2.5s;
+    animation-name: hand-entering;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+  }
+}
+
+@keyframes hand-entering {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-102px, -100px);
+  }
+}
