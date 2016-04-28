@@ -1,25 +1,28 @@
 @import 'o-grid/main';
 
 .ig-ai-robotics__container {
-  .n-myft-ui {
-    @include oGridRespondTo(M) {
-      margin-top: 10px;
-      margin-bottom: 90px;
-      animation-name: follow-spin;
-      animation-iteration-count: 1;
-      animation-duration: 5s;
-    }
-  }
+	.n-myft-ui {
+		@include oGridRespondTo(M) {
+			margin-top: 10px;
+			margin-bottom: 70px;
+			animation-name: follow-spin;
+			animation-iteration-count: 1;
+			animation-duration: 5s;
+		}
+		@include oGridRespondTo(L) {
+			margin-bottom: 90px;
+		}
+	}
 
-  @keyframes follow-spin {
-    from {
-      transform: rotateY(180deg);
-    }
-    50% {
-      transform: rotateY(180deg);
-    }
-    to {
-      transform: rotateY(0deg);
-    }
-  }
+	@keyframes follow-spin {
+		from {
+			transform: rotateY(180deg);
+		}
+		50% {
+			transform: rotateY(180deg);
+		}
+		to {
+			transform: rotateY(0deg);
+		}
+	}
 }

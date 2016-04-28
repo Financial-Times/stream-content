@@ -1,21 +1,46 @@
 @import 'o-grid/main';
 
 .robot__hand {
-  display: none;
-  @include oGridRespondTo(M) {
-    display: block;
-    animation-duration: 2.5s;
-    animation-name: hand-entering;
-    animation-iteration-count: 2;
-    animation-direction: alternate;
-  }
+	display: none;
+	@include oGridRespondTo(M) {
+		display: block;
+		animation-duration: 2.5s;
+		animation-name: hand-entering-M;
+		animation-iteration-count: 2;
+		animation-direction: alternate;
+	}
+	@include oGridRespondTo(L) {
+		animation-name: hand-entering-L;
+	}
+	@include oGridRespondTo(XL) {
+		animation-name: hand-entering-XL;
+	}
+
 }
 
-@keyframes hand-entering {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(10px, -150px);
-  }
+@keyframes hand-entering-M {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(30px, -85px);
+	}
+}
+
+@keyframes hand-entering-L {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(11px, -130px);
+	}
+}
+
+@keyframes hand-entering-XL {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(11px, -145px);
+	}
 }

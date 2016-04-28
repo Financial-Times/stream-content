@@ -21,7 +21,7 @@
 
 .ig-ai-robotics {
 	position: relative;
-	// overflow: hidden;
+	overflow: hidden;
 
 	background-color: #67A4C7;
 
@@ -109,13 +109,19 @@
 .ig-ai-robotics__robot-head {
 	position: absolute;
 	z-index: 2;
-	width: 120px;
-	right: 20px;
-	top: 23px;
+	width: 115px;
+	right: 10px;
+	top: 16px;
+
+	@include oGridRespondTo(S) {
+		width: 125px;
+		right: 20px;
+		top: 12px;
+	}
 
 	@include oGridRespondTo(M) {
 		bottom: -10px;
-		width: 41%;
+		width: 36%;
 		right: 41%;
 		top: inherit;
 	}
@@ -137,15 +143,16 @@
 	z-index: 2;
 	transform: rotate(315deg);
 	width: 5%;
-	bottom: -95px;
-	left: 20%;
+	bottom: -115px;
+	left: 23%;
 	@include oGridRespondTo(M) {
 		display: block;
 	}
 	@include oGridRespondTo(L) {
-		bottom: -125px;
+		bottom: -155px;
 	}
 	@include oGridRespondTo(XL) {
 		bottom: -200px;
+		left: 20%;
 	}
 }
