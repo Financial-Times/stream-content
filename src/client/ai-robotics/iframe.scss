@@ -31,4 +31,14 @@ body {
 			}
 		}
 	}
+
+	.n-myft-ui,
+	.ig-ai-robotics__robot-hand {
+		display: none;
+	}
+
+	.ig-ai-robotics__robot-head {
+		width: 30%;
+		right: 45%;
+	}
 }
