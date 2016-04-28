@@ -6,8 +6,6 @@
 
 
 .ig-ai-robotics
-	.ig-ai-robotics__robot-head
-		include ./svg/robot-head.svg
 	.ig-ai-robotics__robot-hand
 		include ./svg/robot-hand.svg
 
@@ -17,6 +15,9 @@
 	.ig-ai-robotics__section.ig-ai-robotics__section--subheading(data-o-grid-colspan="12 M7 L8")
 		.ig-ai-robotics__sub-heading= subHeading
 		include _follow-button.jade
+
+	.ig-ai-robotics__robot-head
+		include ./svg/robot-head.svg
 
 	.ig-ai-robotics__section.ig-ai-robotics__section--explainer(data-o-grid-colspan="12 M5 L4")
 		.ig-ai-robotics__main-text= mainText

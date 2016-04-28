@@ -34,10 +34,12 @@
 }
 
 .ig-ai-robotics__section--heading {
-	@include oTypographySerifDisplay(xl);
+	@include oTypographySans(xl);
 	margin-top: 20px;
 	padding: 0;
-	border-bottom: 2px solid white;
+	@include oGridRespondTo(S) {
+		border-bottom: 2px solid white;
+	}
 	@include oGridRespondTo(M) {
 		border-width: 3px
 	}
@@ -54,38 +56,54 @@
 .ig-ai-robotics__main-heading {
 	color: oColorsGetPaletteColor('black');
 	padding-left: 10px;
-	padding-right: 66%;
+	padding-right: 10px;
+	text-align: center;
+	@include oGridRespondTo(S) {
+		padding-right: 66%;
+		text-align: left;
+	}
 	@include oGridRespondTo(M) {
 		padding-left: 20px;
 	}
 }
 
 .ig-ai-robotics__section--subheading {
-
+	@include oGridRespondTo($until: S) {
+		padding-left: 0;
+	}
 }
 
 .ig-ai-robotics__sub-heading {
-	@include oTypographySerifDisplay(xl);
+	@include oTypographySans(xl);
 	color: #f0cc5d;
-	padding-right: 55%;
-	@include oGridRespondTo(L) {
+	text-align: center;
+	@include oGridRespondTo($until: S) {
+		padding-left: 31%;
+		padding-right: 31%;
+	}
+	@include oGridRespondTo(S) {
+		padding-right: 55%;
+		text-align: left;
+	}
+ 	@include oGridRespondTo(L) {
 		font-size: 70px;
 		line-height: 70px;
 	}
 }
 
 .ig-ai-robotics__section--explainer {
-	@include oTypographySerifDisplay(s);
+	@include oTypographySansData(m);
+	font-size: 16px;
+	line-height: 24px;
 	color: white;
 	padding-left: 0;
 
 	@include oGridRespondTo(L) {
 		font-size: 18px;
-		line-height: 24px;
 	}
 
 	@include oGridRespondTo(XL) {
-		@include oTypographySerifDisplay(m);
+		@include oTypographySansData(l);
 		line-height: 28px;
 	}
 }
@@ -99,22 +117,30 @@
 }
 
 .ig-ai-robotics__sub-text {
-	@include oTypographySerifDisplay(m);
+	@include oTypographySansSize(m);
 	font-weight: 600;
 
+	@include oGridRespondTo(L) {
+		@include oTypographySansSize(l);
+	}
+
 	@include oGridRespondTo(XL) {
-		@include oTypographySerifDisplaySize(l);
+		@include oTypographySansDataSize(xl);
 	}
 }
 
 .ig-ai-robotics__robot-head {
-	position: absolute;
 	z-index: 2;
-	width: 115px;
-	right: 10px;
-	top: 16px;
+
+	@include oGridRespondTo($until: S) {
+		@include oGridColspan(12);
+		padding-left: 0;
+		overflow: hidden;
+		height: 300px;
+	}
 
 	@include oGridRespondTo(S) {
+		position: absolute;
 		width: 125px;
 		right: 20px;
 		top: 12px;

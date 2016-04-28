@@ -1,4 +1,5 @@
 @import 'o-grid/main';
+@import 'o-colors/main';
 
 .ig-ai-robotics__container {
 	.n-myft-ui {
@@ -12,6 +13,19 @@
 		@include oGridRespondTo(L) {
 			margin-bottom: 90px;
 		}
+	}
+
+	.n-myft-ui--follow {
+		@include oGridRespondTo($until: S) {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%);
+      margin-top: 10px;
+		}
+	}
+
+	.n-myft-ui__button {
+		background-color: hsla(0,0%,100%,.8);
 	}
 
 	@keyframes follow-spin {
