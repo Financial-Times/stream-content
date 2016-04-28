@@ -1,24 +1,18 @@
 .robot__eye {
-  animation-duration: 4s;
-  animation-name: eyes-pulsing;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+	animation-duration: 4s;
+	animation-name: eyes-pulsing;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 @keyframes eyes-pulsing {
-  from {
-    fill: #3DA435;
-  }
-  15% {
-    fill: #3DA435;
-  }
-  50% {
-    fill: #3C3C3B;
-  }
-  85% {
-    fill: red;
-  }
-  to {
-    fill: red;
-  }
+	from {
+		fill: #3DA435;
+	}
+	50% {
+		fill: #3C3C3B;
+	}
+	to {
+		fill: red;
+	}
 }
