@@ -7,8 +7,7 @@
 			margin-bottom: 70px;
 			animation-name: follow-spin;
 			animation-iteration-count: 1;
-      animation-delay: 1.5s;
-			animation-duration: 1.5s;
+			animation-duration: 3s;
 		}
 		@include oGridRespondTo(L) {
 			margin-bottom: 90px;
@@ -17,6 +16,9 @@
 
 	@keyframes follow-spin {
 		from {
+			transform: rotateY(180deg);
+		}
+		66% {
 			transform: rotateY(180deg);
 		}
 		to {
