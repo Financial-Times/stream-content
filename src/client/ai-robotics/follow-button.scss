@@ -24,8 +24,9 @@
 		}
 	}
 
-	.n-myft-ui__button {
-		background-color: hsla(0,0%,100%,.8);
+	.n-myft-ui__button,
+	.n-myft-ui__button[aria-pressed=true] {
+		background-color: hsla(0,0%,100%,.8) !important;
 	}
 
 	@keyframes follow-spin {
