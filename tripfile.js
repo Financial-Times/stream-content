@@ -31,7 +31,7 @@ const preprocess = chain(
 const optimise = chain(
 	// plugin('uglify')
 
-	plugin('postcss', cssnano(), { match: 'client/**/*.css', map: false }),
+	plugin('postcss', cssnano({safe: true}), { match: 'client/**/*.css', map: false }),
 );
 
 export async function build() {
