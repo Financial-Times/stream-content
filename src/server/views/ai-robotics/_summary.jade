@@ -1,7 +1,9 @@
 - var mainHeading = "Robots"
 - var subHeadingFirst = "Friend"
 - var subHeadingSecond = "or foe?"
-- var mainText = "How will robots really change our world? In this week’s special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
+- var mainTextBefore = "How will robots really change our world? In next week’s special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
+- var mainTextDuring = "How will robots really change our world? In this week’s special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
+- var mainTextAfter = "How will robots really change our world? In this special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
 
 //- Each day's subText
 - var subTextOne = "Day 1: The Robot Economy"
@@ -10,7 +12,9 @@
 - var subTextFour = "Day 4: The Human / Robot Future"
 - var subTextDefault = ""
 
+- var launchWeek = new Date('May 2, 2016 00:00:01')
 - var launchDate = new Date('May 3, 2016 00:00:01')
+- var endLaunchWeek = new Date('May 9, 2016 00:00:01')
 - var endDate = new Date('May 11, 2016 00:00:01')
 - var today = new Date()
 - var currDay = today.getDay()
@@ -33,7 +37,13 @@
 		include ./svg/robot-head.svg
 
 	.ig-ai-robotics__section.ig-ai-robotics__section--explainer(data-o-grid-colspan="12 M5 L4")
-		.ig-ai-robotics__main-text= mainText
+		if today < launchWeek
+			.ig-ai-robotics__main-text= mainTextBefore
+		if today > launchWeek && today < endLaunchWeek
+			.ig-ai-robotics__main-text= mainTextDuring
+		if today > endLaunchWeek
+			.ig-ai-robotics__main-text= mainTextAfter
+
 		if today > launchDate && today < endDate
 			if currHour > 5
 				case currDay

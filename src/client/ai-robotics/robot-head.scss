@@ -14,19 +14,23 @@
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	transform-origin: center center;
+	-moz-transform-origin: center center;
 }
 
 @keyframes eyes-pulsing {
 	from {
 		fill: #3FA535;
 		transform: scale(2,2);
+		-moz-transform: scale(1,1);
 	}
 	50% {
 		fill: #3C3C3B;
 		transform: scale(1,1);
+		-moz-transform: scale(1,1);
 	}
 	to {
 		fill: red;
 		transform: scale(2,2);
+		-moz-transform: scale(1,1);
 	}
 }
