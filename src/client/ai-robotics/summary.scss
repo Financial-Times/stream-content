@@ -23,8 +23,9 @@
 	position: relative;
 	overflow: hidden;
 
+	background-color: oColorsGetPaletteColor('blue-tint1');
+	// original background color
 	// background-color: #67A4C7;
-	background-color: #598caf;
 
 	&:after {
 		clear: both;
@@ -52,11 +53,12 @@
 }
 
 .ig-ai-robotics__main-heading {
-	color: oColorsGetPaletteColor('black');
+	color: oColorsGetPaletteColor('white');
 	padding-left: 10px;
 	padding-right: 10px;
 	text-align: center;
 	@include oGridRespondTo(S) {
+		color: oColorsGetPaletteColor('black');
 		padding-right: 66%;
 		text-align: left;
 	}
@@ -134,7 +136,7 @@
 		@include oGridColspan(12);
 		padding-left: 0;
 		overflow: hidden;
-		height: 300px;
+		max-height: 300px;
 	}
 
 	@include oGridRespondTo(S) {
@@ -147,7 +149,7 @@
 	@include oGridRespondTo(M) {
 		bottom: -10px;
 		width: 35%;
-		right: 41%;
+		right: 43%;
 		top: inherit;
 	}
 
@@ -166,14 +168,16 @@
 	display: none;
 	position: absolute;
 	z-index: 2;
-	transform: rotate(315deg);
 	width: 5%;
-	bottom: -115px;
-	left: 23%;
 	@include oGridRespondTo(M) {
 		display: block;
+		bottom: -145px;
+		left: 11%;
 	}
 	@include oGridRespondTo(L) {
+		bottom: -115px;
+		left: 23%;
+		transform: rotate(315deg);
 		bottom: -155px;
 	}
 	@include oGridRespondTo(XL) {
