@@ -2,15 +2,19 @@
 - var subHeadingFirst = "Friend"
 - var subHeadingSecond = "or foe?"
 - var mainText = "How will robots really change our world? In this week’s special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
-- var subText = "Day 4: The Human / Robot Future"
 
 //- Each day's subText
-//- "Day 1: The Robot Economy"
-//- "Day 2: Living With Robots"
-//- "Day 3: Working With Robots"
-//- "Day 4: The Human / Robot Future"
+- var subTextOne = "Day 1: The Robot Economy"
+- var subTextTwo = "Day 2: Living With Robots"
+- var subTextThree = "Day 3: Working With Robots"
+- var subTextFour = "Day 4: The Human / Robot Future"
+- var subTextDefault = ""
 
-
+- var launchDate = new Date('May 3, 2016 00:00:01')
+- var endDate = new Date('May 11, 2016 00:00:01')
+- var today = new Date()
+- var currDay = today.getDay()
+- var currHour = today.getHours()
 
 .ig-ai-robotics
 	.ig-ai-robotics__robot-hand
@@ -30,4 +34,32 @@
 
 	.ig-ai-robotics__section.ig-ai-robotics__section--explainer(data-o-grid-colspan="12 M5 L4")
 		.ig-ai-robotics__main-text= mainText
-		.ig-ai-robotics__sub-text= subText
+		if today > launchDate && today < endDate
+			if currHour > 5
+				case currDay
+					when 2
+						.ig-ai-robotics__sub-text= subTextOne
+					when 3
+						.ig-ai-robotics__sub-text= subTextTwo
+					when 4
+						.ig-ai-robotics__sub-text= subTextThree
+					when 5
+						.ig-ai-robotics__sub-text= subTextFour
+					default
+						.ig-ai-robotics__sub-text= subTextDefault
+			else
+				case currDay
+					when 2
+						.ig-ai-robotics__sub-text= subTextDefault
+					when 3
+						.ig-ai-robotics__sub-text= subTextOne
+					when 4
+						.ig-ai-robotics__sub-text= subTextTwo
+					when 5
+						.ig-ai-robotics__sub-text= subTextThree
+					when 6
+						.ig-ai-robotics__sub-text= subTextFour
+					default
+						.ig-ai-robotics__sub-text= subTextDefault
+		else
+			.ig-ai-robotics__sub-text= subTextDefault
