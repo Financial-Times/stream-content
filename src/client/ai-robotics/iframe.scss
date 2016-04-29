@@ -18,6 +18,12 @@ body {
 	color: oColorsGetPaletteColor('grey-tint5');
 	font-family: oFontsGetFontFamilyWithFallbacks(MetricWeb);
 
+	.ig-ai-robotics__container {
+		max-width: 972px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
 	.ig-ai-robotics {
 		margin: 0;
 
@@ -36,11 +42,9 @@ body {
 	.ig-ai-robotics__section--subheading {
 		@include oGridColspan(7);
 	}
+
 	.ig-ai-robotics__section--explainer {
 		@include oGridColspan(5);
-	}
-	.ig-ai-robotics__section--heading {
-		margin-top: 15px;
 	}
 
 	.ig-ai-robotics__sub-heading {
