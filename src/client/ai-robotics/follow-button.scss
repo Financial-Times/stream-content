@@ -3,8 +3,8 @@
 
 .ig-ai-robotics__container {
 	.n-myft-ui {
+		margin-top: 10px;
 		@include oGridRespondTo(M) {
-			margin-top: 10px;
 			margin-bottom: 70px;
 			animation-name: follow-spin;
 			animation-iteration-count: 1;

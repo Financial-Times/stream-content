@@ -1,7 +1,14 @@
 - var mainHeading = "Robots"
-- var subHeading = "Friend or foe?"
+- var subHeadingFirst = "Friend"
+- var subHeadingSecond = "or foe?"
 - var mainText = "How will robots really change our world? In this week’s special series, the FT finds out: we meet the robots, talk to people already living and working with them, and consult the best brains in the field. Based on what we find, we will ask Are robots good or bad for humanity?"
-- var subText = "Today: The Robot Economy"
+- var subText = "Day 4: The Human / Robot Future"
+
+//- Each day's subText
+//- "Day 1: The Robot Economy"
+//- "Day 2: Living With Robots"
+//- "Day 3: Working With Robots"
+//- "Day 4: The Human / Robot Future"
 
 
 
@@ -13,7 +20,9 @@
 		.ig-ai-robotics__main-heading= mainHeading
 
 	.ig-ai-robotics__section.ig-ai-robotics__section--subheading(data-o-grid-colspan="12 M7 L8")
-		.ig-ai-robotics__sub-heading= subHeading
+		.ig-ai-robotics__sub-heading
+			span= subHeadingFirst
+			span= subHeadingSecond
 		include _follow-button.jade
 
 	.ig-ai-robotics__robot-head
