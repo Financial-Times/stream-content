@@ -38,6 +38,7 @@
 	margin-top: 20px;
 	padding: 0;
 	@include oGridRespondTo(S) {
+		margin-top: 40px;
 		border-bottom: 2px solid white;
 	}
 	@include oGridRespondTo(M) {
@@ -47,9 +48,6 @@
 		border-width: 4px;
 		font-size: 70px;
 		line-height: 70px;
-	}
-	@include oGridRespondTo(XL) {
-		margin-top: 40px;
 	}
 }
 
@@ -70,16 +68,17 @@
 .ig-ai-robotics__section--subheading {
 	@include oGridRespondTo($until: S) {
 		padding-left: 0;
+		padding-bottom: 45px;
 	}
 }
 
 .ig-ai-robotics__sub-heading {
 	@include oTypographySans(xl);
+	line-height: 0.8em;
 	color: #f0cc5d;
 	text-align: center;
-	@include oGridRespondTo($until: S) {
-		padding-left: 31%;
-		padding-right: 31%;
+	span {
+		display: block;
 	}
 	@include oGridRespondTo(S) {
 		padding-right: 55%;
@@ -87,14 +86,13 @@
 	}
  	@include oGridRespondTo(L) {
 		font-size: 70px;
-		line-height: 70px;
 	}
 }
 
 .ig-ai-robotics__section--explainer {
 	@include oTypographySansData(m);
+	line-height: 1.3em;
 	font-size: 16px;
-	line-height: 24px;
 	color: white;
 	padding-left: 0;
 
@@ -104,7 +102,7 @@
 
 	@include oGridRespondTo(XL) {
 		@include oTypographySansData(l);
-		line-height: 28px;
+		line-height: 1.3em;
 	}
 }
 
@@ -141,24 +139,24 @@
 
 	@include oGridRespondTo(S) {
 		position: absolute;
-		width: 125px;
+		width: 140px;
 		right: 20px;
-		top: 12px;
+		top: 35px;
 	}
 
 	@include oGridRespondTo(M) {
 		bottom: -10px;
-		width: 36%;
+		width: 35%;
 		right: 41%;
 		top: inherit;
 	}
 
 	@include oGridRespondTo(L) {
-		right: 34%;
+		right: 37%;
 	}
 
 	@include oGridRespondTo(XL) {
-		width: 32%;
+		width: 29%;
 	}
 
 
