@@ -1,4 +1,5 @@
 @import 'next-sass-setup/main';
+@import 'o-grid/main';
 
 @include oFontsInclude(FinancierDisplayWeb);
 @include oFontsInclude(FinancierDisplayWeb, $weight: bold);
@@ -32,8 +33,18 @@ body {
 		}
 	}
 
+	.ig-ai-robotics__section--subheading {
+		@include oGridColspan(7);
+	}
+	.ig-ai-robotics__section--explainer {
+		@include oGridColspan(5);
+	}
+	.ig-ai-robotics__section--heading {
+		margin-top: 15px;
+	}
+
 	.ig-ai-robotics__sub-heading {
-		margin-bottom: 90px;
+		margin-bottom: 78px;
 	}
 
 	.n-myft-ui,
@@ -42,7 +53,7 @@ body {
 	}
 
 	.ig-ai-robotics__robot-head {
-		width: 31%;
+		width: 24%;
 		right: 45%;
 	}
 }
