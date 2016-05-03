@@ -194,3 +194,10 @@
 		left: 20%;
 	}
 }
+
+.o-header--mega-nav-open {
+	.ig-ai-robotics__robot-head,
+	.ig-ai-robotics__robot-hand {
+		z-index: 0;
+	}
+}
