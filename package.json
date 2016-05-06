@@ -36,6 +36,10 @@
     "marked": "^0.3.5",
     "trip": "^1.0.3"
   },
+  "engines": {
+    "node": ">=5",
+    "npm": ">=3"
+  },
   "scripts": {
     "build": "trip build",
     "develop": "trip develop",
