@@ -14,7 +14,11 @@ export default async function getUSElectionLocals() {
 
 	const { options } = await contentRes.json();
 	for (const { name, value } of options) {
-		if(!name) throw new Error(`Malformed content. Found an undefined option name in the spreadsheet: ${contentURL}`);
+		if (!name) {
+			throw new Error(
+				`Malformed content. Found an undefined option name in the spreadsheet: ${contentURL}`
+			);
+		}
 		data[name] = value;
 	}
 
@@ -23,7 +27,11 @@ export default async function getUSElectionLocals() {
 	// build a convenient options lookup
 	const resultsOptions = {};
 	for (const { name, value } of allResultsSheets.options) {
-		if(!name) throw new Error(`Malformed content. Found an undefined option name in the spreadsheet: ${resultsURL}`);
+		if (!name) {
+			throw new Error(
+				`Malformed content. Found an undefined option name in the spreadsheet: ${resultsURL}`
+			);
+		}
 		resultsOptions[name] = value;
 	}
 
