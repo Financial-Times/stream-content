@@ -5,6 +5,7 @@ import Promise from 'bluebird';
 export default async function getBrexitLocals() {
 	const [data, pollCharts] = await Promise.all([
 		fetchBerthaData(),
+
 		Promise.props({
 			default: fetchChart(300),
 			S: fetchChart(400),
@@ -19,7 +20,7 @@ export default async function getBrexitLocals() {
 
 async function fetchChart(width, height = 75) {
 	const url = `https://ig.ft.com/sites/brexit-polling/poll-of-polls/fontless/${width}-x-${height}.svg`;
-	const res = await fetch(url);
+	const res = await fetch(url, { timeout: 10000 });
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 	return res.text();
 }
@@ -28,12 +29,12 @@ function countdown() {
 	const oneday = 24 * 60 * 60 * 1000;
 	const referendum = new Date(2016, 5, 23);
 	const today = new Date();
-	return Math.floor(Math.abs((today.getTime() - referendum.getTime())/(oneday)));
+	return Math.floor(Math.abs((today.getTime() - referendum.getTime()) / (oneday)));
 }
 
 export async function fetchBerthaData() {
 	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options,links`;
-	const res = await fetch(url);
+	const res = await fetch(url, { timeout: 10000 });
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 
 	const { options, links } = await res.json();
@@ -41,11 +42,17 @@ export async function fetchBerthaData() {
 	const data = { links };
 
 	for (const { name, value } of options) {
-		if(!name) throw new Error(`Malformed content. Found an undefined option name in the spreadsheet: ${url}`);
+		if (!name) {
+			throw new Error(
+				`Malformed content. Found an undefined option name in the spreadsheet: ${url}`
+			);
+		}
+
 		data[name] = value;
 	}
 
-	const daystogo = countdown()
+	const daystogo = countdown();
+
 	if (daystogo > 1) {
 		data.heading = `${data.heading}: ${daystogo} days until the referendum`;
 	}
