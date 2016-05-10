@@ -1,11 +1,18 @@
 import cheerio from 'cheerio';
 import marked from 'marked';
+import Promise from 'bluebird';
 
 export default async function getUSElectionLocals() {
 	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
 	const resultsURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_RESULTS_SPREADSHEET_KEY}/results,options`;
 
-	const [contentRes, resultsRes] = await Promise.all([fetch(contentURL), fetch(resultsURL)]);
+	const [contentRes, resultsRes] = await Promise.all([
+		Promise.resolve(fetch(contentURL))
+			.timeout(10000, new Error(`Timeout - bertha took too long to respond: ${contentURL}`)),
+
+		Promise.resolve(fetch(resultsURL))
+			.timeout(10000, new Error(`Timeout - bertha took too long to respond: ${resultsURL}`)),
+	]);
 
 	if (!contentRes.ok) throw new Error(`Request failed with ${contentRes.status}: ${contentURL}`);
 	if (!resultsRes.ok) throw new Error(`Request failed with ${resultsRes.status}: ${resultsURL}`);
