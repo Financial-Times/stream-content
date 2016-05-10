@@ -20,7 +20,8 @@ export default async function getBrexitLocals() {
 
 async function fetchChart(width, height = 75) {
 	const url = `https://ig.ft.com/sites/brexit-polling/poll-of-polls/fontless/${width}-x-${height}.svg`;
-	const res = await fetch(url, { timeout: 10000 });
+	const res = await Promise.resolve(fetch(url))
+		.timeout(10000, new Error(`Timeout - brexit-polling took too long to respond: ${url}`));
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 	return res.text();
 }
@@ -34,7 +35,8 @@ function countdown() {
 
 export async function fetchBerthaData() {
 	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options,links`;
-	const res = await fetch(url, { timeout: 10000 });
+	const res = await Promise.resolve(fetch(url))
+		.timeout(10000, new Error(`Timeout - bertha took too long to respond: ${url}`));
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 
 	const { options, links } = await res.json();
