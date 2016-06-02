@@ -30,7 +30,7 @@ function countdown() {
 	const oneday = 24 * 60 * 60 * 1000;
 	const referendum = new Date(2016, 5, 23);
 	const today = new Date();
-	return Math.floor(Math.abs((today.getTime() - referendum.getTime()) / (oneday)));
+	return Math.ceil((today.getTime() - referendum.getTime()) / -oneday);
 }
 
 export async function fetchBerthaData() {
@@ -55,7 +55,7 @@ export async function fetchBerthaData() {
 
 	const daystogo = countdown();
 
-	if (daystogo > 1) {
+	if (daystogo > 0) {
 		data.heading = `${data.heading}: ${daystogo} days until the referendum`;
 	}
 	// process text from markdown to html, then insert data-trackable attributes into any links
