@@ -9,7 +9,7 @@ export default async function getBrexitLocals() {
 		Promise.props({
 			default: fetchChart(300),
 			S: fetchChart(400),
-			M: fetchChart(289),
+			M: fetchChart(289, 100),
 			L: fetchChart(409),
 			XL: fetchChart(529),
 		}),
