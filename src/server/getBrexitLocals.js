@@ -55,9 +55,10 @@ export async function fetchBerthaData() {
 
 	const daystogo = countdown();
 
-	if (daystogo > 0) {
-		data.heading = `${data.heading}: ${daystogo} days until the referendum`;
-	}
+	// if (daystogo > 0) {
+	// 	data.heading = `${data.heading}: ${daystogo} days until the referendum`;
+	// }
+
 	// process text from markdown to html, then insert data-trackable attributes into any links
 	data.text = (() => {
 		const $ = cheerio.load(marked(data.text));
