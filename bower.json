@@ -3,11 +3,10 @@
   "dependencies": {
     "next-sass-setup": "^8.0.2",
     "o-expander": "3.0.2",
-    "n-jsonp": "https://github.com/callumlocke/n-jsonp.git#prebuilt-client-js",
-    "n-video": "^4.0.4"
+    "o-fetch-jsonp": "https://github.com/callumlocke/n-jsonp.git#prebuilt-client-js",
+    "o-video": "^0.1.1"
   },
   "resolutions": {
-    "o-ft-icons": "next",
-    "n-jsonp": "prebuilt-client-js"
+    "o-fetch-jsonp": "prebuilt-client-js"
   }
 }
