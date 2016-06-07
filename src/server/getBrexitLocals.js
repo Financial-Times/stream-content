@@ -53,7 +53,7 @@ export async function fetchBerthaData() {
 		data[name] = value;
 	}
 
-	const daystogo = countdown();
+	// const daystogo = countdown();
 
 	// if (daystogo > 0) {
 	// 	data.heading = `${data.heading}: ${daystogo} days until the referendum`;
