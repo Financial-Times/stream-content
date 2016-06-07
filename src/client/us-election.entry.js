@@ -1,3 +1,3 @@
-import nVideo from 'n-video';
+import nVideo from 'o-video';
 
 nVideo.init();
