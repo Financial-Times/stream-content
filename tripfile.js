@@ -4,14 +4,15 @@ import chalk from 'chalk';
 import cssnano from 'cssnano';
 import execa from 'execa';
 import path from 'path';
-import { directory, chain, plugin } from 'exhibit';
+import { compose, plugin } from 'exhibit';
+import Directory from 'exhibit-directory';
 
-const src = directory('src');
-const dist = directory('dist');
+const src = new Directory('src');
+const dist = new Directory('dist');
 
 const PORT = process.env.PORT || 5000;
 
-const preprocess = chain(
+const preprocess = compose(
 	plugin('sass', {
 		root: 'src',
 		loadPaths: ['bower_components'],
@@ -28,7 +29,7 @@ const preprocess = chain(
 	})
 );
 
-const optimise = chain(
+const optimise = compose(
 	// plugin('uglify')
 
 	plugin('postcss', cssnano({ safe: true }), { match: 'client/**/*.css', map: false }),
@@ -42,7 +43,7 @@ export async function build() {
 }
 
 export async function develop({ prod }) {
-	await src.watch(chain(
+	await src.watch(compose(
 		preprocess,
 
 		prod ? optimise : null,
