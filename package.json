@@ -38,7 +38,7 @@
     "trip": "^1.0.3"
   },
   "engines": {
-    "node": ">=5",
+    "node": ">=6",
     "npm": ">=3"
   },
   "scripts": {
