@@ -12,12 +12,10 @@ if updated
 			!= secondaryText
 
 	.ig-us-election-2016__charts
-		.ig-us-election-2016__pollchart
-			img(width="100%" src="https://ft-ig-us-elections-polltracker.herokuapp.com/polls.svg?fontless=false&startDate=June%207,%202016&size=300x200&type=pollAvg&state=us&logo=false")
-
-		p.ig-us-election-2016__more-polling
-			a(href=morePollingLinkURL)
-				= morePollingLinkText
+		each svg, gridSize in pollCharts
+			a(href=morePollingLinkURL class='ig-us-election-2016__chart ig-us-election-2016__chart--' + gridSize, data-trackable='poll-chart')
+				!= svg
+				span.ig-us-election-2016__more-polling= morePollingLinkText
 
 	if video
 		if isYoutube

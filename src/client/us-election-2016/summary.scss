@@ -1,3 +1,4 @@
+@import 'o-grid/main';
 @import 'next-sass-setup/main';
 @import 'o-video/main';
 
@@ -47,6 +48,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	&__summary,
 	&__charts {
 		margin-top: 10px;
+
 	}
 
 	&__charts {
@@ -54,115 +56,20 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		position: relative;
 	}
 
-	&__chart-party {
-		margin-top: 10px;
-		&--republican {
-			margin-top: 20px;
-		}
-	}
-
-
-	&__chart-party-label {
-		color: oColorsGetPaletteColor('grey-tint3');
-		font-size: 14px;
-		margin-bottom: -13px;
-	}
-
-	&__total-to-win-label-container {
-		width: calc(100% - 50px);
-	}
-
-	&__total-to-win-label {
-		color: oColorsGetPaletteColor('grey-tint3');
-		font-size: 13px;
-		text-align: right;
-		margin-left: 50px;
-	}
-
-	&__candidates {
-		margin-top: 5px;
-	}
-
-	&__candidate {
-		border-right: 1px solid oColorsGetPaletteColor('grey-tint2');
-		height: 25px;
+	&__chart {
+		display: none;
+		border-bottom: 0;
 		position: relative;
-		&:after {
-			clear: both;
-			content: "";
-			display: block;
+		padding: 0 7px 7px 7px;
+
+		> svg {
+			width: 100%;
+			// max-width: 100%;
+
+			.chart-source {
+				color: #666;
+			}
 		}
-	}
-
-	&__candidate-label {
-		font-size: 14px;
-		float: left;
-		width: 50px;
-		text-align: right;
-		padding-right: 5px;
-		box-sizing: border-box;
-		position: absolute;
-		top: 5px;
-		left: 0;
-	}
-
-	&__candidate-result {
-		background-color: oColorsGetPaletteColor('blue-2');
-		float: right;
-		height: 15px;
-		width: calc(100% - 50px);
-		position: absolute;
-		top: 5px;
-		right: 0;
-	}
-
-	&__result-data {
-		color: oColorsGetPaletteColor('white');
-		height: 100%;
-		font-weight: 600;
-		font-size: 14px;
-		box-sizing: border-box;
-		padding-left: 2px;
-	}
-
-	&__chart-party--democrat &__result-data {
-		float: left;
-		&--pledged {
-			background-color: #273c8f;
-		}
-
-		&--super {
-			background-color: #768ada;
-		}
-	}
-
-	&__chart-party--republican &__result-data {
-		background-color: #b3244b;
-	}
-
-	&__total-to-win-line {
-		border-right: 1px dashed oColorsGetPaletteColor('grey-tint2');
-		height: 25px;
-		position: absolute;
-		top: -5px;
-	}
-
-	&__chart-legend {
-		color: oColorsGetPaletteColor('grey-tint3');
-		font-size: 13px;
-		font-weight: normal;
-		margin: 5px 0 0 50px;
-	}
-
-	&__d-superdelegates-symbol {
-		background-color: #9eace4;
-		vertical-align: middle;
-		margin: 0 4px 0 0;
-		position: relative;
-		top: -1px;
-		display: inline-block;
-		width: 8px;
-		height: 8px;
 	}
 
 	&__more-polling {
@@ -192,8 +99,8 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	@include oGridRespondTo($until: S) {
-		&__charts,
 		&__charts { max-width: 100%; }
+		&__chart--default { display: block; }
 	}
 
 	@include oGridRespondTo(S, $until: M) {
@@ -201,6 +108,9 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		&__video-wrapper {
 			margin-top: 20px;
 		}
+
+		&__charts { width: 400px; }
+		&__chart--S { display: block; }
 	}
 
 	@include oGridRespondTo($until: M) {
@@ -223,6 +133,10 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			padding: 0 20px;
 		}
 
+		&__chart {
+			width: auto;
+		}
+
 		&__summary-secondary-text {
 			display: block;
 		}
@@ -238,6 +152,9 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		&__charts {
 			width: 50%;
 		}
+
+		&__chart--M { display: block; }
+
 		&__video-wrapper {
 			clear: both;
 			float: none;
@@ -253,8 +170,13 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		}
 	}
 
+	@include oGridRespondTo(L, $until: XL) {
+		&__chart--L { display: block; }
+	}
+
 	@include oGridRespondTo(XL) {
 		&__inner { padding: 0 40px; }
+		&__chart--XL { display: block; }
 	}
 
 }
