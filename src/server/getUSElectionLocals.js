@@ -22,9 +22,13 @@ export default async function getUSElectionLocals() {
 		data[name] = value;
 	}
 
+	const startDate = data.pollStartDate || 'June 7, 2016';
+	const endDate = data.pollEndDate || '';
+	const pollChartType = data.pollChartType || 'area';
+
 	// get poll chart SVG
 	async function fetchChart(width, height) {
-		const url = `https://ft-ig-us-elections-polltracker.herokuapp.com/polls.svg?fontless=true&startDate=June%207,%202016&size=${width}x${height}&type=area&state=us&logo=false`;
+		const url = `https://ft-ig-us-elections-polltracker.herokuapp.com/polls.svg?fontless=true&startDate=${startDate}&endDate=${endDate}&size=${width}x${height}&type=${pollChartType}&state=us&logo=false`;
 		const res = await Promise.resolve(fetch(url))
 			.timeout(10000, new Error(`Timeout - us election poll took too long to respond: ${url}`));
 		if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
