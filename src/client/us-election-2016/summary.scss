@@ -61,15 +61,6 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 		border-bottom: 0;
 		position: relative;
 		padding: 0 7px 7px 7px;
-
-		> svg {
-			width: 100%;
-			// max-width: 100%;
-
-			.chart-source {
-				color: #666;
-			}
-		}
 	}
 
 	&__more-polling {
@@ -100,7 +91,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	@include oGridRespondTo($until: S) {
 		&__charts { max-width: 100%; }
-		&__chart--default { display: block; }
+		&__chart--default { display: block; padding-left: 0; padding-right: 0; text-align: center; }
 	}
 
 	@include oGridRespondTo(S, $until: M) {
@@ -109,8 +100,8 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			margin-top: 20px;
 		}
 
-		&__charts { width: 400px; }
-		&__chart--S { display: block; }
+		&__charts { width: 100%; }
+		&__chart--S { display: block; padding-left: 0; padding-right: 0; text-align: center; }
 	}
 
 	@include oGridRespondTo($until: M) {

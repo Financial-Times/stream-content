@@ -15,7 +15,8 @@ if updated
 		each svg, gridSize in pollCharts
 			a(href=morePollingLinkURL class='ig-us-election-2016__chart ig-us-election-2016__chart--' + gridSize, data-trackable='poll-chart')
 				!= svg
-				span.ig-us-election-2016__more-polling= morePollingLinkText
+		a(href=morePollingLinkURL)
+			span.ig-us-election-2016__more-polling= morePollingLinkText
 
 	if video
 		if isYoutube

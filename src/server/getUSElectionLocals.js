@@ -36,11 +36,11 @@ export default async function getUSElectionLocals() {
 	}
 
 	data.pollCharts = await Promise.props({
-		default: fetchChart(300, 200),
-		S: fetchChart(400, 300),
-		M: fetchChart(400, 300),
-		L: fetchChart(300, 200),
-		XL: fetchChart(300, 250),
+		default: fetchChart(265, 200),
+		S: fetchChart(450, 300),
+		M: fetchChart(300, 250),
+		L: fetchChart(280, 200),
+		XL: fetchChart(320, 200),
 	})
 
 	// process text from markdown to html, then insert data-trackable attributes into any links
