@@ -22,7 +22,7 @@ export default async function getUSElectionLocals() {
 		data[name] = value;
 	}
 
-	const startDate = data.pollStartDate || 'June 7, 2016';
+	const startDate = data.pollStartDate || 'June 1, 2016';
 	const endDate = data.pollEndDate || '';
 	const pollChartType = data.pollChartType || 'area';
 
