@@ -37,3 +37,4 @@ Things should refresh in your browser automatically.
 2. When you merge a PR into master (or just commit directly to master) Heroku will deploy to the prod app.
 
 You can check deployment status on the Heroku dashboard.
+
