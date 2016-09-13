@@ -12,6 +12,10 @@
     "NPM_CONFIG_PRODUCTION": {
       "description": "install devDependencies",
       "value": "false"
+    },
+    "NODE_ENV": {
+      "description": "Standard NODE_ENV",
+      "value": "production"
     }
   }
 }
