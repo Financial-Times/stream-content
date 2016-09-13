@@ -10,7 +10,8 @@
       "description": "The key of the US Election Results spreadsheet"
     },
     "NPM_CONFIG_PRODUCTION": {
-      "value": false
+      "description": "install devDependencies",
+      "value": "false"
     }
   }
 }
