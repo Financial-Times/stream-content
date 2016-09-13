@@ -15,6 +15,17 @@
     clear: both;
   }
 
+  &__kicker {
+    font-family: 'MetricWeb', sans-serif;
+    line-height: 17px;
+    font-size: 15px;
+    font-weight: 200;
+    color: #ccc;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    text-transform: uppercase;
+  }
+
   &__title {
     color: #ffffff;
     font-family: 'FinancierDisplayWeb', serif;
