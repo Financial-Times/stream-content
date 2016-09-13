@@ -86,7 +86,7 @@ async function summaryCard(name, ctx) {
 	if (!card) {
 		ctx.status = 404;
 		ctx.body = {
-			fragment: null,
+			fragment: '',
 			message: 'Not Found',
 		};
 		return;
