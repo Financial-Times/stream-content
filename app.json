@@ -8,6 +8,9 @@
     },
     "US_ELECTION_RESULTS_SPREADSHEET_KEY": {
       "description": "The key of the US Election Results spreadsheet"
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "value": false
     }
   }
 }
