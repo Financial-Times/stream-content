@@ -1,6 +1,12 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'development') {
+	require('dotenv/config');
+}
+
 /* global fetch */
-import 'dotenv/config';
 import 'isomorphic-fetch';
+
 import getBrexitLocals, { fetchBerthaData } from './getBrexitLocals';
 import getUSElectionLocals from './getUSElectionLocals';
 import getSummaryLocals from './getSummaryLocals';
@@ -227,7 +233,7 @@ router
 ;
 
 // log in development
-if (process.env.ENVIRONMENT === 'development') {
+if (process.env.NODE_ENV === 'development') {
 	app.use(koaLogger());
 }
 
