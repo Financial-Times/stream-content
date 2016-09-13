@@ -39,8 +39,7 @@
     "trip": "^1.0.3"
   },
   "engines": {
-    "node": ">=6",
-    "npm": ">=3"
+    "node": "6.x.x"
   },
   "scripts": {
     "build": "trip build",
