@@ -7,6 +7,7 @@
     "o-video": "^0.1.1"
   },
   "resolutions": {
-    "o-fetch-jsonp": "prebuilt-client-js"
+    "o-fetch-jsonp": "prebuilt-client-js",
+    "o-video": "next-rb"
   }
 }
