@@ -1,0 +1,16 @@
+style
+	include ../../../client/summary-card/main.css
+
+aside.ig-summary-card
+	if image
+		.ig-summary-card__image
+			img(src=image)
+	.ig-summary-card__content
+		if kicker
+			.ig-summary-card__kicker!= kicker
+		if title
+			.ig-summary-card__title!= title
+		if subtitle
+			.ig-summary-card__subtitle!= subtitle
+		if body
+			.ig-summary-card__body!= body

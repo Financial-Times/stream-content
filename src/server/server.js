@@ -1,8 +1,15 @@
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'development') {
+	require('dotenv/config');
+}
+
 /* global fetch */
-import 'dotenv/config';
 import 'isomorphic-fetch';
+
 import getBrexitLocals, { fetchBerthaData } from './getBrexitLocals';
 import getUSElectionLocals from './getUSElectionLocals';
+import getSummaryLocals from './getSummaryLocals';
 import jade from 'jade';
 import Koa from 'koa';
 import koaLogger from 'koa-logger';
@@ -39,6 +46,13 @@ const renderBrexitGuide = jade.compileFile(path.join(views, 'brexit/guide.jade')
 const renderBrexitIframe = jade.compileFile(path.join(views, 'brexit/iframe.jade'));
 const renderBrexitPreview = jade.compileFile(path.join(views, 'brexit/preview.jade'));
 
+const renderSummaryCard = jade.compileFile(
+	path.join(views, 'summary-card/summary.jade')
+);
+const renderSummaryCardPreview = jade.compileFile(
+	path.join(views, 'summary-card/preview.jade')
+);
+
 const renderUsElection2016Summary = jade.compileFile(
 	path.join(views, 'us-election-2016/summary-card.jade')
 );
@@ -70,6 +84,25 @@ const elements = {
 	},
 };
 
+async function summaryCard(name, ctx) {
+	ctx.set('Content-Type', 'application/json');
+
+	const card = await getSummaryLocals(name);
+
+	if (!card) {
+		ctx.status = 404;
+		ctx.body = {
+			fragment: '',
+			message: 'Not Found',
+		};
+		return;
+	}
+
+	ctx.body = JSON.stringify({
+		fragment: renderSummaryCard(card)
+	});
+}
+
 // define routes
 router
 	// a route to get the bertha data (post-transformations)
@@ -81,6 +114,21 @@ router
 	.get('/elements/:name.json', async ctx => {
 		if (elements[ctx.params.name]) {
 			await elements[ctx.params.name](ctx);
+		} else if (ctx.params.name.startsWith('summary-')) {
+			await summaryCard(
+				ctx.params.name.replace(/^summary\-/, ''),
+				ctx
+			);
+		}
+	})
+
+	.get('/elements-preview/:name', async ctx => {
+		if (elements[ctx.params.name]) {
+			//await elements[ctx.params.name](ctx);
+		} else if (ctx.params.name.startsWith('summary-')) {
+			ctx.body = renderSummaryCardPreview(
+				await getSummaryLocals(ctx.params.name.replace(/^summary\-/, ''))
+			);
 		}
 	})
 
@@ -185,7 +233,7 @@ router
 ;
 
 // log in development
-if (process.env.ENVIRONMENT === 'development') {
+if (process.env.NODE_ENV === 'development') {
 	app.use(koaLogger());
 }
 
