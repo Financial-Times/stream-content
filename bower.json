@@ -3,11 +3,9 @@
   "dependencies": {
     "next-sass-setup": "Financial-Times/next-sass-setup#^8.2.1",
     "o-expander": "3.0.2",
-    "o-fetch-jsonp": "https://github.com/callumlocke/n-jsonp.git#prebuilt-client-js",
-    "o-video": "^0.1.1"
+    "o-fetch-jsonp": "https://github.com/callumlocke/n-jsonp.git#prebuilt-client-js"
   },
   "resolutions": {
-    "o-fetch-jsonp": "prebuilt-client-js",
-    "o-video": "next-rb"
+    "o-fetch-jsonp": "prebuilt-client-js"
   }
 }
