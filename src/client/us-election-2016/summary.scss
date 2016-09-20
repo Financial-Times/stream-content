@@ -1,5 +1,5 @@
 @import 'o-grid/main';
-@import 'next-sass-setup/main';
+@import 'o-colors/main';
 
 $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
@@ -35,7 +35,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 	&__summary-text > p,
 	&__summary-secondary-text > p {
-		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierTextWeb);
+		font: normal 16px/1.375 Georgia, serif;
 		margin: 0 0 1em;
 	}
 

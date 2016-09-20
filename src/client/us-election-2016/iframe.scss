@@ -5,6 +5,11 @@ $o-grid-layouts: (
 	XL: 1220px,
 );
 
+@import 'o-fonts/main';
+@include oFontsInclude(FinancierDisplayWeb);
+@include oFontsInclude(FinancierDisplayWeb, $weight: bold);
+@include oFontsInclude(MetricWeb);
+@import 'next-sass-setup/main';
 @import 'card';
 @import 'summary';
 
