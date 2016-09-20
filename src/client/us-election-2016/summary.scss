@@ -1,5 +1,6 @@
 @import 'o-grid/main';
 @import 'o-colors/main';
+@import 'o-fonts/main';
 
 $button-color-darker: oColorsGetPaletteColor('blue-2');
 $button-color-darker-still: darken($button-color-darker, 3%);
