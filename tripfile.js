@@ -77,7 +77,7 @@ export async function develop({ prod }) {
 				}
 			}, 500);
 
-			return files => {
+			return (files) => {
 				restart();
 				return files;
 			};
