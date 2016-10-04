@@ -38,12 +38,10 @@ const router = new Router();
 const views = path.resolve(__dirname, 'views');
 
 const renderAIRoboticsSummary = jade.compileFile(path.join(views, 'ai-robotics/summary-card.jade'));
-const renderAIRoboticsIframe = jade.compileFile(path.join(views, 'ai-robotics/iframe.jade'));
 const renderAIRoboticsPreview = jade.compileFile(path.join(views, 'ai-robotics/preview.jade'));
 
 const renderBrexitSummary = jade.compileFile(path.join(views, 'brexit/summary-card.jade'));
 const renderBrexitGuide = jade.compileFile(path.join(views, 'brexit/guide.jade'));
-const renderBrexitIframe = jade.compileFile(path.join(views, 'brexit/iframe.jade'));
 const renderBrexitPreview = jade.compileFile(path.join(views, 'brexit/preview.jade'));
 
 const renderSummaryCard = jade.compileFile(
@@ -55,9 +53,6 @@ const renderSummaryCardPreview = jade.compileFile(
 
 const renderUsElection2016Summary = jade.compileFile(
 	path.join(views, 'us-election-2016/summary-card.jade')
-);
-const renderUsElectionIframe = jade.compileFile(
-	path.join(views, 'us-election-2016/iframe.jade')
 );
 const renderUsElection2016Preview = jade.compileFile(
 	path.join(views, 'us-election-2016/preview.jade')
@@ -144,70 +139,6 @@ router
 		ctx.body = JSON.stringify({ fragment: renderBrexitGuide(await getBrexitLocals()) });
 	})
 
-	// iframe (for using on the Falcon brexit page)
-	.get('/ai-robotics/iframe.html', async ctx => {
-		ctx.set('Cache-Control', 'max-age=500');
-
-		try {
-			ctx.body = renderAIRoboticsIframe();
-		}
-		catch (error) {
-			console.error('ERROR!', error ? error.stack : error);
-
-			ctx.status = 500;
-			ctx.body = '<script>frameElement.height=0;frameElement.style=\'display:none\'</script>';
-			return;
-		}
-	})
-
-	// iframe (for using on the Falcon brexit page)
-	.get('/brexit/iframe.html', async ctx => {
-		ctx.set('Cache-Control', 'max-age=500');
-
-		try {
-			ctx.body = renderBrexitIframe(await getBrexitLocals());
-		}
-		catch (error) {
-			console.error('ERROR!', error ? error.stack : error);
-
-			ctx.status = 500;
-			ctx.body = '<script>frameElement.height=0;frameElement.style=\'display:none\'</script>';
-			return;
-		}
-	})
-
-	// iframe (for using on the Falcon brexit page)
-	.get('/metacard/iframe.html', async ctx => {
-		ctx.set('Cache-Control', 'max-age=500');
-
-		try {
-			ctx.body = renderBrexitIframe(await getBrexitLocals());
-		}
-		catch (error) {
-			console.error('ERROR!', error ? error.stack : error);
-
-			ctx.status = 500;
-			ctx.body = '<script>frameElement.height=0;frameElement.style=\'display:none\'</script>';
-			return;
-		}
-	})
-
-	// iframe (for using on the Falcon US Election page)
-	.get('/us-election-2016/iframe.html', async ctx => {
-		ctx.set('Cache-Control', 'max-age=500');
-
-		try {
-			ctx.body = renderUsElectionIframe(await getUSElectionLocals());
-		}
-		catch (error) {
-			console.error('ERROR!', error ? error.stack : error);
-
-			ctx.status = 500;
-			ctx.body = '<script>frameElement.height=0;frameElement.style=\'display:none\'</script>';
-			return;
-		}
-	})
-
 	// preview (for dev only)
 	.get('/metacard/preview.html', async ctx => {
 		ctx.body = renderBrexitPreview(await getBrexitLocals());
@@ -231,6 +162,18 @@ router
 	// redirect from root
 	.redirect('/', '/ai-robotics/preview.html', 302)
 ;
+
+// add "410 GONE" routes for retired endpoints
+for (const url of [
+	'/ai-robotics/iframe.html',
+	'/brexit/iframe.html',
+	'/metacard/iframe.html',
+	'/us-election-2016/iframe.html',
+]) {
+	router.get(url, (ctx) => {
+		ctx.throw(410);
+	});
+}
 
 // log in development
 if (process.env.NODE_ENV === 'development') {
