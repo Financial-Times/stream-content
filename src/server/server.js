@@ -163,6 +163,18 @@ router
 	.redirect('/', '/ai-robotics/preview.html', 302)
 ;
 
+// add "410 GONE" routes for retired endpoints
+for (const url of [
+	'/ai-robotics/iframe.html',
+	'/brexit/iframe.html',
+	'/metacard/iframe.html',
+	'/us-election-2016/iframe.html',
+]) {
+	router.get(url, (ctx) => {
+		ctx.throw(410);
+	});
+}
+
 // log in development
 if (process.env.NODE_ENV === 'development') {
 	app.use(koaLogger());
