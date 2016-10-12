@@ -1,0 +1,68 @@
+@import 'o-grid/main';
+
+.ig-summary-card--layout-a {
+  background-color: transparent;
+  color: #111;
+
+  .ig-summary-card__body {
+    margin-top: 0;
+
+    @include oGridRespondTo($until:S) {
+      margin-top: 10px;
+    }
+
+    a {
+      color: #27757b;
+      border-bottom: 1px dotted #27757b;
+      text-decoration: none;
+    }
+
+    p {
+      font-family: 'FinancierDisplayWeb', serif;
+      font-size: 18px;
+      line-height: 1.2;
+
+      @include oGridRespondTo(L) {
+        font-size: 21px;
+        line-height: 1.2;
+      }
+
+      @include oGridRespondTo(XL) {
+        font-size: 26px;
+      }
+    }
+  }
+
+  .ig-summary-card__image {
+    width: 40%;
+
+    @include oGridRespondTo($until:S) {
+      width: 100%;
+    }
+
+    @include oGridRespondTo(L) {
+      padding-right: 15px;
+      width: 50%;
+    }
+  }
+
+  .ig-summary-card__image + .ig-summary-card__content {
+    margin-left: 40%;
+    width: 60%;
+
+    & :first-child {
+      margin-top: 0;
+    }
+
+    @include oGridRespondTo($until:S) {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    @include oGridRespondTo(L) {
+      padding-left: 15px;
+      margin-left: 50%;
+      width: 50%;
+    }
+  }
+}

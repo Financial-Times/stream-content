@@ -1,7 +1,14 @@
 style
 	include ../../../client/summary-card/main.css
+	if layout
+		if layout == 'layout-a'
+			include ../../../client/summary-card/layout-a.css
+		else if layout == 'layout-b'
+			include ../../../client/summary-card/layout-b.css
+		else if layout == 'layout-c'
+			include ../../../client/summary-card/layout-c.css
 
-aside.ig-summary-card
+aside(class=`ig-summary-card ig-summary-card--${layout}`)
 	if image
 		.ig-summary-card__image
 			img(src=image)
