@@ -1,0 +1,25 @@
+@import 'o-grid/main';
+
+.ig-summary-card--layout-b {
+  color            : #111;
+  background-color : #dddddd;
+
+  .ig-summary-card__kicker {
+    color: #cd2600;
+    text-transform: none;
+  }
+
+  .ig-summary-card__kicker,
+  .ig-summary-card__title {
+    font-family: 'MetricWeb', sans-serif;
+    display: inline;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+  }
+
+  .ig-summary-card__kicker {
+    margin-right: 10px;
+  }
+}
