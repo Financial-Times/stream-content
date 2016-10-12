@@ -1,16 +1,16 @@
 @import 'o-grid/main';
+@import 'mixins';
 
 .ig-summary-card--layout-b {
-  color            : #111;
-  background-color : #dddddd;
+  @include card($bg-color: #dddddd, $text-color: #111);
 
-  .ig-summary-card__kicker {
+  &__kicker {
     color: #cd2600;
     text-transform: none;
   }
 
-  .ig-summary-card__kicker,
-  .ig-summary-card__title {
+  &__kicker,
+  &__title {
     font-family: 'MetricWeb', sans-serif;
     display: inline;
     font-size: 16px;
@@ -19,7 +19,7 @@
     font-weight: 600;
   }
 
-  .ig-summary-card__kicker {
+  &__kicker {
     margin-right: 10px;
   }
 }

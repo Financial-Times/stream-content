@@ -1,11 +1,11 @@
 @import 'o-grid/main';
+@import 'mixins';
 
 .ig-summary-card--layout-c {
-  color            : #111;
-  background-color : #ffffff;
+  @include card($bg-color: #ffffff, $text-color: #111);
   padding: 20px;
 
-  .ig-summary-card__body {
+  &__body {
     margin-top: 0;
 
     p {
@@ -24,7 +24,7 @@
     }
   }
 
-  .ig-summary-card__image {
+  &__image {
     float: right;
     width: 40%;
     padding-right: 0px;
@@ -39,7 +39,7 @@
     }
   }
 
-  .ig-summary-card__image + .ig-summary-card__content {
+  &__image + &__content {
     margin-right: 40%;
     margin-left: 0;
     width: 60%;

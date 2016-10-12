@@ -1,5 +1,4 @@
 style
-	include ../../../client/summary-card/main.css
 	if layout
 		if layout == 'layout-a'
 			include ../../../client/summary-card/layout-a.css
@@ -7,17 +6,19 @@ style
 			include ../../../client/summary-card/layout-b.css
 		else if layout == 'layout-c'
 			include ../../../client/summary-card/layout-c.css
+	else
+		include ../../../client/summary-card/layout-default.css
 
-aside(class=`ig-summary-card ig-summary-card--${layout}`)
+aside(class=prefix)
 	if image
-		.ig-summary-card__image
+		div(class=`${prefix}__image`)
 			img(src=image)
-	.ig-summary-card__content
+	div(class=`${prefix}__content`)
 		if kicker
-			.ig-summary-card__kicker!= kicker
+			div(class=`${prefix}__kicker`)!= kicker
 		if title
-			.ig-summary-card__title!= title
+			div(class=`${prefix}__title`)!= title
 		if subtitle
-			.ig-summary-card__subtitle!= subtitle
+			div(class=`${prefix}__subtitle`)!= subtitle
 		if body
-			.ig-summary-card__body!= body
+			div(class=`${prefix}__body`)!= body

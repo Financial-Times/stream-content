@@ -4,6 +4,12 @@ const summaryCardSheetId = process.env.SUMMARY_CARD_SPREADSHEET || '1G2LIYU8eI4T
 const berthaUrl = `http://bertha.ig.ft.com/view/publish/gss/${summaryCardSheetId}/cards`;
 const interval = '*/30 * * * * *';
 
+const knownLayouts = {
+  'layout-a': `ig-summary-card--layout-a`,
+  'layout-b': `ig-summary-card--layout-b`,
+  'layout-c': `ig-summary-card--layout-c`,
+}
+
 const poller = new Poller(interval, berthaUrl, function (data) {
   const absUrl = /^https?\:\/\//;
   const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -24,6 +30,7 @@ const poller = new Poller(interval, berthaUrl, function (data) {
     return {
       ...row,
       id: row.id ? row.id.replace(/\s+/g, '').toLowerCase() : '',
+      prefix: row.layout && knownLayouts[row.layout] ? knownLayouts[row.layout]  : 'ig-summary-card',
       image,
       renderResponsiveImage,
     };
