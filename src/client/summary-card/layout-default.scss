@@ -1,10 +1,10 @@
 @import 'o-grid/main';
+@import 'mixins';
 
 .ig-summary-card {
-  background-color: #333333;
+  @include card($bg-color:#333333, $text-color:#ffffff);
   padding: 10px;
   box-sizing: border-box;
-  color: #ffffff;
 
   & * {
     box-sizing: border-box;
