@@ -20,7 +20,7 @@ const poller = new Poller(interval, berthaUrl, function (data) {
         renderResponsiveImage = true;
       }
     }
-    console.log(row);
+
     return {
       ...row,
       id: row.id ? row.id.replace(/\s+/g, '').toLowerCase() : '',
