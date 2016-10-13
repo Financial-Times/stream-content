@@ -22,3 +22,14 @@ aside(class=prefix)
 			div(class=`${prefix}__subtitle`)!= subtitle
 		if body
 			div(class=`${prefix}__body`)!= body
+		if more && more.length
+			div(class=`${prefix}__more`)
+				if more.length > 1
+					ul(class=`${prefix}__link-list`)
+						each link, index in more
+							if link.text && link.href
+								li: a(href=link.href)!= link.text
+				else if more.length == 1
+					- var link = more[0]
+					if link.text && link.href
+						a(href=link.href)!= link.text
