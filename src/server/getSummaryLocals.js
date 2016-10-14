@@ -17,12 +17,14 @@ const poller = new Poller(interval, berthaUrl, function (data) {
   function rowToCard(row) {
     let renderResponsiveImage = false;
     let image = null;
+    const hasValidLayout = row.layout && knownLayouts[row.layout];
 
     if (row.image) {
       if (absUrl.test(row.image)) {
         image = row.image;
       } else {
-        image = `https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F${row.image}?source=ig_stream&fit=scale-down&compression=best&width=450`;
+        const imageWidth = hasValidLayout && row.layout === 'layout-a' ? 880 : 500;
+        image = `https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F${row.image}?source=ig_stream&fit=scale-down&compression=best&width=${imageWidth}`;
         renderResponsiveImage = true;
       }
     }
@@ -30,7 +32,7 @@ const poller = new Poller(interval, berthaUrl, function (data) {
     return {
       ...row,
       id: row.id ? row.id.replace(/\s+/g, '').toLowerCase() : '',
-      prefix: row.layout && knownLayouts[row.layout] ? knownLayouts[row.layout]  : 'ig-summary-card',
+      prefix: hasValidLayout ? knownLayouts[row.layout] : 'ig-summary-card',
       image,
       renderResponsiveImage,
     };
