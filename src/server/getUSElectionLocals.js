@@ -28,7 +28,7 @@ export default async function getUSElectionLocals() {
 
 	// get poll chart SVG
 	async function fetchChart(width, height) {
-		const url = `https://ft-ig-us-elections-polltracker.herokuapp.com/polls.svg?fontless=true&startDate=${startDate}&endDate=${endDate}&size=${width}x${height}&type=${pollChartType}&state=us&logo=false`;
+		const url = `https://ig.ft.com/us-elections/polls.svg?fontless=true&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}&size=${width}x${height}&type=${encodeURIComponent(pollChartType)}&state=us&logo=false`;
 		const res = await Promise.resolve(fetch(url))
 			.timeout(10000, new Error(`Timeout - us election poll took too long to respond: ${url}`));
 		if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
