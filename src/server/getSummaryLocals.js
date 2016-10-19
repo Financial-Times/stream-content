@@ -53,6 +53,10 @@ poller.on('tick', function(d) {
   console.log('tick', d.size);
 });
 
+poller.on('error', function(err) {
+  console.error('poller error', err);
+});
+
 export default async function getCard(id) {
   if (poller.data instanceof Map)
     return poller.data.get(id);
