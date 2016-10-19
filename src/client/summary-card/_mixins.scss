@@ -132,7 +132,11 @@
 
   &__more {
     a {
-      font-size: 16px;
+      font-size: 18px;
+
+      @include oGridRespondTo($until:S) {
+        font-size: 16px;
+      }
     }
   }
 
