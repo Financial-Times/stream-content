@@ -34,12 +34,20 @@
     }
   }
 
+  &__title {
+    font-size: 28px;
+
+    @include oGridRespondTo($until:L) {
+      font-size: 20px;
+    }
+  }
+
   &__image {
     width: 40%;
 
     @include oGridRespondTo($until:S) {
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     @include oGridRespondTo(L) {
