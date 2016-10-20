@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .ig-summary-card--layout-b {
-  @include card($bg-color: #dddddd, $text-color: #111);
+  @include card($bg-color: #dddddd, $text-color: #333);
 
   &__kicker {
     color: #cd2600;

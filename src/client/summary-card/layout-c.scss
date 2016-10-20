@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .ig-summary-card--layout-c {
-  @include card($bg-color: #ffffff, $text-color: #111);
+  @include card($bg-color: #ffffff, $text-color: #333);
   padding: 20px;
 
   &__body {
