@@ -7,6 +7,11 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 
 .ig-us-election-2016 {
 
+	max-width: 860px;
+	margin-left: auto;
+	margin-right: auto;
+
+
 	&__heading {
 		font: normal 26px oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
 		text-align: center;
@@ -151,23 +156,6 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 			float: none;
 			width: 100%;
 		}
-	}
-
-	@include oGridRespondTo(L) {
-		&__summary,
-		&__charts,
-		&__video-wrapper {
-			width: 33%;
-		}
-	}
-
-	@include oGridRespondTo(L, $until: XL) {
-		&__chart--L { display: block; }
-	}
-
-	@include oGridRespondTo(XL) {
-		&__inner { padding: 0 40px; }
-		&__chart--XL { display: block; }
 	}
 
 }

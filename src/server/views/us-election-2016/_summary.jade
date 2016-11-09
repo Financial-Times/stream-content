@@ -11,13 +11,6 @@ if updated
 		.ig-us-election-2016__summary-secondary-text
 			!= secondaryText
 
-	.ig-us-election-2016__charts
-		each svg, gridSize in pollCharts
-			a(href=morePollingLinkURL class='ig-us-election-2016__chart ig-us-election-2016__chart--' + gridSize, data-trackable='poll-chart')
-				!= svg
-		a(href=morePollingLinkURL)
-			span.ig-us-election-2016__more-polling= morePollingLinkText
-
 	if video
 		if isYoutube
 			.ig-us-election-2016__video-wrapper
