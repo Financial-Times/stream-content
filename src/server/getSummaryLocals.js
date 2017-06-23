@@ -24,7 +24,7 @@ const poller = new Poller(interval, berthaUrl, function (data) {
         image = row.image;
       } else {
         const imageWidth = hasValidLayout && row.layout === 'layout-a' ? 880 : 500;
-        image = `https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F${row.image}?source=ig_stream&fit=scale-down&compression=best&width=${imageWidth}`;
+        image = `https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F${row.image}?source=ig_stream&fit=scale-down&compression=best&width=${imageWidth}`;
         renderResponsiveImage = true;
       }
     }
