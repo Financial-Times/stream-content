@@ -35,7 +35,7 @@ $button-color-darker-still: darken($button-color-darker, 3%);
 	}
 
 	&__summary > p {
-		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierTextWeb);
+		font: normal 18px/1.375 oFontsGetFontFamilyWithFallbacks(FinancierDisplayWeb);
 		margin: 0 0 1em;
 	}
 
