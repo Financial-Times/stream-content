@@ -39,8 +39,7 @@ export async function build() {
 	await src.read()
 		.then(preprocess)
 		.then(optimise)
-		.then(dist.write)
-		.catch(console.error);
+		.then(dist.write);
 }
 
 export async function develop({ prod }) {
