@@ -5,7 +5,7 @@
     "o-fetch-jsonp": "https://github.com/callumlocke/n-jsonp.git#prebuilt-client-js",
     "o-grid": "^4.3.3",
     "o-fonts": "^3.0.0",
-    "o-colors": "^4.0.4",
+    "o-colors": "^3.6.0",
     "o-typography": "4"
   },
   "resolutions": {
