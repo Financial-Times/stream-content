@@ -43,7 +43,7 @@
     "trip": "^1.0.3"
   },
   "engines": {
-    "node": "6.x.x",
+    "node": ">=8.1.4",
     "npm": "3.x.x"
   },
   "scripts": {
