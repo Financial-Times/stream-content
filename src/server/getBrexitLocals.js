@@ -34,7 +34,7 @@ function countdown() {
 }
 
 export async function fetchBerthaData() {
-	const url = `http://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options,links`;
+	const url = `https://bertha.ig.ft.com/view/publish/gss/${process.env.OPTIONS_SHEET_KEY}/options,links`;
 	const res = await Promise.resolve(fetch(url))
 		.timeout(10000, new Error(`Timeout - bertha took too long to respond: ${url}`));
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);

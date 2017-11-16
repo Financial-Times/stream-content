@@ -3,7 +3,7 @@ import marked from 'marked';
 import Promise from 'bluebird';
 
 export default async function getUSElectionLocals() {
-	const contentURL = `http://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
+	const contentURL = `https://bertha.ig.ft.com/view/publish/gss/${process.env.US_ELECTION_SPREADSHEET_KEY}/options,links`;
 
 	const contentRes = await Promise.resolve(fetch(contentURL))
 			.timeout(10000, new Error(`Timeout - bertha took too long to respond: ${contentURL}`));

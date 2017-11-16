@@ -1,7 +1,7 @@
 import Poller from './poller';
 
 const summaryCardSheetId = process.env.SUMMARY_CARD_SPREADSHEET || '1G2LIYU8eI4TmN8v-NYicknep6hMEdTv_QBl0cKSOGew';
-const berthaUrl = `http://bertha.ig.ft.com/view/publish/gss/${summaryCardSheetId}/cards`;
+const berthaUrl = `https://bertha.ig.ft.com/view/publish/gss/${summaryCardSheetId}/cards`;
 const interval = '*/30 * * * * *';
 
 const knownLayouts = {
