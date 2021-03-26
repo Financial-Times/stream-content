@@ -2,7 +2,7 @@
 
 ft-ig-stream-content
 
-Assembles and outputs content fragments used in various stream pages, e.g. [Brexit](http://ft.com/brexit) and [US Election](http://ft.com/us-election-2016).
+Assembles and outputs content fragments used in various stream pages.
 
 Warning: this serverside application has no caching, no efficiency – it builds every response from scratch, including loading content from remote URLs. It will break if put under heavy load. Must have a CDN or poller in front of it.
 
@@ -11,10 +11,8 @@ Warning: this serverside application has no caching, no efficiency – it builds
 1. clone this repo
 1. add a `.env` file with those variables described in [app.json](./app.json) (you'll need to get the actual values off another dev)
 1. `npm install`
-1. `npm run develop`
+1. `npm start`
 1. code away
-
-Things should refresh in your browser automatically.
 
 ## Deploying
 

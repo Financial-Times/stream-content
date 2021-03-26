@@ -1,0 +1,2 @@
+sass --style=compressed --load-path=node_modules/ --no-source-map ./src/client/summary-card/layout-default.scss ./src/client/summary-card/layout-default.css
+postcss ./src/client/summary-card/layout-default.css --replace  --no-map

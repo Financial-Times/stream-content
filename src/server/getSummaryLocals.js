@@ -1,14 +1,8 @@
-import Poller from './poller';
+const Poller = require('./poller');
 
 const summaryCardSheetId = process.env.SUMMARY_CARD_SPREADSHEET || '1G2LIYU8eI4TmN8v-NYicknep6hMEdTv_QBl0cKSOGew';
 const berthaUrl = `https://bertha.ig.ft.com/view/publish/gss/${summaryCardSheetId}/cards`;
 const interval = '*/30 * * * * *';
-
-const knownLayouts = {
-  'layout-a': `ig-summary-card--layout-a`,
-  'layout-b': `ig-summary-card--layout-b`,
-  'layout-c': `ig-summary-card--layout-c`,
-}
 
 const poller = new Poller(interval, berthaUrl, function (data) {
   const absUrl = /^https?\:\/\//;
@@ -17,13 +11,12 @@ const poller = new Poller(interval, berthaUrl, function (data) {
   function rowToCard(row) {
     let renderResponsiveImage = false;
     let image = null;
-    const hasValidLayout = row.layout && knownLayouts[row.layout];
 
     if (row.image) {
       if (absUrl.test(row.image)) {
         image = row.image;
       } else {
-        const imageWidth = hasValidLayout && row.layout === 'layout-a' ? 880 : 500;
+        const imageWidth = 500;
         image = `https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.prod.s3.amazonaws.com%2F${row.image}?source=ig_stream&fit=scale-down&compression=best&width=${imageWidth}`;
         renderResponsiveImage = true;
       }
@@ -32,7 +25,7 @@ const poller = new Poller(interval, berthaUrl, function (data) {
     return {
       ...row,
       id: row.id ? row.id.replace(/\s+/g, '').toLowerCase() : '',
-      prefix: hasValidLayout ? knownLayouts[row.layout] : 'ig-summary-card',
+      prefix: 'ig-summary-card',
       image,
       renderResponsiveImage,
     };
@@ -57,7 +50,7 @@ poller.on('error', function(err) {
   console.error('poller error', err);
 });
 
-export default async function getCard(id) {
+module.exports = async function getCard(id) {
   if (poller.data instanceof Map)
     return poller.data.get(id);
   else

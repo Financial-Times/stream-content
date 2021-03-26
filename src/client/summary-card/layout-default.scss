@@ -1,4 +1,4 @@
-@import 'o-grid/main';
+@import '@financial-times/o-grid/main.scss';
 @import 'mixins';
 
 .ig-summary-card {
@@ -69,7 +69,7 @@
 
     a {
       color: inherit;
-      border-color: #inherit;
+      border-color: inherit;
     }
 
     p {
