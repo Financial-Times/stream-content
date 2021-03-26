@@ -1,15 +1,15 @@
-import { EventEmitter } from 'events';
-import { CronJob } from 'cron';
-import Promise from 'bluebird';
+const { EventEmitter } = require('events');
+const { CronJob } = require('cron');
+const Bluebird = require('bluebird');
 
 async function get(url) {
-	const res = await Promise.resolve(fetch(url))
+	const res = await Bluebird.resolve(fetch(url))
 		.timeout(10000, new Error(`Timeout - request took too long to respond: ${url}`));
 	if (!res.ok) throw new Error(`Request failed with ${res.status}: ${url}`);
 	return res.json();
 }
 
-export default class Poller extends EventEmitter {
+module.exports = class Poller extends EventEmitter {
 
   data = null;
 

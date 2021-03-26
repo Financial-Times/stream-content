@@ -1,13 +1,5 @@
 style
-	if layout
-		if layout == 'layout-a'
-			include ../../../client/summary-card/layout-a.css
-		else if layout == 'layout-b'
-			include ../../../client/summary-card/layout-b.css
-		else if layout == 'layout-c'
-			include ../../../client/summary-card/layout-c.css
-	else
-		include ../../../client/summary-card/layout-default.css
+	include ../../../client/summary-card/layout-default.css
 
 aside(class=prefix)
 	if image
